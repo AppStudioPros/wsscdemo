@@ -84,7 +84,7 @@
 - ✅ Testability: data-testid present for all interactive elements; testing_agent_v3 passes all scenarios
 
 ## Deliverables
-- **Preview URL**: https://wssc-digital-demo.preview.emergentagent.com
+- **Preview URL**: https://aqua-demo.preview.emergentagent.com
 - **Main Files**:
   - `/app/frontend/src/App.js` - Complete React SPA with all 9 sections
   - `/app/frontend/src/App.css` - Full styling with brand tokens, animations, responsive design
