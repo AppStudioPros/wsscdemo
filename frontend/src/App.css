@@ -1803,9 +1803,7 @@ a:hover {
   border-radius: 15px;
   margin: 0 auto 15px;
   display: block;
-  object-fit: contain;
-  background: white;
-  padding: 5px;
+  object-fit: cover;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
 }
 
