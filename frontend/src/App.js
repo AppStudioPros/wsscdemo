@@ -347,6 +347,26 @@ function PWAMockup() {
       icon: '⚡',
       title: 'Lightning Fast',
       description: 'App-like experience with instant loading and smooth animations'
+    },
+    {
+      icon: '💰',
+      title: 'Zero Platform Fees',
+      description: 'No Apple App Store fees, no Google Play fees—100% cost savings on app distribution'
+    },
+    {
+      icon: '🔄',
+      title: 'Instant Updates',
+      description: 'Updates deploy immediately—no waiting for app store approval or user downloads'
+    },
+    {
+      icon: '🌐',
+      title: 'One Codebase, All Devices',
+      description: 'Works on iPhone, Android, tablets, and desktops with one development effort'
+    },
+    {
+      icon: '👆',
+      title: 'User Friendly',
+      description: 'Familiar web experience—customers already know how to use it from day one'
     }
   ];
 
@@ -354,11 +374,33 @@ function PWAMockup() {
     <section id="pwa" className="section">
       <div className="container">
         <div className="section-header">
-          <h2>Progressive Web App</h2>
+          <h2>Progressive Web App. <span className="included-text">It's Included!</span></h2>
           <p className="section-subtitle">
             Native app experience without the App Store. Install once, access anywhere.
           </p>
         </div>
+        
+        {/* Big Red Banner */}
+        <div className="pwa-savings-banner" data-testid="pwa-savings-banner">
+          <div className="pwa-savings-content">
+            <h3>🚫 NO MORE EXPENSIVE NATIVE APPS!</h3>
+            <div className="pwa-savings-points">
+              <p><strong>❌ No Apple App Store</strong> — Save $99/year developer fee + 15-30% commission on in-app purchases</p>
+              <p><strong>❌ No Google Play Store</strong> — Save $25 developer fee + 15-30% commission on transactions</p>
+              <p><strong>❌ No Dual Development</strong> — Save $50,000-$150,000 on building separate iOS & Android apps</p>
+              <p><strong>❌ No App Maintenance Hell</strong> — Save ongoing costs of maintaining two separate codebases</p>
+            </div>
+            <div className="pwa-benefits-summary">
+              <span className="benefit-tag">✓ FASTER</span>
+              <span className="benefit-tag">✓ CHEAPER</span>
+              <span className="benefit-tag">✓ EASIER</span>
+              <span className="benefit-tag">✓ SAME FUNCTIONALITY</span>
+              <span className="benefit-tag">✓ USER FRIENDLY</span>
+            </div>
+            <p className="pwa-included-note">All of this is <strong>ALREADY INCLUDED</strong> in your quote—no extra charge!</p>
+          </div>
+        </div>
+
         <div className="pwa-container">
           <div className="iphone-frame" data-testid="iphone-frame">
             <div className="iphone-notch"></div>
