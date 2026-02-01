@@ -216,9 +216,21 @@ function ChatbotDemo() {
   const [inputValue, setInputValue] = useState('');
   const [isTyping, setIsTyping] = useState(false);
   const [sessionId, setSessionId] = useState(null);
+  const [lastMessageCount, setLastMessageCount] = useState(1);
   const messagesContainerRef = useRef(null);
+  const lastBotMessageRef = useRef(null);
 
-  // Scroll only within the chat messages container, not the whole page
+  // Scroll to show the top of the latest bot response
+  const scrollToLatestResponse = () => {
+    if (lastBotMessageRef.current && messagesContainerRef.current) {
+      // Get the position of the last bot message relative to the container
+      const messageTop = lastBotMessageRef.current.offsetTop;
+      // Scroll to show the top of the response with a small offset
+      messagesContainerRef.current.scrollTop = messageTop - 10;
+    }
+  };
+
+  // When typing indicator appears, scroll to bottom to show it
   const scrollToBottom = () => {
     if (messagesContainerRef.current) {
       messagesContainerRef.current.scrollTop = messagesContainerRef.current.scrollHeight;
@@ -226,8 +238,16 @@ function ChatbotDemo() {
   };
 
   useEffect(() => {
-    scrollToBottom();
-  }, [messages, isTyping]);
+    if (isTyping) {
+      // When typing, scroll to bottom to show typing indicator
+      scrollToBottom();
+    } else if (messages.length > lastMessageCount) {
+      // When new message arrives (typing stopped), scroll to top of new response
+      setLastMessageCount(messages.length);
+      // Small delay to ensure DOM is updated
+      setTimeout(scrollToLatestResponse, 100);
+    }
+  }, [messages, isTyping, lastMessageCount]);
 
   // Real API call to backend
   const sendToAI = async (message) => {
