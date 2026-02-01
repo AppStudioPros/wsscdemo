@@ -204,8 +204,6 @@ function Hero() {
         >
           <source src="https://customer-assets.emergentagent.com/job_aqua-demo/artifacts/ylicgxa5_water.mp4" type="video/mp4" />
         </video>
-        {/* Dark overlay for better text readability */}
-        <div className="hero-video-overlay"></div>
         <div className="hero-left-content">
           <img 
             src="https://customer-assets.emergentagent.com/job_wssc-digital-demo/artifacts/li5pnsrz_Wlogo-REVERSED-01.png" 
