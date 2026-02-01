@@ -73,7 +73,12 @@ function Hero() {
   return (
     <section id="hero">
       <div className="hero-content">
-        <div className="logo-placeholder" data-testid="hero-logo">W</div>
+        <img 
+          src="https://customer-assets.emergentagent.com/job_wssc-digital-demo/artifacts/li5pnsrz_Wlogo-REVERSED-01.png" 
+          alt="WSSC Water Logo" 
+          className="hero-logo"
+          data-testid="hero-logo"
+        />
         <h1 className="hero-title">WSSC Water: Next Generation Website</h1>
         <p className="hero-tagline">Delivering the Essential — Powered by AI</p>
         <p className="hero-subtitle">
