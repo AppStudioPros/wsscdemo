@@ -227,9 +227,12 @@ function Hero() {
     <section id="hero" className="hero-advanced">
       {/* Left Side - Dramatic Water Fill Effect with Animated Waves */}
       <div className="hero-left">
-        <div className="water-fill-container">
+        <div 
+          className={`water-fill-container ${animationStarted ? 'animating' : ''}`}
+          style={{ height: `${waterLevel}%` }}
+        >
           {/* Animated Wave Layers */}
-          <div className="water-waves">
+          <div className="water-waves" style={{ opacity: waterLevel > 5 ? 1 : 0 }}>
             {/* Wave Layer 3 - Back (lightest) */}
             <svg className="wave-layer-3" viewBox="0 0 1200 80" preserveAspectRatio="none">
               <path d="M0,40 C150,80 350,0 600,40 C850,80 1050,0 1200,40 L1200,80 L0,80 Z" />
@@ -244,13 +247,13 @@ function Hero() {
             </svg>
           </div>
           {/* Foam bubbles at wave crest */}
-          <div className="wave-foam"></div>
+          <div className="wave-foam" style={{ opacity: waterLevel > 10 ? 0.7 : 0 }}></div>
           {/* Main water body */}
           <div className="water-body">
             {/* Light rays through water */}
-            <div className="water-light-rays"></div>
+            <div className="water-light-rays" style={{ opacity: waterLevel > 30 ? 0.5 : 0 }}></div>
             {/* Rising bubbles */}
-            <div className="water-bubbles">
+            <div className="water-bubbles" style={{ opacity: waterLevel > 20 ? 1 : 0 }}>
               <div className="bubble"></div>
               <div className="bubble"></div>
               <div className="bubble"></div>
