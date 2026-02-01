@@ -210,7 +210,7 @@ function ChatbotDemo() {
   const [messages, setMessages] = useState([
     {
       type: 'bot',
-      text: "Hello! I'm your WSSC Water AI assistant powered by Encore's Self-Healing AI. I can help with billing questions, service requests, project information, and more. How can I assist you today?"
+      text: "Hi there! I'm your WSSC Water assistant. I'm here to help with billing questions, payment options, leaks, service issues, and more. What can I help you with today?"
     }
   ]);
   const [inputValue, setInputValue] = useState('');
