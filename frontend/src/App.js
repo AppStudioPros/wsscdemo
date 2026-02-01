@@ -192,9 +192,41 @@ function Hero() {
 
   return (
     <section id="hero" className="hero-advanced">
-      {/* Left Side - Water Fill Effect */}
+      {/* Left Side - Dramatic Water Fill Effect with Animated Waves */}
       <div className="hero-left">
-        <div className="water-fill-bg"></div>
+        <div className="water-fill-container">
+          {/* Animated Wave Layers */}
+          <div className="water-waves">
+            {/* Wave Layer 3 - Back (lightest) */}
+            <svg className="wave-layer-3" viewBox="0 0 1200 80" preserveAspectRatio="none">
+              <path d="M0,40 C150,80 350,0 600,40 C850,80 1050,0 1200,40 L1200,80 L0,80 Z" />
+            </svg>
+            {/* Wave Layer 2 - Middle */}
+            <svg className="wave-layer-2" viewBox="0 0 1200 80" preserveAspectRatio="none">
+              <path d="M0,50 C200,10 400,70 600,30 C800,10 1000,60 1200,30 L1200,80 L0,80 Z" />
+            </svg>
+            {/* Wave Layer 1 - Front (darkest) */}
+            <svg className="wave-layer-1" viewBox="0 0 1200 80" preserveAspectRatio="none">
+              <path d="M0,30 C100,60 300,10 500,50 C700,90 900,20 1100,50 C1150,60 1180,40 1200,45 L1200,80 L0,80 Z" />
+            </svg>
+          </div>
+          {/* Foam bubbles at wave crest */}
+          <div className="wave-foam"></div>
+          {/* Main water body */}
+          <div className="water-body">
+            {/* Light rays through water */}
+            <div className="water-light-rays"></div>
+            {/* Rising bubbles */}
+            <div className="water-bubbles">
+              <div className="bubble"></div>
+              <div className="bubble"></div>
+              <div className="bubble"></div>
+              <div className="bubble"></div>
+              <div className="bubble"></div>
+              <div className="bubble"></div>
+            </div>
+          </div>
+        </div>
         <div className="hero-left-content">
           <img 
             src="https://customer-assets.emergentagent.com/job_wssc-digital-demo/artifacts/li5pnsrz_Wlogo-REVERSED-01.png" 
