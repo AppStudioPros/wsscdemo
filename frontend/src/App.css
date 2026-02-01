@@ -158,6 +158,7 @@ a:hover {
   padding: 0;
   position: relative;
   overflow: hidden;
+  background: var(--color-dark); /* Fallback while video loads */
 }
 
 /* Video Background - spans entire hero */
