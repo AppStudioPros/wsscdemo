@@ -782,6 +782,18 @@ a:hover {
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
 }
 
+.pwa-app-logo-img {
+  width: 60px;
+  height: 60px;
+  border-radius: 15px;
+  margin: 0 auto 15px;
+  display: block;
+  object-fit: contain;
+  background: white;
+  padding: 5px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
 .pwa-app-header h4 {
   font-size: 1.2rem;
   margin-bottom: 5px;
