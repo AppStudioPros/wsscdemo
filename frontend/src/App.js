@@ -207,6 +207,8 @@ function Hero() {
         autoPlay 
         muted 
         playsInline
+        preload="auto"
+        poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'%3E%3Crect fill='%23ffffff' width='1' height='1'/%3E%3C/svg%3E"
       >
         <source src="https://customer-assets.emergentagent.com/job_aqua-demo/artifacts/ylicgxa5_water.mp4" type="video/mp4" />
       </video>
