@@ -335,54 +335,65 @@ function Hero() {
                     </div>
                   </div>
                   
-                  {/* App grid - realistic apps */}
+                  {/* App grid - realistic apps with animations */}
                   <div className="pwa-app-grid-realistic">
                     {/* Row 1 */}
-                    <div className="pwa-app-slot">
-                      <div className="pwa-app-messages"></div>
+                    <div className="pwa-app-slot anim-delay-1">
+                      <div className="pwa-app-messages has-badge">
+                        <span className="app-badge">3</span>
+                      </div>
                       <span>Messages</span>
                     </div>
-                    <div className="pwa-app-slot">
-                      <div className="pwa-app-phone"></div>
+                    <div className="pwa-app-slot anim-delay-2">
+                      <div className="pwa-app-phone has-badge">
+                        <span className="app-badge">2</span>
+                      </div>
                       <span>Phone</span>
                     </div>
-                    <div className="pwa-app-slot">
-                      <div className="pwa-app-mail"></div>
+                    <div className="pwa-app-slot anim-delay-3">
+                      <div className="pwa-app-mail has-badge">
+                        <span className="app-badge">12</span>
+                      </div>
                       <span>Mail</span>
                     </div>
-                    <div className="pwa-app-slot">
+                    <div className="pwa-app-slot anim-delay-4">
                       <div className="pwa-app-safari"></div>
                       <span>Safari</span>
                     </div>
                     
                     {/* Row 2 */}
-                    <div className="pwa-app-slot">
-                      <div className="pwa-app-facebook"></div>
+                    <div className="pwa-app-slot anim-delay-5">
+                      <div className="pwa-app-facebook has-badge">
+                        <span className="app-badge">5</span>
+                      </div>
                       <span>Facebook</span>
                     </div>
-                    <div className="pwa-app-slot">
+                    <div className="pwa-app-slot anim-delay-6">
                       <div className="pwa-app-x"></div>
                       <span>X</span>
                     </div>
-                    <div className="pwa-app-slot">
-                      <div className="pwa-app-instagram"></div>
+                    <div className="pwa-app-slot anim-delay-7">
+                      <div className="pwa-app-instagram has-badge">
+                        <span className="app-badge">8</span>
+                      </div>
                       <span>Instagram</span>
                     </div>
-                    <div className="pwa-app-slot">
+                    <div className="pwa-app-slot anim-delay-8">
                       <div className="pwa-app-camera"></div>
                       <span>Camera</span>
                     </div>
                     
                     {/* Row 3 */}
-                    <div className="pwa-app-slot">
+                    <div className="pwa-app-slot anim-delay-9">
                       <div className="pwa-app-photos"></div>
                       <span>Photos</span>
                     </div>
-                    <div className="pwa-app-slot">
+                    <div className="pwa-app-slot anim-delay-10">
                       <div className="pwa-app-maps"></div>
                       <span>Maps</span>
                     </div>
                     <div className="pwa-app-slot wssc-new-app">
+                      <div className="wssc-glow"></div>
                       <img 
                         src="https://customer-assets.emergentagent.com/job_aqua-demo/artifacts/e3qln0ip_Wfavicon.png" 
                         alt="WSSC Water"
@@ -390,8 +401,8 @@ function Hero() {
                       />
                       <span>WSSC Water</span>
                     </div>
-                    <div className="pwa-app-slot">
-                      <div className="pwa-app-settings"></div>
+                    <div className="pwa-app-slot anim-delay-11">
+                      <div className="pwa-app-settings app-spin"></div>
                       <span>Settings</span>
                     </div>
                   </div>
