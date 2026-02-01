@@ -201,12 +201,6 @@ a:hover {
   padding: 2rem;
   text-align: center;
   color: white;
-  animation: fadeInContent 1s ease-out 0.5s both;
-}
-
-@keyframes fadeInContent {
-  0% { opacity: 0; transform: translateY(30px); }
-  100% { opacity: 1; transform: translateY(0); }
 }
 
 .hero-left-content .hero-logo {
