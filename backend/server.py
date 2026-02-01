@@ -606,15 +606,15 @@ async def init_ai_config():
             },
             
             "knowledge_base_reference": "wssc_main",
-            "goal": "Reduce call center volume by providing quick, accurate, mobile-friendly answers using official WSSC data"
+            "goal": "Reduce call center volume by providing quick, accurate, friendly answers using official WSSC data"
         }
         
         await db.ai_config.update_one(
-            {"config_id": "wssc_ai_v2"},
+            {"config_id": "wssc_ai_v3"},
             {"$set": ai_config},
             upsert=True
         )
-        logger.info("AI config v2 with knowledge base reference saved to MongoDB")
+        logger.info("AI config v3 with Top 6 FAQs saved to MongoDB")
         
     except Exception as e:
         logger.error(f"Error initializing AI config: {e}")
