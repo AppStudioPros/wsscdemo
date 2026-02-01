@@ -290,10 +290,12 @@ function ChatbotDemo() {
   };
 
   const quickQuestions = [
-    "What is my current water bill?",
-    "Why is my bill higher than usual?",
-    "How do I report a water main break?",
-    "What permits do I need for commercial construction?"
+    "Why is my bill so high?",
+    "I need help paying my bill",
+    "I think I have a leak",
+    "I have no water or low pressure",
+    "Start or stop my service",
+    "My water tastes or smells strange"
   ];
 
   return (
@@ -302,7 +304,7 @@ function ChatbotDemo() {
         <div className="section-header">
           <h2>Try the AI Assistant</h2>
           <p className="section-subtitle">
-            Click a question below to see how AI understands and responds to customer needs.
+            These are the top questions our customers ask. Click any to see how AI can help.
           </p>
         </div>
         <div className="chat-container">
@@ -310,7 +312,7 @@ function ChatbotDemo() {
             <div className="status"></div>
             <div className="chat-header-info">
               <strong>WSSC Water AI Assistant</strong>
-              <small>Online • Powered by Claude</small>
+              <small>Online - Here to help!</small>
             </div>
           </div>
           <div className="quick-questions">
@@ -321,7 +323,7 @@ function ChatbotDemo() {
                 onClick={() => handleQuickQuestion(question)}
                 data-testid={`chat-quick-question-${index + 1}`}
               >
-                {question.length > 30 ? question.substring(0, 27) + '...' : question}
+                {question}
               </button>
             ))}
           </div>
