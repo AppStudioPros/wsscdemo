@@ -372,7 +372,7 @@ a:hover {
   width: 8px;
   height: 8px;
   animation-duration: 4s;
-  animation-delay: 3.2s;
+  animation-delay: 0.2s;
 }
 
 .bubble:nth-child(2) {
@@ -380,7 +380,7 @@ a:hover {
   width: 12px;
   height: 12px;
   animation-duration: 5s;
-  animation-delay: 3.5s;
+  animation-delay: 0.5s;
 }
 
 .bubble:nth-child(3) {
