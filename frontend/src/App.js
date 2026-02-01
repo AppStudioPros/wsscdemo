@@ -225,8 +225,12 @@ function ChatbotDemo() {
     if (latestResponseRef.current && messagesContainerRef.current) {
       const container = messagesContainerRef.current;
       const response = latestResponseRef.current;
-      // Scroll so the AI response starts at the top of the visible area
-      container.scrollTop = response.offsetTop - 10;
+      // Get the top of the response element and scroll container to show it
+      // Use getBoundingClientRect for more accurate positioning
+      const containerRect = container.getBoundingClientRect();
+      const responseRect = response.getBoundingClientRect();
+      const scrollOffset = responseRect.top - containerRect.top + container.scrollTop - 15;
+      container.scrollTop = scrollOffset;
     }
   };
 
