@@ -202,11 +202,11 @@ function Hero() {
     <section id="hero" className="hero-advanced">
       {/* Left Side - Video Background */}
       <div className="hero-left">
-        {/* Video Background */}
+        {/* Video Background - plays once then freezes */}
         <video 
+          ref={videoRef}
           className="hero-video-bg"
           autoPlay 
-          loop 
           muted 
           playsInline
         >
