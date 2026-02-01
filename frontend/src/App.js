@@ -218,16 +218,15 @@ function ChatbotDemo() {
   const [sessionId, setSessionId] = useState(null);
   const [prevMessageCount, setPrevMessageCount] = useState(1);
   const messagesContainerRef = useRef(null);
-  const lastBotMessageRef = useRef(null);
+  const userQuestionRef = useRef(null);
 
-  // Scroll to show the top of the latest bot response
-  const scrollToLatestBotMessage = () => {
-    if (lastBotMessageRef.current && messagesContainerRef.current) {
-      // Scroll the container so the last bot message is at the top
+  // Scroll to show the user's question and the AI response below it
+  const scrollToUserQuestion = () => {
+    if (userQuestionRef.current && messagesContainerRef.current) {
       const container = messagesContainerRef.current;
-      const message = lastBotMessageRef.current;
-      // Position the message near the top of the visible area
-      container.scrollTop = message.offsetTop - 20;
+      const question = userQuestionRef.current;
+      // Scroll so the user's question is at the top, AI response visible below
+      container.scrollTop = question.offsetTop - 10;
     }
   };
 
@@ -245,13 +244,13 @@ function ChatbotDemo() {
     }
   }, [isTyping]);
 
-  // When a new bot message is added, scroll to show its top
+  // When a new bot message is added, scroll to show the user question + response
   useEffect(() => {
     if (messages.length > prevMessageCount) {
       const lastMessage = messages[messages.length - 1];
-      if (lastMessage.type === 'bot') {
+      if (lastMessage.type === 'bot' && messages.length > 2) {
         // Small delay to ensure DOM is updated with the new message
-        setTimeout(scrollToLatestBotMessage, 150);
+        setTimeout(scrollToUserQuestion, 150);
       }
       setPrevMessageCount(messages.length);
     }
