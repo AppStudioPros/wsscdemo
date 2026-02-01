@@ -857,7 +857,7 @@ function PWAMockup() {
             <div className="iphone-screen">
               <div className="pwa-app-header">
                 <img 
-                  src="https://customer-assets.emergentagent.com/job_wssc-digital-demo/artifacts/f3a4nyem_Wfavicon.png" 
+                  src="https://customer-assets.emergentagent.com/job_aqua-demo/artifacts/e3qln0ip_Wfavicon.png" 
                   alt="WSSC Water" 
                   className="pwa-app-logo-img"
                 />
