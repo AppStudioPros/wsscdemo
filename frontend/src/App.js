@@ -1,7 +1,28 @@
 import React, { useState, useRef, useEffect } from 'react';
 import './App.css';
 
-// Chatbot response data
+// Simple markdown to HTML converter for chat messages
+function formatMessage(text) {
+  if (!text) return '';
+  
+  return text
+    // Convert **bold** to <strong>
+    .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+    // Convert *italic* to <em>
+    .replace(/\*([^*]+)\*/g, '<em>$1</em>')
+    // Convert bullet points (• or - at start of line)
+    .replace(/^[•\-]\s*/gm, '• ')
+    // Convert numbered lists
+    .replace(/^(\d+)\.\s*/gm, '$1. ')
+    // Convert line breaks
+    .replace(/\n/g, '<br>')
+    // Convert --- to horizontal rule
+    .replace(/<br>---<br>/g, '<hr style="margin: 12px 0; border: none; border-top: 1px solid #e0e0e0;">')
+    // Clean up multiple <br> tags
+    .replace(/(<br>){3,}/g, '<br><br>');
+}
+
+// Chatbot response data (fallback)
 const chatResponses = {
   "What is my current water bill?": {
     text: `Let me pull up your account details. I see your current balance is <strong>$87.45</strong>, due on February 15, 2026.<br><br>📊 <strong>Usage:</strong> 4,200 gallons (12% below last month)<br>💰 <strong>Breakdown:</strong> Water $52.30 • Sewer $28.15 • Fees $7.00<br><br>Would you like to pay now or set up autopay?`,
