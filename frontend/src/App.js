@@ -216,17 +216,18 @@ function ChatbotDemo() {
   const [inputValue, setInputValue] = useState('');
   const [isTyping, setIsTyping] = useState(false);
   const [sessionId, setSessionId] = useState(null);
-  const [lastMessageCount, setLastMessageCount] = useState(1);
+  const [prevMessageCount, setPrevMessageCount] = useState(1);
   const messagesContainerRef = useRef(null);
   const lastBotMessageRef = useRef(null);
 
   // Scroll to show the top of the latest bot response
-  const scrollToLatestResponse = () => {
+  const scrollToLatestBotMessage = () => {
     if (lastBotMessageRef.current && messagesContainerRef.current) {
-      // Get the position of the last bot message relative to the container
-      const messageTop = lastBotMessageRef.current.offsetTop;
-      // Scroll to show the top of the response with a small offset
-      messagesContainerRef.current.scrollTop = messageTop - 10;
+      // Scroll the container so the last bot message is at the top
+      const container = messagesContainerRef.current;
+      const message = lastBotMessageRef.current;
+      // Position the message near the top of the visible area
+      container.scrollTop = message.offsetTop - 20;
     }
   };
 
@@ -241,13 +242,20 @@ function ChatbotDemo() {
     if (isTyping) {
       // When typing, scroll to bottom to show typing indicator
       scrollToBottom();
-    } else if (messages.length > lastMessageCount) {
-      // When new message arrives (typing stopped), scroll to top of new response
-      setLastMessageCount(messages.length);
-      // Small delay to ensure DOM is updated
-      setTimeout(scrollToLatestResponse, 100);
     }
-  }, [messages, isTyping, lastMessageCount]);
+  }, [isTyping]);
+
+  // When a new bot message is added, scroll to show its top
+  useEffect(() => {
+    if (messages.length > prevMessageCount) {
+      const lastMessage = messages[messages.length - 1];
+      if (lastMessage.type === 'bot') {
+        // Small delay to ensure DOM is updated with the new message
+        setTimeout(scrollToLatestBotMessage, 150);
+      }
+      setPrevMessageCount(messages.length);
+    }
+  }, [messages, prevMessageCount]);
 
   // Real API call to backend
   const sendToAI = async (message) => {
