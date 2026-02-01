@@ -218,15 +218,15 @@ function ChatbotDemo() {
   const [sessionId, setSessionId] = useState(null);
   const [prevMessageCount, setPrevMessageCount] = useState(1);
   const messagesContainerRef = useRef(null);
-  const userQuestionRef = useRef(null);
+  const latestResponseRef = useRef(null);
 
-  // Scroll to show the user's question and the AI response below it
-  const scrollToUserQuestion = () => {
-    if (userQuestionRef.current && messagesContainerRef.current) {
+  // Scroll to show the beginning of the AI response
+  const scrollToResponseTop = () => {
+    if (latestResponseRef.current && messagesContainerRef.current) {
       const container = messagesContainerRef.current;
-      const question = userQuestionRef.current;
-      // Scroll so the user's question is at the top, AI response visible below
-      container.scrollTop = question.offsetTop - 10;
+      const response = latestResponseRef.current;
+      // Scroll so the AI response starts at the top of the visible area
+      container.scrollTop = response.offsetTop - 10;
     }
   };
 
@@ -239,18 +239,17 @@ function ChatbotDemo() {
 
   useEffect(() => {
     if (isTyping) {
-      // When typing, scroll to bottom to show typing indicator
       scrollToBottom();
     }
   }, [isTyping]);
 
-  // When a new bot message is added, scroll to show the user question + response
+  // When a new bot message is added, scroll to show its beginning
   useEffect(() => {
     if (messages.length > prevMessageCount) {
       const lastMessage = messages[messages.length - 1];
-      if (lastMessage.type === 'bot' && messages.length > 2) {
-        // Small delay to ensure DOM is updated with the new message
-        setTimeout(scrollToUserQuestion, 150);
+      if (lastMessage.type === 'bot' && messages.length > 1) {
+        // Delay to ensure DOM is updated
+        setTimeout(scrollToResponseTop, 200);
       }
       setPrevMessageCount(messages.length);
     }
