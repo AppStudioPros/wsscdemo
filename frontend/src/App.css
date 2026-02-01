@@ -426,142 +426,313 @@ a:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(180deg, #f8f9fa 0%, #e9ecef 100%);
-  padding: 20px;
+  background: #f2f2f7;
+  padding: 0;
+  position: relative;
 }
 
-.pwa-install-dialog {
-  background: white;
-  border-radius: 16px;
-  padding: 20px;
-  box-shadow: 0 10px 40px rgba(0,0,0,0.15);
-  animation: fadeInUp 0.5s ease-out;
+/* iOS-style backdrop blur */
+.pwa-ios-backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 30px;
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* iOS Add to Home Screen dialog */
+.pwa-ios-dialog {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 14px;
   width: 90%;
+  overflow: hidden;
+  animation: slideUpDialog 0.35s cubic-bezier(0.32, 0.72, 0, 1);
 }
 
-.pwa-dialog-header {
+@keyframes slideUpDialog {
+  from { 
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to { 
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.pwa-ios-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 16px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.pwa-ios-cancel {
+  color: #007AFF;
+  font-size: 0.9rem;
+}
+
+.pwa-ios-title {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #000;
+}
+
+.pwa-ios-add {
+  color: #007AFF;
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 6px 12px;
+  border-radius: 6px;
+  transition: background 0.15s ease;
+}
+
+.pwa-ios-add.pwa-btn-pressed {
+  background: rgba(0, 122, 255, 0.15);
+  animation: buttonPress 0.2s ease-out;
+}
+
+@keyframes buttonPress {
+  0% { transform: scale(1); }
+  50% { transform: scale(0.95); }
+  100% { transform: scale(1); }
+}
+
+.pwa-ios-preview {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
+  padding: 20px 16px;
+}
+
+.pwa-ios-icon-wrapper {
+  width: 60px;
+  height: 60px;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.pwa-ios-app-icon {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.pwa-ios-app-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.pwa-ios-app-name {
+  font-weight: 500;
+  font-size: 1rem;
+  color: #000;
+}
+
+.pwa-ios-app-url {
+  font-size: 0.8rem;
+  color: #8e8e93;
+}
+
+/* Installing screen */
+.pwa-installing-screen {
+  width: 100%;
+  height: 100%;
+  background: #f2f2f7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.pwa-install-card {
+  text-align: center;
+  padding: 30px;
+}
+
+.pwa-install-icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 18px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  margin-bottom: 20px;
+  animation: iconPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes iconPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.pwa-install-text {
+  font-size: 0.95rem;
+  color: #3c3c43;
   margin-bottom: 20px;
 }
 
-.pwa-dialog-icon {
-  width: 50px;
-  height: 50px;
-  border-radius: 12px;
+.pwa-progress-bar {
+  width: 180px;
+  height: 4px;
+  background: #e5e5ea;
+  border-radius: 2px;
+  overflow: hidden;
+  margin: 0 auto;
 }
 
-.pwa-dialog-header strong {
-  display: block;
-  font-size: 0.95rem;
-  color: var(--color-ink);
+.pwa-progress-fill {
+  width: 0;
+  height: 100%;
+  background: linear-gradient(90deg, #007AFF, #5856D6);
+  border-radius: 2px;
+  animation: progressFill 2.5s ease-out forwards;
 }
 
-.pwa-dialog-header p {
-  font-size: 0.75rem;
-  color: var(--color-muted-ink);
-  margin: 0;
+@keyframes progressFill {
+  0% { width: 0; }
+  20% { width: 30%; }
+  50% { width: 60%; }
+  80% { width: 85%; }
+  100% { width: 100%; }
 }
 
-.pwa-dialog-buttons {
+/* Realistic iPhone homescreen */
+.pwa-homescreen-realistic {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  padding: 0;
   display: flex;
-  gap: 10px;
+  flex-direction: column;
+  animation: fadeIn 0.4s ease-out;
 }
 
-.pwa-dialog-buttons button {
-  flex: 1;
-  padding: 12px;
-  border-radius: 10px;
-  font-size: 0.85rem;
-  font-weight: 600;
-  cursor: pointer;
-  border: none;
-}
-
-.pwa-btn-cancel {
-  background: #e9ecef;
-  color: var(--color-ink);
-}
-
-.pwa-btn-install {
-  background: var(--color-primary);
+/* Status bar */
+.pwa-status-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px 8px;
   color: white;
 }
 
-.pwa-installing {
-  text-align: center;
-  animation: fadeInUp 0.5s ease-out;
+.pwa-time {
+  font-weight: 600;
+  font-size: 0.85rem;
 }
 
-.pwa-spinner {
-  width: 50px;
-  height: 50px;
-  border: 4px solid #e9ecef;
-  border-top-color: var(--color-primary);
-  border-radius: 50%;
-  margin: 0 auto 15px;
-  animation: spin 1s linear infinite;
+.pwa-status-icons {
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
 
-@keyframes spin {
-  to { transform: rotate(360deg); }
+.pwa-status-icons svg {
+  width: 16px;
+  height: 12px;
 }
 
-.pwa-installing p {
-  font-size: 0.9rem;
-  color: var(--color-muted-ink);
-}
-
-.pwa-homescreen {
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
-  padding: 80px 20px 40px;
-}
-
-.pwa-app-grid {
+/* App grid */
+.pwa-app-grid-realistic {
+  flex: 1;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px 10px;
+  padding: 30px 20px;
+  align-content: start;
 }
 
-.pwa-app-icon {
+.pwa-app-slot {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 6px;
+  gap: 5px;
 }
 
-.pwa-app-icon.placeholder::before {
-  content: '';
-  width: 55px;
-  height: 55px;
-  background: rgba(255,255,255,0.2);
-  border-radius: 14px;
-}
-
-.pwa-app-icon.wssc-icon {
-  animation: bounceIn 0.6s ease-out;
-}
-
-.pwa-app-icon.wssc-icon img {
-  width: 55px;
-  height: 55px;
-  border-radius: 14px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-}
-
-.pwa-app-icon.wssc-icon span {
-  font-size: 0.65rem;
+.pwa-app-slot span {
+  font-size: 0.6rem;
   color: white;
-  text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+  text-align: center;
+  max-width: 60px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-@keyframes bounceIn {
-  0% { transform: scale(0); opacity: 0; }
-  60% { transform: scale(1.2); }
-  100% { transform: scale(1); opacity: 1; }
+.pwa-fake-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.pwa-app-slot.wssc-new-app {
+  animation: newAppBounce 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+@keyframes newAppBounce {
+  0% { 
+    transform: scale(0);
+    opacity: 0;
+  }
+  60% { 
+    transform: scale(1.15);
+  }
+  100% { 
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.pwa-wssc-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 102, 204, 0.4);
+  object-fit: cover;
+}
+
+/* Dock */
+.pwa-dock {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  padding: 12px 30px 8px;
+  margin: 0 14px 8px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(20px);
+  border-radius: 28px;
+}
+
+.pwa-dock-icon {
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Home indicator */
+.pwa-home-indicator {
+  width: 134px;
+  height: 5px;
+  background: white;
+  border-radius: 3px;
+  margin: 8px auto 8px;
+  opacity: 0.6;
 }
 
 /* Scene 3: ROI */
