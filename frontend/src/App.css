@@ -169,52 +169,275 @@ a:hover {
   justify-content: center;
   min-height: 100vh;
   overflow: hidden;
-  background: #e8f4fc;
+  background: linear-gradient(180deg, #e8f4fc 0%, #cde8f7 100%);
 }
 
-.water-fill-bg {
+/* Water container */
+.water-fill-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+  animation: waterRise 3.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  z-index: 1;
+  overflow: visible;
+}
+
+@keyframes waterRise {
+  0% { height: 0; }
+  100% { height: 100%; }
+}
+
+/* Main water body with gradient */
+.water-body {
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(to top, var(--color-primary) 0%, var(--color-dark) 100%);
-  animation: waterFill 2.5s ease-out forwards;
-  z-index: 1;
-  transform-origin: bottom;
+  background: linear-gradient(
+    180deg, 
+    rgba(0, 102, 204, 0.85) 0%,
+    rgba(0, 82, 163, 0.9) 30%,
+    var(--color-primary) 60%,
+    var(--color-dark) 100%
+  );
 }
 
-@keyframes waterFill {
-  0% { 
-    transform: scaleY(0);
-  }
-  100% { 
-    transform: scaleY(1);
-  }
-}
-
-/* Water ripple effect at the top */
-.water-fill-bg::after {
+/* Deep water texture overlay */
+.water-body::before {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(ellipse at 20% 80%, rgba(0, 168, 150, 0.3) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(0, 184, 169, 0.2) 0%, transparent 40%);
+  animation: waterGlow 4s ease-in-out infinite;
+  animation-delay: 3s;
+}
+
+@keyframes waterGlow {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+/* Animated SVG Waves Container */
+.water-waves {
+  position: absolute;
+  top: -60px;
+  left: 0;
   width: 200%;
-  height: 20px;
-  background: linear-gradient(90deg, 
-    transparent 0%, 
-    rgba(255,255,255,0.3) 25%, 
-    transparent 50%, 
-    rgba(255,255,255,0.3) 75%, 
-    transparent 100%
-  );
-  animation: waterWave 3s ease-in-out infinite;
+  height: 80px;
+}
+
+/* Wave SVG styling */
+.water-waves svg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+/* Wave Layer 1 - Front wave (darkest, fastest) */
+.wave-layer-1 {
+  animation: waveMove1 3s ease-in-out infinite;
+  opacity: 1;
+}
+
+.wave-layer-1 path {
+  fill: var(--color-primary);
+}
+
+/* Wave Layer 2 - Middle wave */
+.wave-layer-2 {
+  animation: waveMove2 4s ease-in-out infinite;
+  opacity: 0.8;
+  top: -10px;
+}
+
+.wave-layer-2 path {
+  fill: rgba(0, 102, 204, 0.7);
+}
+
+/* Wave Layer 3 - Back wave (lightest, slowest) */
+.wave-layer-3 {
+  animation: waveMove3 5s ease-in-out infinite;
+  opacity: 0.5;
+  top: -20px;
+}
+
+.wave-layer-3 path {
+  fill: rgba(0, 168, 150, 0.6);
+}
+
+@keyframes waveMove1 {
+  0% { transform: translateX(0); }
+  50% { transform: translateX(-25%); }
+  100% { transform: translateX(0); }
+}
+
+@keyframes waveMove2 {
+  0% { transform: translateX(-25%); }
+  50% { transform: translateX(0); }
+  100% { transform: translateX(-25%); }
+}
+
+@keyframes waveMove3 {
+  0% { transform: translateX(-10%); }
+  50% { transform: translateX(-35%); }
+  100% { transform: translateX(-10%); }
+}
+
+/* Foam/bubbles at the wave crest */
+.wave-foam {
+  position: absolute;
+  top: -65px;
+  left: 0;
+  width: 200%;
+  height: 30px;
+  background: 
+    radial-gradient(circle at 10% 50%, rgba(255,255,255,0.8) 0%, transparent 8px),
+    radial-gradient(circle at 25% 30%, rgba(255,255,255,0.6) 0%, transparent 6px),
+    radial-gradient(circle at 40% 60%, rgba(255,255,255,0.7) 0%, transparent 7px),
+    radial-gradient(circle at 55% 40%, rgba(255,255,255,0.5) 0%, transparent 5px),
+    radial-gradient(circle at 70% 55%, rgba(255,255,255,0.8) 0%, transparent 8px),
+    radial-gradient(circle at 85% 35%, rgba(255,255,255,0.6) 0%, transparent 6px);
+  animation: foamMove 3s ease-in-out infinite, foamBubble 0.5s ease-in-out infinite alternate;
+  opacity: 0;
   animation-delay: 2.5s;
 }
 
-@keyframes waterWave {
-  0%, 100% { transform: translateX(-50%); }
-  50% { transform: translateX(0%); }
+@keyframes foamMove {
+  0% { transform: translateX(0); }
+  50% { transform: translateX(-25%); }
+  100% { transform: translateX(0); }
+}
+
+@keyframes foamBubble {
+  0% { opacity: 0.6; }
+  100% { opacity: 0.9; }
+}
+
+/* Light rays through water */
+.water-light-rays {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.1) 45%, transparent 50%),
+    linear-gradient(75deg, transparent 50%, rgba(255,255,255,0.08) 55%, transparent 60%),
+    linear-gradient(95deg, transparent 60%, rgba(255,255,255,0.1) 65%, transparent 70%);
+  animation: lightRays 8s ease-in-out infinite;
+  animation-delay: 3s;
+  pointer-events: none;
+}
+
+@keyframes lightRays {
+  0%, 100% { 
+    opacity: 0.3;
+    transform: translateX(-10px);
+  }
+  50% { 
+    opacity: 0.7;
+    transform: translateX(10px);
+  }
+}
+
+/* Floating bubbles rising */
+.water-bubbles {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.bubble {
+  position: absolute;
+  bottom: -20px;
+  background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.8), rgba(255,255,255,0.2));
+  border-radius: 50%;
+  animation: bubbleRise linear infinite;
+  opacity: 0;
+  animation-delay: 3s;
+}
+
+.bubble:nth-child(1) {
+  left: 10%;
+  width: 8px;
+  height: 8px;
+  animation-duration: 4s;
+  animation-delay: 3.2s;
+}
+
+.bubble:nth-child(2) {
+  left: 25%;
+  width: 12px;
+  height: 12px;
+  animation-duration: 5s;
+  animation-delay: 3.5s;
+}
+
+.bubble:nth-child(3) {
+  left: 45%;
+  width: 6px;
+  height: 6px;
+  animation-duration: 3.5s;
+  animation-delay: 4s;
+}
+
+.bubble:nth-child(4) {
+  left: 60%;
+  width: 10px;
+  height: 10px;
+  animation-duration: 4.5s;
+  animation-delay: 3.8s;
+}
+
+.bubble:nth-child(5) {
+  left: 75%;
+  width: 7px;
+  height: 7px;
+  animation-duration: 4s;
+  animation-delay: 4.2s;
+}
+
+.bubble:nth-child(6) {
+  left: 90%;
+  width: 9px;
+  height: 9px;
+  animation-duration: 5.5s;
+  animation-delay: 3.3s;
+}
+
+@keyframes bubbleRise {
+  0% {
+    transform: translateY(0) translateX(0) scale(1);
+    opacity: 0.7;
+  }
+  25% {
+    transform: translateY(-25vh) translateX(10px) scale(1.1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translateY(-50vh) translateX(-5px) scale(0.9);
+    opacity: 0.6;
+  }
+  75% {
+    transform: translateY(-75vh) translateX(8px) scale(1);
+    opacity: 0.4;
+  }
+  100% {
+    transform: translateY(-100vh) translateX(0) scale(0.8);
+    opacity: 0;
+  }
 }
 
 .hero-left-content {
