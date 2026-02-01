@@ -1012,6 +1012,155 @@ a:hover {
   opacity: 0.6;
 }
 
+/* ===== APP ICON ANIMATIONS ===== */
+
+/* Staggered entrance animations */
+.pwa-app-slot {
+  animation: appSlotFadeIn 0.4s ease-out forwards;
+  opacity: 0;
+}
+
+.pwa-app-slot.anim-delay-1 { animation-delay: 0.05s; }
+.pwa-app-slot.anim-delay-2 { animation-delay: 0.1s; }
+.pwa-app-slot.anim-delay-3 { animation-delay: 0.15s; }
+.pwa-app-slot.anim-delay-4 { animation-delay: 0.2s; }
+.pwa-app-slot.anim-delay-5 { animation-delay: 0.25s; }
+.pwa-app-slot.anim-delay-6 { animation-delay: 0.3s; }
+.pwa-app-slot.anim-delay-7 { animation-delay: 0.35s; }
+.pwa-app-slot.anim-delay-8 { animation-delay: 0.4s; }
+.pwa-app-slot.anim-delay-9 { animation-delay: 0.45s; }
+.pwa-app-slot.anim-delay-10 { animation-delay: 0.5s; }
+.pwa-app-slot.anim-delay-11 { animation-delay: 0.6s; }
+
+@keyframes appSlotFadeIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.5) translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Notification badges */
+.has-badge {
+  position: relative;
+}
+
+.app-badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  min-width: 18px;
+  height: 18px;
+  background: #FF3B30;
+  color: white;
+  font-size: 0.6rem;
+  font-weight: 700;
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 4px;
+  box-shadow: 0 2px 4px rgba(255, 59, 48, 0.4);
+  animation: badgePulse 2s ease-in-out infinite;
+  z-index: 10;
+}
+
+@keyframes badgePulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+/* Settings gear spin animation */
+.app-spin::after {
+  animation: gearSpin 8s linear infinite !important;
+}
+
+@keyframes gearSpin {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* WSSC App special glow effect */
+.pwa-app-slot.wssc-new-app {
+  position: relative;
+  animation: wsscAppEntrance 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.55s forwards;
+  opacity: 0;
+}
+
+.wssc-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70px;
+  height: 70px;
+  background: radial-gradient(circle, rgba(0, 168, 150, 0.6) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: wsscGlow 2s ease-in-out infinite;
+  z-index: 0;
+}
+
+@keyframes wsscGlow {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.3);
+    opacity: 1;
+  }
+}
+
+@keyframes wsscAppEntrance {
+  0% {
+    opacity: 0;
+    transform: scale(0) rotate(-180deg);
+  }
+  60% {
+    transform: scale(1.2) rotate(10deg);
+  }
+  80% {
+    transform: scale(0.95) rotate(-5deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+.pwa-wssc-icon {
+  position: relative;
+  z-index: 1;
+  animation: wsscIconShine 3s ease-in-out infinite;
+}
+
+@keyframes wsscIconShine {
+  0%, 100% {
+    filter: brightness(1);
+  }
+  50% {
+    filter: brightness(1.2);
+  }
+}
+
+/* Subtle hover effect for all icons */
+.pwa-app-slot > div:first-child:not(.wssc-glow),
+.pwa-wssc-icon {
+  transition: transform 0.2s ease;
+}
+
+.pwa-app-slot:hover > div:first-child:not(.wssc-glow),
+.pwa-app-slot:hover .pwa-wssc-icon {
+  transform: scale(1.1);
+}
+
 /* Scene 3: ROI */
 .scene-roi {
   display: flex;
