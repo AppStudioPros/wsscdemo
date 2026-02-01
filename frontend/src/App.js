@@ -454,7 +454,11 @@ function PWAMockup() {
             <div className="iphone-notch"></div>
             <div className="iphone-screen">
               <div className="pwa-app-header">
-                <div className="pwa-app-logo">W</div>
+                <img 
+                  src="https://customer-assets.emergentagent.com/job_wssc-digital-demo/artifacts/f3a4nyem_Wfavicon.png" 
+                  alt="WSSC Water" 
+                  className="pwa-app-logo-img"
+                />
                 <h4>WSSC Water</h4>
                 <p>Your Water, Your Way</p>
               </div>
