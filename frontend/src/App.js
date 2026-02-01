@@ -184,11 +184,12 @@ function ChatbotDemo() {
   const [messages, setMessages] = useState([
     {
       type: 'bot',
-      text: "Hello! I'm your WSSC Water AI assistant. I can help with billing questions, service requests, project information, and more. How can I assist you today?"
+      text: "Hello! I'm your WSSC Water AI assistant powered by Encore's Self-Healing AI. I can help with billing questions, service requests, project information, and more. How can I assist you today?"
     }
   ]);
   const [inputValue, setInputValue] = useState('');
   const [isTyping, setIsTyping] = useState(false);
+  const [sessionId, setSessionId] = useState(null);
   const messagesEndRef = useRef(null);
 
   const scrollToBottom = () => {
@@ -199,21 +200,49 @@ function ChatbotDemo() {
     scrollToBottom();
   }, [messages, isTyping]);
 
-  const addBotResponse = (responseText, delay) => {
+  // Real API call to backend
+  const sendToAI = async (message) => {
     setIsTyping(true);
-    setTimeout(() => {
+    try {
+      const backendUrl = process.env.REACT_APP_BACKEND_URL || '';
+      const response = await fetch(`${backendUrl}/api/chat`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          message: message,
+          session_id: sessionId
+        }),
+      });
+      
+      if (!response.ok) {
+        throw new Error('API request failed');
+      }
+      
+      const data = await response.json();
+      setSessionId(data.session_id);
       setIsTyping(false);
-      setMessages(prev => [...prev, { type: 'bot', text: responseText }]);
-    }, delay);
+      setMessages(prev => [...prev, { type: 'bot', text: data.response }]);
+    } catch (error) {
+      console.error('Chat API error:', error);
+      setIsTyping(false);
+      // Fallback to pre-programmed response if API fails
+      const fallbackResponse = chatResponses[message];
+      if (fallbackResponse) {
+        setMessages(prev => [...prev, { type: 'bot', text: fallbackResponse.text }]);
+      } else {
+        setMessages(prev => [...prev, { 
+          type: 'bot', 
+          text: "I apologize, but I'm having trouble connecting right now. Please try again in a moment." 
+        }]);
+      }
+    }
   };
 
   const handleQuickQuestion = (question) => {
     setMessages(prev => [...prev, { type: 'user', text: question }]);
-    
-    const response = chatResponses[question];
-    if (response) {
-      addBotResponse(response.text, response.delay);
-    }
+    sendToAI(question);
   };
 
   const handleSendMessage = () => {
@@ -222,16 +251,7 @@ function ChatbotDemo() {
 
     setMessages(prev => [...prev, { type: 'user', text: message }]);
     setInputValue('');
-
-    const response = chatResponses[message];
-    if (response) {
-      addBotResponse(response.text, response.delay);
-    } else {
-      addBotResponse(
-        "Great question! In the live system, I would analyze your specific account, usage patterns, and relevant policies to provide a personalized, accurate response. This interactive demo showcases the interface—imagine AI responses that truly understand your unique situation.",
-        1500
-      );
-    }
+    sendToAI(message);
   };
 
   const handleKeyPress = (e) => {
