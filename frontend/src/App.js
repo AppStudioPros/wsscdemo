@@ -95,6 +95,7 @@ function Hero() {
   // Scene 1: Chatbot conversation animation
   useEffect(() => {
     if (currentScene === 0) {
+      // Reset messages when scene becomes active
       setChatMessages([]);
       setShowTyping(false);
       
@@ -107,16 +108,24 @@ function Hero() {
         { type: 'bot', text: 'Guide sent! You may qualify for up to 50% reduction on excess charges.', delay: 6500 }
       ];
 
+      const timeouts = [];
       conversation.forEach(msg => {
-        setTimeout(() => {
+        const timeout = setTimeout(() => {
           if (msg.type === 'typing') {
             setShowTyping(true);
           } else {
             setShowTyping(false);
-            setChatMessages(prev => [...prev, { type: msg.type, text: msg.text }]);
+            setChatMessages(prev => {
+              // Prevent duplicates
+              if (prev.some(m => m.text === msg.text)) return prev;
+              return [...prev, { type: msg.type, text: msg.text }];
+            });
           }
         }, msg.delay);
+        timeouts.push(timeout);
       });
+
+      return () => timeouts.forEach(t => clearTimeout(t));
     }
   }, [currentScene]);
 
