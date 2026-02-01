@@ -356,16 +356,17 @@ function ChatbotDemo() {
           </div>
           <div className="chat-messages" ref={messagesContainerRef} role="log" aria-live="polite">
             {messages.map((message, index) => {
-              // Add ref to the last bot message so we can scroll to it
-              const isLastBotMessage = message.type === 'bot' && 
-                index === messages.map((m, i) => m.type === 'bot' ? i : -1).filter(i => i !== -1).pop();
+              // Add ref to the last user message (the question before the AI response)
+              const isLastUserMessage = message.type === 'user' && 
+                index === messages.length - 2 && 
+                messages[messages.length - 1]?.type === 'bot';
               
               return (
                 <div 
                   key={index} 
                   className={`message ${message.type}`} 
                   data-testid={`chat-message-${index}`}
-                  ref={isLastBotMessage ? lastBotMessageRef : null}
+                  ref={isLastUserMessage ? userQuestionRef : null}
                 >
                   <div className="message-avatar">{message.type === 'bot' ? 'AI' : 'You'}</div>
                   <div 
