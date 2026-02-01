@@ -348,15 +348,26 @@ function ChatbotDemo() {
             ))}
           </div>
           <div className="chat-messages" ref={messagesContainerRef} role="log" aria-live="polite">
-            {messages.map((message, index) => (
-              <div key={index} className={`message ${message.type}`} data-testid={`chat-message-${index}`}>
-                <div className="message-avatar">{message.type === 'bot' ? 'AI' : 'You'}</div>
+            {messages.map((message, index) => {
+              // Add ref to the last bot message so we can scroll to it
+              const isLastBotMessage = message.type === 'bot' && 
+                index === messages.map((m, i) => m.type === 'bot' ? i : -1).filter(i => i !== -1).pop();
+              
+              return (
                 <div 
-                  className="message-content" 
-                  dangerouslySetInnerHTML={{ __html: formatMessage(message.text) }}
-                />
-              </div>
-            ))}
+                  key={index} 
+                  className={`message ${message.type}`} 
+                  data-testid={`chat-message-${index}`}
+                  ref={isLastBotMessage ? lastBotMessageRef : null}
+                >
+                  <div className="message-avatar">{message.type === 'bot' ? 'AI' : 'You'}</div>
+                  <div 
+                    className="message-content" 
+                    dangerouslySetInnerHTML={{ __html: formatMessage(message.text) }}
+                  />
+                </div>
+              );
+            })}
             {isTyping && (
               <div className="message bot">
                 <div className="message-avatar">AI</div>
