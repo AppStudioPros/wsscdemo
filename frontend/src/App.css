@@ -747,6 +747,22 @@ a:hover {
   display: block;
   filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.3));
 }
+
+.hero-title {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.hero-tagline {
+  font-size: clamp(1.2rem, 3vw, 1.8rem);
+  font-weight: 300;
+  margin-bottom: 2rem;
+  opacity: 0.95;
+}
+
+.hero-subtitle {
   font-size: 1.1rem;
   max-width: 700px;
   margin: 0 auto 3rem;
