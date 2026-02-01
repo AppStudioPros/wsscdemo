@@ -552,6 +552,18 @@ async def init_knowledge_base():
         
         logger.info(f"Stored {len(sections)} knowledge base sections in MongoDB")
         
+        # Store Top 6 FAQs separately for quick reference
+        await db.knowledge_base.update_one(
+            {"type": "top_6_faqs"},
+            {"$set": {
+                "type": "top_6_faqs",
+                "data": TOP_6_FAQS,
+                "updated_at": datetime.now(timezone.utc).isoformat()
+            }},
+            upsert=True
+        )
+        logger.info("Top 6 FAQs stored in MongoDB")
+        
     except Exception as e:
         logger.error(f"Error initializing knowledge base: {e}")
 
@@ -560,34 +572,36 @@ async def init_ai_config():
     """Initialize AI training config in MongoDB"""
     try:
         ai_config = {
-            "config_id": "wssc_ai_v2",
+            "config_id": "wssc_ai_v3",
             "name": "WSSC Water AI Assistant",
-            "version": "2.0",
+            "version": "3.0",
             "created_at": datetime.now(timezone.utc).isoformat(),
             "updated_at": datetime.now(timezone.utc).isoformat(),
             "system_message": WSSC_SYSTEM_MESSAGE,
             
             "personality": {
-                "tone": "friendly, warm, helpful",
-                "style": "conversational, not robotic",
+                "tone": "friendly, warm, helpful, conversational",
+                "style": "like talking to a helpful friend",
                 "empathy_level": "high",
                 "formality": "casual but professional"
             },
             
             "response_rules": {
-                "max_paragraphs": 4,
-                "max_sentences_per_paragraph": 3,
+                "max_paragraphs": 3,
                 "use_bullets": True,
-                "use_emojis": True,
+                "use_emojis": False,
+                "only_smiley_face": True,
                 "mobile_optimized": True,
                 "always_ask_feedback": True,
-                "use_knowledge_base": True
+                "feedback_ending": "Was this helpful? Need anything else? 😊"
             },
             
+            "top_6_questions": list(TOP_6_FAQS.keys()),
+            
             "feedback_prompts": {
-                "after_response": "**Was this helpful? Need more info?** I'm here for you! 😊",
-                "no_response_timeout": "I didn't see a response - I hopefully answered your questions. Have a great day! 💧",
-                "positive_feedback": "Awesome! So glad I could help! Is there anything else? 😊",
+                "after_response": "Was this helpful? Need anything else? 😊",
+                "no_response_timeout": "I didn't see a response - I hopefully answered your questions. Have a great day!",
+                "positive_feedback": "Great! Is there anything else I can help with? 😊",
                 "needs_more_info": "No problem! Let me give you more details..."
             },
             
