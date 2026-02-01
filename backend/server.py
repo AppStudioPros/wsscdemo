@@ -20,8 +20,10 @@ mongo_url = os.environ['MONGO_URL']
 client = AsyncIOMotorClient(mongo_url)
 db = client[os.environ['DB_NAME']]
 
-# Anthropic API Key
+# LLM API Key - Try Emergent key first, fallback to direct Anthropic
+EMERGENT_LLM_KEY = os.environ.get('EMERGENT_LLM_KEY', '')
 ANTHROPIC_API_KEY = os.environ.get('ANTHROPIC_API_KEY', '')
+LLM_API_KEY = EMERGENT_LLM_KEY if EMERGENT_LLM_KEY else ANTHROPIC_API_KEY
 
 # Create the main app without a prefix
 app = FastAPI()
