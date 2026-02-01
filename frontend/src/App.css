@@ -673,11 +673,280 @@ a:hover {
   white-space: nowrap;
 }
 
-.pwa-fake-icon {
+/* Realistic App Icons */
+.pwa-app-messages {
   width: 50px;
   height: 50px;
   border-radius: 12px;
+  background: linear-gradient(180deg, #5FD25F 0%, #34C759 100%);
+  position: relative;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+.pwa-app-messages::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 26px;
+  height: 22px;
+  background: white;
+  border-radius: 11px;
+  clip-path: polygon(0 0, 100% 0, 100% 70%, 60% 70%, 40% 100%, 40% 70%, 0 70%);
+}
+
+.pwa-app-phone {
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
+  background: linear-gradient(180deg, #5FD25F 0%, #34C759 100%);
+  position: relative;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+.pwa-app-phone::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-135deg);
+  width: 22px;
+  height: 22px;
+  background: white;
+  border-radius: 6px 12px;
+}
+
+.pwa-app-mail {
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
+  background: linear-gradient(180deg, #3DB4FF 0%, #007AFF 100%);
+  position: relative;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+.pwa-app-mail::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 26px;
+  height: 18px;
+  background: white;
+  border-radius: 2px;
+  clip-path: polygon(0 0, 50% 50%, 100% 0, 100% 100%, 0 100%);
+}
+
+.pwa-app-safari {
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
+  background: linear-gradient(180deg, #5AC8FA 0%, #007AFF 100%);
+  position: relative;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+.pwa-app-safari::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 26px;
+  height: 26px;
+  background: conic-gradient(white 0deg 90deg, #FF3B30 90deg 180deg, white 180deg 270deg, #FF3B30 270deg 360deg);
+  border-radius: 50%;
+}
+
+.pwa-app-facebook {
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
+  background: #1877F2;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-weight: bold;
+  font-size: 28px;
+  color: white;
+}
+.pwa-app-facebook::after {
+  content: 'f';
+}
+
+.pwa-app-x {
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
+  background: #000000;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Arial Black', Arial, sans-serif;
+  font-weight: 900;
+  font-size: 24px;
+  color: white;
+}
+.pwa-app-x::after {
+  content: '𝕏';
+}
+
+.pwa-app-instagram {
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #833AB4 0%, #FD1D1D 50%, #FCAF45 100%);
+  position: relative;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+.pwa-app-instagram::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 22px;
+  height: 22px;
+  border: 3px solid white;
+  border-radius: 6px;
+}
+.pwa-app-instagram::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 8px;
+  height: 8px;
+  border: 2px solid white;
+  border-radius: 50%;
+}
+
+.pwa-app-camera {
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
+  background: linear-gradient(180deg, #8E8E93 0%, #636366 100%);
+  position: relative;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+.pwa-app-camera::after {
+  content: '';
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+  border: 3px solid white;
+  border-radius: 50%;
+}
+.pwa-app-camera::before {
+  content: '';
+  position: absolute;
+  top: 28%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 12px;
+  height: 5px;
+  background: white;
+  border-radius: 2px;
+}
+
+.pwa-app-photos {
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #FF6B6B 0%, #FFE66D 25%, #4ECDC4 50%, #45B7D1 75%, #96E6A1 100%);
+  position: relative;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+.pwa-app-photos::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 24px;
+  height: 24px;
+  background: white;
+  border-radius: 50%;
+  clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+}
+
+.pwa-app-maps {
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
+  background: linear-gradient(180deg, #5AC8FA 0%, #34C759 100%);
+  position: relative;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+.pwa-app-maps::after {
+  content: '';
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 20px solid #FF3B30;
+}
+.pwa-app-maps::before {
+  content: '';
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 8px;
+  background: rgba(255,255,255,0.5);
+  border-radius: 4px;
+}
+
+.pwa-app-settings {
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
+  background: linear-gradient(180deg, #8E8E93 0%, #636366 100%);
+  position: relative;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+.pwa-app-settings::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 24px;
+  height: 24px;
+  background: conic-gradient(
+    #AEAEB2 0deg 30deg, transparent 30deg 60deg,
+    #AEAEB2 60deg 90deg, transparent 90deg 120deg,
+    #AEAEB2 120deg 150deg, transparent 150deg 180deg,
+    #AEAEB2 180deg 210deg, transparent 210deg 240deg,
+    #AEAEB2 240deg 270deg, transparent 270deg 300deg,
+    #AEAEB2 300deg 330deg, transparent 330deg 360deg
+  );
+  border-radius: 50%;
+}
+.pwa-app-settings::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 10px;
+  height: 10px;
+  background: #636366;
+  border-radius: 50%;
+  border: 2px solid #AEAEB2;
 }
 
 .pwa-app-slot.wssc-new-app {
@@ -718,11 +987,80 @@ a:hover {
   border-radius: 28px;
 }
 
-.pwa-dock-icon {
+/* Dock icons */
+.pwa-dock-phone {
   width: 46px;
   height: 46px;
   border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  background: linear-gradient(180deg, #5FD25F 0%, #34C759 100%);
+  position: relative;
+}
+.pwa-dock-phone::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-135deg);
+  width: 18px;
+  height: 18px;
+  background: white;
+  border-radius: 5px 10px;
+}
+
+.pwa-dock-safari {
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  background: linear-gradient(180deg, #5AC8FA 0%, #007AFF 100%);
+  position: relative;
+}
+.pwa-dock-safari::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 22px;
+  height: 22px;
+  background: conic-gradient(white 0deg 90deg, #FF3B30 90deg 180deg, white 180deg 270deg, #FF3B30 270deg 360deg);
+  border-radius: 50%;
+}
+
+.pwa-dock-messages {
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  background: linear-gradient(180deg, #5FD25F 0%, #34C759 100%);
+  position: relative;
+}
+.pwa-dock-messages::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 22px;
+  height: 18px;
+  background: white;
+  border-radius: 9px;
+  clip-path: polygon(0 0, 100% 0, 100% 70%, 60% 70%, 40% 100%, 40% 70%, 0 70%);
+}
+
+.pwa-dock-music {
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #FC3C44 0%, #FA233B 100%);
+  position: relative;
+}
+.pwa-dock-music::after {
+  content: '♪';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 24px;
+  color: white;
 }
 
 /* Home indicator */
