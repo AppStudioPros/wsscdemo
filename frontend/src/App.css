@@ -306,8 +306,7 @@ a:hover {
     radial-gradient(circle at 70% 55%, rgba(255,255,255,0.8) 0%, transparent 8px),
     radial-gradient(circle at 85% 35%, rgba(255,255,255,0.6) 0%, transparent 6px);
   animation: foamMove 3s ease-in-out infinite, foamBubble 0.5s ease-in-out infinite alternate;
-  opacity: 0;
-  animation-delay: 2.5s;
+  transition: opacity 0.3s ease;
 }
 
 @keyframes foamMove {
