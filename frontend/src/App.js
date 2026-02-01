@@ -85,9 +85,9 @@ function Hero() {
     document.getElementById('ai-features')?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  // Scene rotation effect
+  // Scene rotation effect - PWA scene (index 1) slowed by 15%
   useEffect(() => {
-    const sceneDurations = [7000, 8000, 7000]; // 7s, 8s, 7s for each scene
+    const sceneDurations = [7000, 9200, 7000]; // 7s, 9.2s (was 8s, now 15% slower), 7s for each scene
     
     const timer = setTimeout(() => {
       setIsTransitioning(true);
