@@ -930,22 +930,22 @@ a:hover {
 }
 
 .benefit-icon {
-  width: 48px;
-  height: 48px;
+  width: 40px;
+  height: 40px;
   background: linear-gradient(135deg, var(--color-secondary), var(--color-accent));
-  border-radius: 12px;
+  border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
   color: white;
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   flex-shrink: 0;
 }
 
 .benefit-text h4 {
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: var(--color-dark);
-  margin-bottom: 5px;
+  margin-bottom: 3px;
 }
 
 .benefit-text p {
