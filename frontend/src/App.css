@@ -168,9 +168,8 @@ a:hover {
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  overflow: visible; /* Allow waves to show above container */
+  overflow: hidden;
   background: linear-gradient(180deg, #e8f4fc 0%, #cde8f7 100%);
-  clip-path: inset(0); /* Clip only to the boundaries of the section itself */
 }
 
 /* Water container - height controlled by JavaScript */
