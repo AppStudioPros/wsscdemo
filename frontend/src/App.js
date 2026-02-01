@@ -269,49 +269,143 @@ function Hero() {
               </div>
             </div>
 
-            {/* Scene 2: PWA Installation */}
+            {/* Scene 2: PWA Installation - Realistic iPhone Experience */}
             <div className={`phone-scene scene-pwa ${currentScene === 1 ? 'active' : ''} ${isTransitioning && currentScene === 1 ? 'transitioning-out' : ''}`}>
+              {/* Step 1: iOS-style Add to Home Screen dialog */}
               {pwaStep === 1 && (
-                <div className="pwa-install-dialog">
-                  <div className="pwa-dialog-header">
-                    <img 
-                      src="https://customer-assets.emergentagent.com/job_wssc-digital-demo/artifacts/f3a4nyem_Wfavicon.png" 
-                      alt="WSSC" 
-                      className="pwa-dialog-icon"
-                    />
-                    <div>
-                      <strong>Install "WSSC Water"?</strong>
-                      <p>Add to home screen for quick access</p>
+                <div className="pwa-ios-backdrop">
+                  <div className="pwa-ios-dialog">
+                    <div className="pwa-ios-header">
+                      <span className="pwa-ios-cancel">Cancel</span>
+                      <span className="pwa-ios-title">Add to Home Screen</span>
+                      <span className="pwa-ios-add">Add</span>
+                    </div>
+                    <div className="pwa-ios-preview">
+                      <div className="pwa-ios-icon-wrapper">
+                        <img 
+                          src="https://customer-assets.emergentagent.com/job_aqua-demo/artifacts/e3qln0ip_Wfavicon.png" 
+                          alt="WSSC Water"
+                          className="pwa-ios-app-icon"
+                        />
+                      </div>
+                      <div className="pwa-ios-app-info">
+                        <span className="pwa-ios-app-name">WSSC Water</span>
+                        <span className="pwa-ios-app-url">wsscwater.com</span>
+                      </div>
                     </div>
                   </div>
-                  <div className="pwa-dialog-buttons">
-                    <button className="pwa-btn-cancel">Cancel</button>
-                    <button className="pwa-btn-install">Install</button>
+                </div>
+              )}
+              
+              {/* Step 2: Button click highlight */}
+              {pwaStep === 2 && (
+                <div className="pwa-ios-backdrop">
+                  <div className="pwa-ios-dialog">
+                    <div className="pwa-ios-header">
+                      <span className="pwa-ios-cancel">Cancel</span>
+                      <span className="pwa-ios-title">Add to Home Screen</span>
+                      <span className="pwa-ios-add pwa-btn-pressed">Add</span>
+                    </div>
+                    <div className="pwa-ios-preview">
+                      <div className="pwa-ios-icon-wrapper">
+                        <img 
+                          src="https://customer-assets.emergentagent.com/job_aqua-demo/artifacts/e3qln0ip_Wfavicon.png" 
+                          alt="WSSC Water"
+                          className="pwa-ios-app-icon"
+                        />
+                      </div>
+                      <div className="pwa-ios-app-info">
+                        <span className="pwa-ios-app-name">WSSC Water</span>
+                        <span className="pwa-ios-app-url">wsscwater.com</span>
+                      </div>
+                    </div>
                   </div>
                 </div>
               )}
-              {pwaStep === 2 && (
-                <div className="pwa-installing">
-                  <div className="pwa-spinner"></div>
-                  <p>Installing WSSC Water...</p>
+              
+              {/* Step 3: Installing with progress */}
+              {pwaStep === 3 && (
+                <div className="pwa-installing-screen">
+                  <div className="pwa-install-card">
+                    <img 
+                      src="https://customer-assets.emergentagent.com/job_aqua-demo/artifacts/e3qln0ip_Wfavicon.png" 
+                      alt="WSSC Water"
+                      className="pwa-install-icon"
+                    />
+                    <div className="pwa-install-text">Adding to Home Screen...</div>
+                    <div className="pwa-progress-bar">
+                      <div className="pwa-progress-fill"></div>
+                    </div>
+                  </div>
                 </div>
               )}
-              {pwaStep === 3 && (
-                <div className="pwa-homescreen">
-                  <div className="pwa-app-grid">
-                    <div className="pwa-app-icon placeholder"></div>
-                    <div className="pwa-app-icon placeholder"></div>
-                    <div className="pwa-app-icon placeholder"></div>
-                    <div className="pwa-app-icon wssc-icon">
+              
+              {/* Step 4: Realistic iPhone home screen */}
+              {pwaStep === 4 && (
+                <div className="pwa-homescreen-realistic">
+                  {/* Status bar */}
+                  <div className="pwa-status-bar">
+                    <span className="pwa-time">9:41</span>
+                    <div className="pwa-status-icons">
+                      <svg className="pwa-signal" viewBox="0 0 17 10" fill="white"><path d="M0 7h3v3H0V7zm4-3h3v6H4V4zm4-2h3v8H8V2zm4-2h3v10h-3V0z"/></svg>
+                      <svg className="pwa-wifi" viewBox="0 0 16 12" fill="white"><path d="M8 9.5a1.5 1.5 0 100 3 1.5 1.5 0 000-3zM8 6c-2.2 0-4 1.1-5 2.7l1.4 1.4c.7-1.1 2-1.8 3.6-1.8s2.9.7 3.6 1.8l1.4-1.4c-1-1.6-2.8-2.7-5-2.7zM8 2c-3.5 0-6.6 1.6-8 4l1.4 1.4C2.8 5.3 5.3 4 8 4s5.2 1.3 6.6 3.4L16 6c-1.4-2.4-4.5-4-8-4z"/></svg>
+                      <svg className="pwa-battery" viewBox="0 0 25 12" fill="white"><rect x="0" y="0" width="22" height="12" rx="3" stroke="white" strokeWidth="1" fill="none"/><rect x="2" y="2" width="18" height="8" rx="1" fill="white"/><path d="M23 4v4a2 2 0 000-4z"/></svg>
+                    </div>
+                  </div>
+                  
+                  {/* App grid */}
+                  <div className="pwa-app-grid-realistic">
+                    {/* Row 1 */}
+                    <div className="pwa-app-slot">
+                      <div className="pwa-fake-icon" style={{background: 'linear-gradient(135deg, #5FC3E4 0%, #E55D87 100%)'}}></div>
+                      <span>Photos</span>
+                    </div>
+                    <div className="pwa-app-slot">
+                      <div className="pwa-fake-icon" style={{background: 'linear-gradient(135deg, #11998e 0%, #38ef7d 100%)'}}></div>
+                      <span>Messages</span>
+                    </div>
+                    <div className="pwa-app-slot">
+                      <div className="pwa-fake-icon" style={{background: 'linear-gradient(135deg, #ee0979 0%, #ff6a00 100%)'}}></div>
+                      <span>Music</span>
+                    </div>
+                    <div className="pwa-app-slot">
+                      <div className="pwa-fake-icon" style={{background: 'linear-gradient(135deg, #4776E6 0%, #8E54E9 100%)'}}></div>
+                      <span>Mail</span>
+                    </div>
+                    
+                    {/* Row 2 */}
+                    <div className="pwa-app-slot">
+                      <div className="pwa-fake-icon" style={{background: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)'}}></div>
+                      <span>Calendar</span>
+                    </div>
+                    <div className="pwa-app-slot">
+                      <div className="pwa-fake-icon" style={{background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)'}}></div>
+                      <span>Settings</span>
+                    </div>
+                    <div className="pwa-app-slot wssc-new-app">
                       <img 
-                        src="https://customer-assets.emergentagent.com/job_wssc-digital-demo/artifacts/f3a4nyem_Wfavicon.png" 
+                        src="https://customer-assets.emergentagent.com/job_aqua-demo/artifacts/e3qln0ip_Wfavicon.png" 
                         alt="WSSC Water"
+                        className="pwa-wssc-icon"
                       />
                       <span>WSSC Water</span>
                     </div>
-                    <div className="pwa-app-icon placeholder"></div>
-                    <div className="pwa-app-icon placeholder"></div>
+                    <div className="pwa-app-slot">
+                      <div className="pwa-fake-icon" style={{background: 'linear-gradient(135deg, #00c6ff 0%, #0072ff 100%)'}}></div>
+                      <span>Weather</span>
+                    </div>
                   </div>
+                  
+                  {/* Dock */}
+                  <div className="pwa-dock">
+                    <div className="pwa-dock-icon" style={{background: 'linear-gradient(135deg, #56ab2f 0%, #a8e063 100%)'}}></div>
+                    <div className="pwa-dock-icon" style={{background: 'linear-gradient(135deg, #fc4a1a 0%, #f7b733 100%)'}}></div>
+                    <div className="pwa-dock-icon" style={{background: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)'}}></div>
+                    <div className="pwa-dock-icon" style={{background: 'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)'}}></div>
+                  </div>
+                  
+                  {/* Home indicator */}
+                  <div className="pwa-home-indicator"></div>
                 </div>
               )}
             </div>
