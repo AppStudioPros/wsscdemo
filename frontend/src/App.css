@@ -365,8 +365,6 @@ a:hover {
   background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.8), rgba(255,255,255,0.2));
   border-radius: 50%;
   animation: bubbleRise linear infinite;
-  opacity: 0;
-  animation-delay: 3s;
 }
 
 .bubble:nth-child(1) {
