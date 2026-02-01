@@ -257,7 +257,6 @@ a:hover {
 .wave-layer-2 {
   animation: waveMove2 4s ease-in-out infinite;
   opacity: 0.8;
-  top: -10px;
 }
 
 .wave-layer-2 path {
@@ -268,7 +267,6 @@ a:hover {
 .wave-layer-3 {
   animation: waveMove3 5s ease-in-out infinite;
   opacity: 0.5;
-  top: -20px;
 }
 
 .wave-layer-3 path {
