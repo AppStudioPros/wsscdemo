@@ -690,9 +690,9 @@ async def chat_with_ai(chat_input: ChatMessage):
             content=chat_input.message
         )
         
-        # Initialize the chat with Anthropic Claude
+        # Initialize the chat with Claude via Emergent LLM key
         chat = LlmChat(
-            api_key=ANTHROPIC_API_KEY,
+            api_key=LLM_API_KEY,
             session_id=session_id,
             system_message=WSSC_SYSTEM_MESSAGE
         ).with_model("anthropic", "claude-sonnet-4-5-20250929")
