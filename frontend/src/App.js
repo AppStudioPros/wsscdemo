@@ -478,7 +478,11 @@ function PWAMockup() {
               </div>
               <div className="a2hs-overlay" data-testid="pwa-install-overlay">
                 <div className="a2hs-header">
-                  <div className="a2hs-icon">W</div>
+                  <img 
+                    src="https://customer-assets.emergentagent.com/job_wssc-digital-demo/artifacts/f3a4nyem_Wfavicon.png" 
+                    alt="WSSC Water" 
+                    className="a2hs-icon-img"
+                  />
                   <div className="a2hs-text">
                     <h5>Add to Home Screen</h5>
                     <p>wsscwater.com</p>
