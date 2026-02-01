@@ -549,67 +549,6 @@ a:hover {
   color: #8e8e93;
 }
 
-/* Installing screen */
-.pwa-installing-screen {
-  width: 100%;
-  height: 100%;
-  background: #f2f2f7;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  animation: fadeIn 0.3s ease-out;
-}
-
-.pwa-install-card {
-  text-align: center;
-  padding: 30px;
-}
-
-.pwa-install-icon {
-  width: 80px;
-  height: 80px;
-  border-radius: 18px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-  margin-bottom: 20px;
-  animation: iconPulse 1.5s ease-in-out infinite;
-}
-
-@keyframes iconPulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.05); }
-}
-
-.pwa-install-text {
-  font-size: 0.95rem;
-  color: #3c3c43;
-  margin-bottom: 20px;
-}
-
-.pwa-progress-bar {
-  width: 180px;
-  height: 4px;
-  background: #e5e5ea;
-  border-radius: 2px;
-  overflow: hidden;
-  margin: 0 auto;
-}
-
-.pwa-progress-fill {
-  width: 0;
-  height: 100%;
-  background: linear-gradient(90deg, #007AFF, #5856D6);
-  border-radius: 2px;
-  animation: progressFill 2.5s ease-out forwards;
-}
-
-@keyframes progressFill {
-  0% { width: 0; }
-  20% { width: 30%; }
-  50% { width: 60%; }
-  80% { width: 85%; }
-  100% { width: 100%; }
-}
-
 /* Realistic iPhone homescreen */
 .pwa-homescreen-realistic {
   width: 100%;
