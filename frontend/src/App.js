@@ -200,18 +200,19 @@ function Hero() {
 
   return (
     <section id="hero" className="hero-advanced">
-      {/* Left Side - Video Background */}
+      {/* Video Background - spans entire hero section */}
+      <video 
+        ref={videoRef}
+        className="hero-video-bg"
+        autoPlay 
+        muted 
+        playsInline
+      >
+        <source src="https://customer-assets.emergentagent.com/job_aqua-demo/artifacts/ylicgxa5_water.mp4" type="video/mp4" />
+      </video>
+      
+      {/* Left Side - Content */}
       <div className="hero-left">
-        {/* Video Background - plays once then freezes */}
-        <video 
-          ref={videoRef}
-          className="hero-video-bg"
-          autoPlay 
-          muted 
-          playsInline
-        >
-          <source src="https://customer-assets.emergentagent.com/job_aqua-demo/artifacts/ylicgxa5_water.mp4" type="video/mp4" />
-        </video>
         <div className="hero-left-content">
           <img 
             src="https://customer-assets.emergentagent.com/job_wssc-digital-demo/artifacts/li5pnsrz_Wlogo-REVERSED-01.png" 
