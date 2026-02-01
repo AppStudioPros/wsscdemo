@@ -322,25 +322,8 @@ function Hero() {
                 </div>
               )}
               
-              {/* Step 3: Installing with progress */}
+              {/* Step 3: Realistic iPhone home screen with common apps */}
               {pwaStep === 3 && (
-                <div className="pwa-installing-screen">
-                  <div className="pwa-install-card">
-                    <img 
-                      src="https://customer-assets.emergentagent.com/job_aqua-demo/artifacts/e3qln0ip_Wfavicon.png" 
-                      alt="WSSC Water"
-                      className="pwa-install-icon"
-                    />
-                    <div className="pwa-install-text">Adding to Home Screen...</div>
-                    <div className="pwa-progress-bar">
-                      <div className="pwa-progress-fill"></div>
-                    </div>
-                  </div>
-                </div>
-              )}
-              
-              {/* Step 4: Realistic iPhone home screen */}
-              {pwaStep === 4 && (
                 <div className="pwa-homescreen-realistic">
                   {/* Status bar */}
                   <div className="pwa-status-bar">
@@ -352,34 +335,52 @@ function Hero() {
                     </div>
                   </div>
                   
-                  {/* App grid */}
+                  {/* App grid - realistic apps */}
                   <div className="pwa-app-grid-realistic">
                     {/* Row 1 */}
                     <div className="pwa-app-slot">
-                      <div className="pwa-fake-icon" style={{background: 'linear-gradient(135deg, #5FC3E4 0%, #E55D87 100%)'}}></div>
-                      <span>Photos</span>
-                    </div>
-                    <div className="pwa-app-slot">
-                      <div className="pwa-fake-icon" style={{background: 'linear-gradient(135deg, #11998e 0%, #38ef7d 100%)'}}></div>
+                      <div className="pwa-app-messages"></div>
                       <span>Messages</span>
                     </div>
                     <div className="pwa-app-slot">
-                      <div className="pwa-fake-icon" style={{background: 'linear-gradient(135deg, #ee0979 0%, #ff6a00 100%)'}}></div>
-                      <span>Music</span>
+                      <div className="pwa-app-phone"></div>
+                      <span>Phone</span>
                     </div>
                     <div className="pwa-app-slot">
-                      <div className="pwa-fake-icon" style={{background: 'linear-gradient(135deg, #4776E6 0%, #8E54E9 100%)'}}></div>
+                      <div className="pwa-app-mail"></div>
                       <span>Mail</span>
+                    </div>
+                    <div className="pwa-app-slot">
+                      <div className="pwa-app-safari"></div>
+                      <span>Safari</span>
                     </div>
                     
                     {/* Row 2 */}
                     <div className="pwa-app-slot">
-                      <div className="pwa-fake-icon" style={{background: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)'}}></div>
-                      <span>Calendar</span>
+                      <div className="pwa-app-facebook"></div>
+                      <span>Facebook</span>
                     </div>
                     <div className="pwa-app-slot">
-                      <div className="pwa-fake-icon" style={{background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)'}}></div>
-                      <span>Settings</span>
+                      <div className="pwa-app-x"></div>
+                      <span>X</span>
+                    </div>
+                    <div className="pwa-app-slot">
+                      <div className="pwa-app-instagram"></div>
+                      <span>Instagram</span>
+                    </div>
+                    <div className="pwa-app-slot">
+                      <div className="pwa-app-camera"></div>
+                      <span>Camera</span>
+                    </div>
+                    
+                    {/* Row 3 */}
+                    <div className="pwa-app-slot">
+                      <div className="pwa-app-photos"></div>
+                      <span>Photos</span>
+                    </div>
+                    <div className="pwa-app-slot">
+                      <div className="pwa-app-maps"></div>
+                      <span>Maps</span>
                     </div>
                     <div className="pwa-app-slot wssc-new-app">
                       <img 
@@ -390,17 +391,17 @@ function Hero() {
                       <span>WSSC Water</span>
                     </div>
                     <div className="pwa-app-slot">
-                      <div className="pwa-fake-icon" style={{background: 'linear-gradient(135deg, #00c6ff 0%, #0072ff 100%)'}}></div>
-                      <span>Weather</span>
+                      <div className="pwa-app-settings"></div>
+                      <span>Settings</span>
                     </div>
                   </div>
                   
                   {/* Dock */}
                   <div className="pwa-dock">
-                    <div className="pwa-dock-icon" style={{background: 'linear-gradient(135deg, #56ab2f 0%, #a8e063 100%)'}}></div>
-                    <div className="pwa-dock-icon" style={{background: 'linear-gradient(135deg, #fc4a1a 0%, #f7b733 100%)'}}></div>
-                    <div className="pwa-dock-icon" style={{background: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)'}}></div>
-                    <div className="pwa-dock-icon" style={{background: 'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)'}}></div>
+                    <div className="pwa-dock-phone"></div>
+                    <div className="pwa-dock-safari"></div>
+                    <div className="pwa-dock-messages"></div>
+                    <div className="pwa-dock-music"></div>
                   </div>
                   
                   {/* Home indicator */}
