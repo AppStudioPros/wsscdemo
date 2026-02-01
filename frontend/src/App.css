@@ -169,6 +169,7 @@ a:hover {
   justify-content: center;
   min-height: 100vh;
   overflow: hidden;
+  background: #e8f4fc;
 }
 
 .water-fill-bg {
@@ -176,15 +177,44 @@ a:hover {
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 0;
+  height: 100%;
   background: linear-gradient(to top, var(--color-primary) 0%, var(--color-dark) 100%);
   animation: waterFill 2.5s ease-out forwards;
   z-index: 1;
+  transform-origin: bottom;
 }
 
 @keyframes waterFill {
-  0% { height: 0; }
-  100% { height: 100%; }
+  0% { 
+    transform: scaleY(0);
+  }
+  100% { 
+    transform: scaleY(1);
+  }
+}
+
+/* Water ripple effect at the top */
+.water-fill-bg::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 20px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(255,255,255,0.3) 25%, 
+    transparent 50%, 
+    rgba(255,255,255,0.3) 75%, 
+    transparent 100%
+  );
+  animation: waterWave 3s ease-in-out infinite;
+  animation-delay: 2.5s;
+}
+
+@keyframes waterWave {
+  0%, 100% { transform: translateX(-50%); }
+  50% { transform: translateX(0%); }
 }
 
 .hero-left-content {
