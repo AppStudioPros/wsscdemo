@@ -789,11 +789,22 @@ async def get_knowledge_section_api(section: str):
 async def get_ai_config():
     """Get current AI configuration from MongoDB"""
     try:
-        config = await db.ai_config.find_one({"config_id": "wssc_ai_v2"}, {"_id": 0})
+        config = await db.ai_config.find_one({"config_id": "wssc_ai_v3"}, {"_id": 0})
         return config or {"error": "Config not found"}
     except Exception as e:
         logger.error(f"Error getting AI config: {e}")
         return {"error": str(e)}
+
+
+@api_router.get("/ai/top6")
+async def get_top_6_faqs():
+    """Get the Top 6 FAQs from MongoDB"""
+    try:
+        doc = await db.knowledge_base.find_one({"type": "top_6_faqs"}, {"_id": 0})
+        return doc.get("data", TOP_6_FAQS) if doc else TOP_6_FAQS
+    except Exception as e:
+        logger.error(f"Error getting top 6 FAQs: {e}")
+        return TOP_6_FAQS
 
 
 @api_router.get("/ai/stats")
