@@ -63,35 +63,269 @@ function animateCount(element, targetValue, duration = 700) {
   requestAnimationFrame(step);
 }
 
-// Hero Section
+// Hero Section with Water-Fill and Phone Mockup
 function Hero() {
+  const [currentScene, setCurrentScene] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  const [chatMessages, setChatMessages] = useState([]);
+  const [showTyping, setShowTyping] = useState(false);
+  const [pwaStep, setPwaStep] = useState(0);
+  const [roiValues, setRoiValues] = useState({ calls: 0, cost: 0, savings1: 0, savings2: 0, total: 0 });
+
   const scrollToAIFeatures = (e) => {
     e.preventDefault();
     document.getElementById('ai-features')?.scrollIntoView({ behavior: 'smooth' });
   };
 
+  // Scene rotation effect
+  useEffect(() => {
+    const sceneDurations = [7000, 8000, 7000]; // 7s, 8s, 7s for each scene
+    
+    const timer = setTimeout(() => {
+      setIsTransitioning(true);
+      setTimeout(() => {
+        setCurrentScene((prev) => (prev + 1) % 3);
+        setIsTransitioning(false);
+      }, 800);
+    }, sceneDurations[currentScene]);
+
+    return () => clearTimeout(timer);
+  }, [currentScene, isTransitioning]);
+
+  // Scene 1: Chatbot conversation animation
+  useEffect(() => {
+    if (currentScene === 0) {
+      setChatMessages([]);
+      setShowTyping(false);
+      
+      const conversation = [
+        { type: 'user', text: 'Why is my bill $120 higher this month?', delay: 500 },
+        { type: 'typing', delay: 1500 },
+        { type: 'bot', text: 'I analyzed your usage and found a 32% increase. Possible leak detected Jan 23-25. Would you like the leak check guide?', delay: 2500 },
+        { type: 'user', text: 'Yes, send the guide', delay: 4500 },
+        { type: 'typing', delay: 5500 },
+        { type: 'bot', text: 'Guide sent! You may qualify for up to 50% reduction on excess charges.', delay: 6500 }
+      ];
+
+      conversation.forEach(msg => {
+        setTimeout(() => {
+          if (msg.type === 'typing') {
+            setShowTyping(true);
+          } else {
+            setShowTyping(false);
+            setChatMessages(prev => [...prev, { type: msg.type, text: msg.text }]);
+          }
+        }, msg.delay);
+      });
+    }
+  }, [currentScene]);
+
+  // Scene 2: PWA installation animation
+  useEffect(() => {
+    if (currentScene === 1) {
+      setPwaStep(0);
+      const steps = [
+        { step: 1, delay: 500 },
+        { step: 2, delay: 3500 },
+        { step: 3, delay: 5500 }
+      ];
+      steps.forEach(s => {
+        setTimeout(() => setPwaStep(s.step), s.delay);
+      });
+    }
+  }, [currentScene]);
+
+  // Scene 3: ROI calculator animation
+  useEffect(() => {
+    if (currentScene === 2) {
+      setRoiValues({ calls: 0, cost: 0, savings1: 0, savings2: 0, total: 0 });
+      
+      // Animate call volume
+      setTimeout(() => {
+        let start = 0;
+        const interval = setInterval(() => {
+          start += 500;
+          if (start >= 10000) {
+            clearInterval(interval);
+            setRoiValues(prev => ({ ...prev, calls: 10000 }));
+          } else {
+            setRoiValues(prev => ({ ...prev, calls: start }));
+          }
+        }, 50);
+      }, 500);
+
+      // Animate cost per call
+      setTimeout(() => {
+        let start = 0;
+        const interval = setInterval(() => {
+          start += 0.25;
+          if (start >= 5) {
+            clearInterval(interval);
+            setRoiValues(prev => ({ ...prev, cost: 5 }));
+          } else {
+            setRoiValues(prev => ({ ...prev, cost: start }));
+          }
+        }, 50);
+      }, 1500);
+
+      // Animate savings
+      setTimeout(() => {
+        setRoiValues(prev => ({ ...prev, savings1: 180000 }));
+      }, 3000);
+      setTimeout(() => {
+        setRoiValues(prev => ({ ...prev, savings2: 225000 }));
+      }, 4000);
+      setTimeout(() => {
+        setRoiValues(prev => ({ ...prev, total: 405000 }));
+      }, 5000);
+    }
+  }, [currentScene]);
+
   return (
-    <section id="hero">
-      <div className="hero-content">
-        <img 
-          src="https://customer-assets.emergentagent.com/job_wssc-digital-demo/artifacts/li5pnsrz_Wlogo-REVERSED-01.png" 
-          alt="WSSC Water Logo" 
-          className="hero-logo"
-          data-testid="hero-logo"
-        />
-        <h1 className="hero-title">WSSC Water: Next Generation Website</h1>
-        <p className="hero-tagline">Delivering the Essential — Powered by AI</p>
-        <p className="hero-subtitle">
-          Experience the future of utility websites. A modern, intelligent, and customer-focused digital platform 
-          built with Next.js, React, AI, and PWA technology.
-        </p>
-        <button 
-          onClick={scrollToAIFeatures} 
-          className="cta-primary"
-          data-testid="hero-primary-cta-button"
-        >
-          Explore AI Features ↓
-        </button>
+    <section id="hero" className="hero-advanced">
+      {/* Left Side - Water Fill Effect */}
+      <div className="hero-left">
+        <div className="water-fill-bg"></div>
+        <div className="hero-left-content">
+          <img 
+            src="https://customer-assets.emergentagent.com/job_wssc-digital-demo/artifacts/li5pnsrz_Wlogo-REVERSED-01.png" 
+            alt="WSSC Water Logo" 
+            className="hero-logo"
+            data-testid="hero-logo"
+          />
+          <h1 className="hero-title">WSSC Water: Next Generation Website</h1>
+          <p className="hero-tagline">Delivering the Essential — Powered by AI</p>
+          <p className="hero-subtitle">
+            Experience the future of utility websites. A modern, intelligent, and customer-focused digital platform 
+            built with Next.js, React, AI, and PWA technology.
+          </p>
+          <button 
+            onClick={scrollToAIFeatures} 
+            className="cta-primary"
+            data-testid="hero-primary-cta-button"
+          >
+            Explore AI Features
+          </button>
+        </div>
+      </div>
+
+      {/* Right Side - Phone Mockup */}
+      <div className="hero-right">
+        <div className="phone-mockup">
+          <div className="phone-notch"></div>
+          <div className="phone-screen">
+            {/* Scene 1: AI Chatbot */}
+            <div className={`phone-scene scene-chat ${currentScene === 0 ? 'active' : ''} ${isTransitioning && currentScene === 0 ? 'transitioning-out' : ''}`}>
+              <div className="scene-chat-header">
+                <div className="chat-status-dot"></div>
+                <div>
+                  <strong>WSSC Water AI</strong>
+                  <small>Online</small>
+                </div>
+              </div>
+              <div className="scene-chat-messages">
+                {chatMessages.map((msg, i) => (
+                  <div key={i} className={`scene-msg ${msg.type}`}>
+                    {msg.text}
+                  </div>
+                ))}
+                {showTyping && (
+                  <div className="scene-msg bot">
+                    <span className="typing-dot"></span>
+                    <span className="typing-dot"></span>
+                    <span className="typing-dot"></span>
+                  </div>
+                )}
+              </div>
+            </div>
+
+            {/* Scene 2: PWA Installation */}
+            <div className={`phone-scene scene-pwa ${currentScene === 1 ? 'active' : ''} ${isTransitioning && currentScene === 1 ? 'transitioning-out' : ''}`}>
+              {pwaStep === 1 && (
+                <div className="pwa-install-dialog">
+                  <div className="pwa-dialog-header">
+                    <img 
+                      src="https://customer-assets.emergentagent.com/job_wssc-digital-demo/artifacts/f3a4nyem_Wfavicon.png" 
+                      alt="WSSC" 
+                      className="pwa-dialog-icon"
+                    />
+                    <div>
+                      <strong>Install "WSSC Water"?</strong>
+                      <p>Add to home screen for quick access</p>
+                    </div>
+                  </div>
+                  <div className="pwa-dialog-buttons">
+                    <button className="pwa-btn-cancel">Cancel</button>
+                    <button className="pwa-btn-install">Install</button>
+                  </div>
+                </div>
+              )}
+              {pwaStep === 2 && (
+                <div className="pwa-installing">
+                  <div className="pwa-spinner"></div>
+                  <p>Installing WSSC Water...</p>
+                </div>
+              )}
+              {pwaStep === 3 && (
+                <div className="pwa-homescreen">
+                  <div className="pwa-app-grid">
+                    <div className="pwa-app-icon placeholder"></div>
+                    <div className="pwa-app-icon placeholder"></div>
+                    <div className="pwa-app-icon placeholder"></div>
+                    <div className="pwa-app-icon wssc-icon">
+                      <img 
+                        src="https://customer-assets.emergentagent.com/job_wssc-digital-demo/artifacts/f3a4nyem_Wfavicon.png" 
+                        alt="WSSC Water"
+                      />
+                      <span>WSSC Water</span>
+                    </div>
+                    <div className="pwa-app-icon placeholder"></div>
+                    <div className="pwa-app-icon placeholder"></div>
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* Scene 3: ROI Calculator */}
+            <div className={`phone-scene scene-roi ${currentScene === 2 ? 'active' : ''} ${isTransitioning && currentScene === 2 ? 'transitioning-out' : ''}`}>
+              <div className="roi-scene-header">
+                <strong>Calculate Your Savings</strong>
+                <small>See how AI reduces costs</small>
+              </div>
+              <div className="roi-scene-inputs">
+                <div className="roi-input-row">
+                  <label>Monthly Calls</label>
+                  <span className="roi-value">{roiValues.calls.toLocaleString()}</span>
+                </div>
+                <div className="roi-input-row">
+                  <label>Cost Per Call</label>
+                  <span className="roi-value">${roiValues.cost.toFixed(2)}</span>
+                </div>
+              </div>
+              <div className="roi-scene-results">
+                <div className="roi-result-row">
+                  <span>Call Deflection (30%)</span>
+                  <span className="roi-amount">${roiValues.savings1.toLocaleString()}</span>
+                </div>
+                <div className="roi-result-row">
+                  <span>Paper Bill Reduction</span>
+                  <span className="roi-amount">${roiValues.savings2.toLocaleString()}</span>
+                </div>
+                <div className="roi-result-total">
+                  <span>TOTAL SAVINGS</span>
+                  <span className="roi-total-amount">${roiValues.total.toLocaleString()}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        {/* Scene indicators */}
+        <div className="scene-indicators">
+          <span className={currentScene === 0 ? 'active' : ''}></span>
+          <span className={currentScene === 1 ? 'active' : ''}></span>
+          <span className={currentScene === 2 ? 'active' : ''}></span>
+        </div>
       </div>
     </section>
   );
