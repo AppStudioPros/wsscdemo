@@ -895,7 +895,7 @@ a:hover {
 }
 
 .pwa-benefits {
-  max-width: 500px;
+  max-width: 600px;
 }
 
 .pwa-benefits h3 {
@@ -907,18 +907,26 @@ a:hover {
 .pwa-benefits-list {
   list-style: none;
   padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.5rem;
+}
+
+@media (min-width: 600px) {
+  .pwa-benefits-list {
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
 }
 
 .pwa-benefits-list li {
   display: flex;
   align-items: flex-start;
-  gap: 15px;
-  padding: 1rem 0;
-  border-bottom: 1px solid #e9ecef;
-}
-
-.pwa-benefits-list li:last-child {
-  border-bottom: none;
+  gap: 12px;
+  padding: 0.8rem;
+  background: #f8f9fa;
+  border-radius: var(--radius-md);
+  border: 1px solid #e9ecef;
 }
 
 .benefit-icon {
