@@ -716,7 +716,7 @@ async def chat_with_ai(chat_input: ChatMessage):
         )
     except Exception as e:
         logger.error(f"Error in chat endpoint: {str(e)}")
-        error_response = "I'm so sorry, I'm having a little trouble right now! 😅\n\nPlease try again in a moment, or call us at **301-206-4001** for immediate help.\n\n**Was this helpful? Need more info?** I'm here for you! 😊"
+        error_response = "I'm sorry, I'm having a little trouble right now. Please try again in a moment, or call us at 301-206-4001 for immediate help.\n\nWas this helpful? Need anything else? 😊"
         return ChatResponse(
             response=error_response,
             session_id=chat_input.session_id or str(uuid.uuid4())
