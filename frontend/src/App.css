@@ -1892,10 +1892,8 @@ a:hover {
   width: 50px;
   height: 50px;
   border-radius: 12px;
-  object-fit: contain;
-  background: white;
-  padding: 4px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  object-fit: cover;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
 .a2hs-text h5 {
