@@ -625,6 +625,86 @@ a:hover {
   padding: 5rem 2rem;
 }
 
+/* "It's Included!" text in red */
+.included-text {
+  color: #C0392B;
+  font-weight: 700;
+}
+
+/* PWA Savings Banner */
+.pwa-savings-banner {
+  background: linear-gradient(135deg, #C0392B 0%, #a83228 100%);
+  color: white;
+  padding: 2.5rem;
+  border-radius: var(--radius-xl);
+  margin: 2rem auto 3rem;
+  max-width: 1000px;
+  box-shadow: 0 15px 50px rgba(192, 57, 43, 0.3);
+}
+
+.pwa-savings-content h3 {
+  font-size: clamp(1.5rem, 4vw, 2.2rem);
+  text-align: center;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.pwa-savings-points {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+@media (min-width: 768px) {
+  .pwa-savings-points {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.pwa-savings-points p {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-md);
+}
+
+.pwa-savings-points strong {
+  display: block;
+  font-size: 1.1rem;
+  margin-bottom: 0.3rem;
+}
+
+.pwa-benefits-summary {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.benefit-tag {
+  background: white;
+  color: #C0392B;
+  padding: 0.6rem 1.2rem;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.pwa-included-note {
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.15);
+  padding: 1rem 2rem;
+  border-radius: var(--radius-md);
+  border: 2px dashed rgba(255, 255, 255, 0.5);
+}
+
 .pwa-container {
   display: flex;
   flex-direction: column;
