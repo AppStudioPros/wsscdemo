@@ -326,7 +326,7 @@ function ChatbotDemo() {
                 <div className="message-avatar">{message.type === 'bot' ? 'AI' : 'You'}</div>
                 <div 
                   className="message-content" 
-                  dangerouslySetInnerHTML={{ __html: message.text }}
+                  dangerouslySetInnerHTML={{ __html: formatMessage(message.text) }}
                 />
               </div>
             ))}
