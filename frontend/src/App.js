@@ -137,14 +137,15 @@ function Hero() {
     }
   }, [currentScene]);
 
-  // Scene 2: PWA installation animation
+  // Scene 2: PWA installation animation - slowed by 15%
   useEffect(() => {
     if (currentScene === 1) {
       setPwaStep(0);
       const steps = [
-        { step: 1, delay: 500 },
-        { step: 2, delay: 3500 },
-        { step: 3, delay: 5500 }
+        { step: 1, delay: 575 },      // Show dialog (was 500)
+        { step: 2, delay: 4025 },     // Click install button (was 3500)
+        { step: 3, delay: 4600 },     // Show loading (was 4000)
+        { step: 4, delay: 7475 },     // Show homescreen (was 6500)
       ];
       steps.forEach(s => {
         setTimeout(() => setPwaStep(s.step), s.delay);
