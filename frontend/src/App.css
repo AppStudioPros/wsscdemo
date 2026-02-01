@@ -225,13 +225,15 @@ a:hover {
   50% { opacity: 1; }
 }
 
-/* Animated SVG Waves Container */
+/* Animated SVG Waves Container - positioned at TOP of water */
 .water-waves {
   position: absolute;
-  top: -60px;
+  top: 0;
   left: 0;
   width: 200%;
   height: 80px;
+  transform: translateY(-100%); /* Move above the top edge of the water */
+  pointer-events: none;
 }
 
 /* Wave SVG styling */
