@@ -299,7 +299,7 @@ function ChatbotDemo() {
               </button>
             ))}
           </div>
-          <div className="chat-messages" role="log" aria-live="polite">
+          <div className="chat-messages" ref={messagesContainerRef} role="log" aria-live="polite">
             {messages.map((message, index) => (
               <div key={index} className={`message ${message.type}`} data-testid={`chat-message-${index}`}>
                 <div className="message-avatar">{message.type === 'bot' ? 'AI' : 'You'}</div>
@@ -321,7 +321,6 @@ function ChatbotDemo() {
                 </div>
               </div>
             )}
-            <div ref={messagesEndRef} />
           </div>
           <div className="chat-input-area">
             <input
