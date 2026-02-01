@@ -159,9 +159,9 @@ function AIFeatures() {
     <section id="ai-features" className="section">
       <div className="container">
         <div className="section-header">
-          <h2>AI-Powered Innovation</h2>
+          <h2>Encore's Exclusive, Custom Built, Self-Healing AI</h2>
           <p className="section-subtitle">
-            Claude Opus & Sonnet transform how customers interact with WSSC Water services.
+            Our proprietary AI technology transforms how customers interact with WSSC Water services—learning, adapting, and improving continuously.
           </p>
         </div>
         <div className="features-grid">
@@ -424,7 +424,7 @@ function TechStack() {
     { icon: '🎨', name: 'Sanity CMS', description: 'Real-time content updates, no IT dependency, version control', testId: 'tech-item-sanity' },
     { icon: '🚀', name: 'Vercel Hosting', description: 'Global edge network, automatic scaling, 99.9% uptime SLA', testId: 'tech-item-vercel' },
     { icon: '🐍', name: 'Python APIs', description: 'Seamless integration with Oracle billing, GIS, work orders', testId: 'tech-item-python' },
-    { icon: '🤖', name: 'Claude AI', description: 'Opus for complex reasoning, Sonnet for speed—accurate & safe', testId: 'tech-item-claude' },
+    { icon: '🧠', name: "Encore's Self-Healing AI", description: 'Custom built, exclusive AI that learns, adapts, and continuously improves—accurate & safe', testId: 'tech-item-claude' },
     { icon: '📱', name: 'PWA', description: 'Offline access, installable, push notifications—app-like experience', testId: 'tech-item-pwa' }
   ];
 
@@ -651,6 +651,11 @@ function LegalFooter() {
 
 // Main App Component
 function App() {
+  // Scroll to top on page load
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="App">
       <main>
