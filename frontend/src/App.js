@@ -71,6 +71,14 @@ function Hero() {
   const [showTyping, setShowTyping] = useState(false);
   const [pwaStep, setPwaStep] = useState(0);
   const [roiValues, setRoiValues] = useState({ calls: 0, cost: 0, savings1: 0, savings2: 0, total: 0 });
+  const videoRef = useRef(null);
+
+  // Set video playback speed to 90% (10% slower)
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.playbackRate = 0.9;
+    }
+  }, []);
 
   const scrollToAIFeatures = (e) => {
     e.preventDefault();
