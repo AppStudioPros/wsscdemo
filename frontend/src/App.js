@@ -63,7 +63,7 @@ function animateCount(element, targetValue, duration = 700) {
   requestAnimationFrame(step);
 }
 
-// Hero Section with Water-Fill and Phone Mockup
+// Hero Section with Video Background and Phone Mockup
 function Hero() {
   const [currentScene, setCurrentScene] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
@@ -71,44 +71,11 @@ function Hero() {
   const [showTyping, setShowTyping] = useState(false);
   const [pwaStep, setPwaStep] = useState(0);
   const [roiValues, setRoiValues] = useState({ calls: 0, cost: 0, savings1: 0, savings2: 0, total: 0 });
-  
-  // Water fill animation state - controlled by JS for reliable replay
-  const [waterLevel, setWaterLevel] = useState(0);
-  const [animationStarted, setAnimationStarted] = useState(false);
 
   const scrollToAIFeatures = (e) => {
     e.preventDefault();
     document.getElementById('ai-features')?.scrollIntoView({ behavior: 'smooth' });
   };
-
-  // Water fill animation - runs once on mount
-  useEffect(() => {
-    // Small delay to ensure component is mounted
-    const startDelay = setTimeout(() => {
-      setAnimationStarted(true);
-      
-      // Animate water level from 0 to 100 over 3.5 seconds
-      const duration = 3500;
-      const startTime = Date.now();
-      
-      const animateWater = () => {
-        const elapsed = Date.now() - startTime;
-        const progress = Math.min(elapsed / duration, 1);
-        
-        // Easing function for smooth water rise (ease-out cubic)
-        const eased = 1 - Math.pow(1 - progress, 3);
-        setWaterLevel(eased * 100);
-        
-        if (progress < 1) {
-          requestAnimationFrame(animateWater);
-        }
-      };
-      
-      requestAnimationFrame(animateWater);
-    }, 100);
-    
-    return () => clearTimeout(startDelay);
-  }, []);
 
   // Scene rotation effect
   useEffect(() => {
