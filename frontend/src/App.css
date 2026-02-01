@@ -296,10 +296,11 @@ a:hover {
 /* Foam/bubbles at the wave crest */
 .wave-foam {
   position: absolute;
-  top: -65px;
+  top: 0;
   left: 0;
   width: 200%;
   height: 30px;
+  transform: translateY(-100%);
   background: 
     radial-gradient(circle at 10% 50%, rgba(255,255,255,0.8) 0%, transparent 8px),
     radial-gradient(circle at 25% 30%, rgba(255,255,255,0.6) 0%, transparent 6px),
