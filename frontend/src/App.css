@@ -179,6 +179,14 @@ a:hover {
   max-width: 900px;
 }
 
+.hero-logo {
+  width: 200px;
+  height: auto;
+  margin: 0 auto 2rem;
+  display: block;
+  filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.3));
+}
+
 .logo-placeholder {
   width: 120px;
   height: 120px;
