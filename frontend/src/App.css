@@ -486,7 +486,7 @@ a:hover {
 }
 
 .hero-left-content .cta-primary {
-  animation: fadeInContent 0.8s ease-out 2.2s both;
+  animation: fadeInContent 0.8s ease-out 0.8s both;
 }
 
 /* Right Side - Phone Mockup */
