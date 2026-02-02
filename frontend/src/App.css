@@ -806,18 +806,40 @@ a:hover {
 }
 
 .chat-input-area {
-  padding: 8px 12px;
+  padding: 6px 10px;
   background: white;
   border-top: 1px solid #e5e5e5;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .chat-input {
+  flex: 1;
   background: #f0f0f0;
-  padding: 10px 14px;
-  border-radius: 20px;
-  font-size: 0.8rem;
+  padding: 8px 12px;
+  border-radius: 18px;
+  font-size: 0.75rem;
   color: var(--color-ink);
-  min-height: 20px;
+  min-height: 18px;
+}
+
+.chat-input.placeholder {
+  color: #999;
+}
+
+.send-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  color: white;
+  border: none;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
 }
 
 .cursor {
