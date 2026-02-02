@@ -268,26 +268,57 @@ function Hero() {
               </div>
             </div>
 
-            {/* Scene 2: PWA Installation - Using screenshot with logo overlay */}
+            {/* Scene 2: PWA Installation - iOS Dialog */}
             <div className={`phone-scene scene-pwa ${currentScene === 1 ? 'active' : ''} ${isTransitioning && currentScene === 1 ? 'transitioning-out' : ''}`}>
-              {/* Step 1 & 2: Show the PWA screenshot with logo */}
-              {(pwaStep === 1 || pwaStep === 2) && (
-                <div className="pwa-screenshot-container">
-                  <img 
-                    src="https://customer-assets.emergentagent.com/job_aqua-demo/artifacts/ypzes4ve_image.png" 
-                    alt="WSSC Water PWA"
-                    className="pwa-screenshot-bg"
-                  />
-                  {/* W Logo overlay positioned on the Add to Home Screen dialog */}
-                  <img 
-                    src="https://customer-assets.emergentagent.com/job_aqua-demo/artifacts/e3qln0ip_Wfavicon.png" 
-                    alt="WSSC Water"
-                    className="pwa-screenshot-logo"
-                  />
-                  {/* Add button highlight effect for step 2 */}
-                  {pwaStep === 2 && (
-                    <div className="pwa-add-btn-highlight"></div>
-                  )}
+              {/* Step 1: iOS-style Add to Home Screen dialog */}
+              {pwaStep === 1 && (
+                <div className="pwa-ios-backdrop">
+                  <div className="pwa-ios-dialog">
+                    <div className="pwa-ios-header">
+                      <span className="pwa-ios-cancel">Cancel</span>
+                      <span className="pwa-ios-title">Add to Home Screen</span>
+                      <span className="pwa-ios-add">Add</span>
+                    </div>
+                    <div className="pwa-ios-preview">
+                      <div className="pwa-ios-icon-wrapper">
+                        <img 
+                          src="https://customer-assets.emergentagent.com/job_aqua-demo/artifacts/e3qln0ip_Wfavicon.png" 
+                          alt="WSSC Water"
+                          className="pwa-ios-app-icon"
+                        />
+                      </div>
+                      <div className="pwa-ios-app-info">
+                        <span className="pwa-ios-app-name">WSSC Water</span>
+                        <span className="pwa-ios-app-url">wsscwater.com</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
+              
+              {/* Step 2: Button click highlight */}
+              {pwaStep === 2 && (
+                <div className="pwa-ios-backdrop">
+                  <div className="pwa-ios-dialog">
+                    <div className="pwa-ios-header">
+                      <span className="pwa-ios-cancel">Cancel</span>
+                      <span className="pwa-ios-title">Add to Home Screen</span>
+                      <span className="pwa-ios-add pwa-btn-pressed">Add</span>
+                    </div>
+                    <div className="pwa-ios-preview">
+                      <div className="pwa-ios-icon-wrapper">
+                        <img 
+                          src="https://customer-assets.emergentagent.com/job_aqua-demo/artifacts/e3qln0ip_Wfavicon.png" 
+                          alt="WSSC Water"
+                          className="pwa-ios-app-icon"
+                        />
+                      </div>
+                      <div className="pwa-ios-app-info">
+                        <span className="pwa-ios-app-name">WSSC Water</span>
+                        <span className="pwa-ios-app-url">wsscwater.com</span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               )}
               
