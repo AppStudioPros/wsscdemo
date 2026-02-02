@@ -931,6 +931,109 @@ function TechStack() {
   );
 }
 
+// Admin Dashboard Showcase Section
+function AdminDashboard() {
+  const [activeScreen, setActiveScreen] = useState(0);
+  
+  const screens = [
+    {
+      title: "Emergency Alerts",
+      description: "Instantly notify customers about water main breaks, boil advisories, and service disruptions with one click.",
+      image: "https://customer-assets.emergentagent.com/job_aqua-demo/artifacts/o6xwg5zm_emergency%20alerts%20page.png"
+    },
+    {
+      title: "Service Announcements", 
+      description: "Schedule and manage maintenance notices, conservation tips, and important updates with live preview.",
+      image: "https://customer-assets.emergentagent.com/job_aqua-demo/artifacts/ly5l9hsg_Service%20Announcements.png"
+    },
+    {
+      title: "Blog & Content",
+      description: "Create engaging content with AI writing assistance and see exactly how it will look before publishing.",
+      image: "https://customer-assets.emergentagent.com/job_aqua-demo/artifacts/8ef8gu4z_blog%20posts.png"
+    }
+  ];
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveScreen((prev) => (prev + 1) % screens.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, [screens.length]);
+
+  return (
+    <section id="admin-dashboard" className="admin-dashboard-section" data-testid="admin-dashboard-section">
+      <div className="container">
+        <div className="admin-header">
+          <span className="section-badge">Your Command Center</span>
+          <h2>New Technology Doesn't Have to Be Scary</h2>
+          <p className="admin-subtitle">
+            We'll provide WSSC Water with a custom admin dashboard that's <strong>intuitive, powerful, and easy to use</strong>. 
+            No technical expertise required — your team will be managing content like pros from day one.
+          </p>
+        </div>
+        
+        <div className="admin-content">
+          <div className="admin-features">
+            {screens.map((screen, index) => (
+              <div 
+                key={index}
+                className={`admin-feature-card ${activeScreen === index ? 'active' : ''}`}
+                onClick={() => setActiveScreen(index)}
+                data-testid={`admin-feature-${index}`}
+              >
+                <div className="feature-indicator"></div>
+                <div className="feature-content">
+                  <h4>{screen.title}</h4>
+                  <p>{screen.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          
+          <div className="admin-preview">
+            <div className="browser-mockup">
+              <div className="browser-header">
+                <div className="browser-dots">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+                <div className="browser-url">admin.wsscwater.com</div>
+              </div>
+              <div className="browser-content">
+                <img 
+                  src={screens[activeScreen].image} 
+                  alt={screens[activeScreen].title}
+                  className="admin-screenshot"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div className="admin-benefits">
+          <div className="benefit-item">
+            <div className="benefit-icon">🎯</div>
+            <span>Zero Learning Curve</span>
+          </div>
+          <div className="benefit-item">
+            <div className="benefit-icon">⚡</div>
+            <span>Real-Time Updates</span>
+          </div>
+          <div className="benefit-item">
+            <div className="benefit-icon">🤖</div>
+            <span>AI-Powered Assistance</span>
+          </div>
+          <div className="benefit-item">
+            <div className="benefit-icon">👀</div>
+            <span>Live Preview</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 // ROI Calculator Section
 function ROICalculator() {
   const [callVolume, setCallVolume] = useState(10000);
