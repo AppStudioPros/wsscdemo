@@ -377,26 +377,15 @@ a:hover {
 .scene-msg {
   max-width: 85%;
   padding: 10px 14px;
-  border-radius: 18px;
+  border-radius: 16px;
   font-size: 0.75rem;
   line-height: 1.4;
-  animation: iosMessageIn 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  transform-origin: bottom;
+  animation: slideInMsg 0.3s ease-out;
 }
 
-/* iOS-style message slide in with subtle bounce */
-@keyframes iosMessageIn {
-  0% { 
-    opacity: 0; 
-    transform: scale(0.8) translateY(15px); 
-  }
-  60% {
-    transform: scale(1.02) translateY(-2px);
-  }
-  100% { 
-    opacity: 1; 
-    transform: scale(1) translateY(0); 
-  }
+@keyframes slideInMsg {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .scene-msg.user {
@@ -404,7 +393,6 @@ a:hover {
   background: var(--color-primary);
   color: white;
   border-bottom-right-radius: 4px;
-  transform-origin: bottom right;
 }
 
 .scene-msg.bot {
@@ -413,7 +401,6 @@ a:hover {
   color: var(--color-ink);
   border-bottom-left-radius: 4px;
   box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-  transform-origin: bottom left;
 }
 
 .typing-dot {
