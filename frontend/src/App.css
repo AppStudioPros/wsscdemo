@@ -852,27 +852,28 @@ a:hover {
   51%, 100% { opacity: 0; }
 }
 
-/* Simulated Keyboard */
+/* Simulated Keyboard - Compact */
 .sim-keyboard {
   background: #d1d3d9;
-  padding: 8px 4px;
+  padding: 6px 4px;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 4px;
   align-items: center;
+  flex-shrink: 0;
 }
 
 .kb-row {
   display: flex;
-  gap: 4px;
-  font-size: 0.65rem;
+  gap: 3px;
+  font-size: 0.55rem;
   color: var(--color-ink);
-  letter-spacing: 4px;
+  letter-spacing: 3px;
 }
 
 .kb-row.space {
   background: white;
-  padding: 8px 60px;
+  padding: 6px 50px;
   border-radius: 4px;
   letter-spacing: 0;
 }
