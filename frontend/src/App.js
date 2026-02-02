@@ -63,15 +63,18 @@ function animateCount(element, targetValue, duration = 700) {
   requestAnimationFrame(step);
 }
 
-// Hero Section with Video Background and Phone Mockup
+// Hero Section with Video Background and Realistic Phone Simulation
 function Hero() {
-  const [currentScene, setCurrentScene] = useState(0);
-  const [isTransitioning, setIsTransitioning] = useState(false);
-  const [chatMessages, setChatMessages] = useState([]);
-  const [showTyping, setShowTyping] = useState(false);
-  const [pwaStep, setPwaStep] = useState(0);
-  const [roiValues, setRoiValues] = useState({ calls: 0, cost: 0, savings1: 0, savings2: 0, total: 0 });
   const videoRef = useRef(null);
+  
+  // Phone simulation state
+  const [phoneState, setPhoneState] = useState('homescreen'); // homescreen, app-opening, dashboard, chat-opening, chat, chat-typing, chat-response, calculator-opening, calculator
+  const [touchPosition, setTouchPosition] = useState(null);
+  const [typedText, setTypedText] = useState('');
+  const [showKeyboard, setShowKeyboard] = useState(false);
+  const [chatMessages, setChatMessages] = useState([]);
+  const [showTypingIndicator, setShowTypingIndicator] = useState(false);
+  const [calculatorValues, setCalculatorValues] = useState({ calls: 0, savings: 0 });
 
   // Set video playback speed to 90% (10% slower)
   useEffect(() => {
@@ -85,49 +88,131 @@ function Hero() {
     document.getElementById('ai-features')?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  // Scene rotation effect - PWA scene (index 1) slowed by 15%
-  useEffect(() => {
-    const sceneDurations = [7000, 9200, 7000]; // 7s, 9.2s (was 8s, now 15% slower), 7s for each scene
-    
-    const timer = setTimeout(() => {
-      setIsTransitioning(true);
-      setTimeout(() => {
-        setCurrentScene((prev) => (prev + 1) % 3);
-        setIsTransitioning(false);
-      }, 800);
-    }, sceneDurations[currentScene]);
+  // Touch indicator helper
+  const showTouch = (x, y, callback, delay = 300) => {
+    setTouchPosition({ x, y });
+    setTimeout(() => {
+      setTouchPosition(null);
+      if (callback) callback();
+    }, delay);
+  };
 
-    return () => clearTimeout(timer);
-  }, [currentScene, isTransitioning]);
-
-  // Scene 1: Chatbot conversation animation
+  // Main animation sequence
   useEffect(() => {
-    if (currentScene === 0) {
-      // Reset messages when scene becomes active
-      setChatMessages([]);
-      setShowTyping(false);
+    const runSimulation = async () => {
+      // Start on homescreen
+      setPhoneState('homescreen');
+      await wait(2000);
       
-      const conversation = [
-        { type: 'user', text: 'Why is my bill $120 higher this month?', delay: 500 },
-        { type: 'typing', delay: 1500 },
-        { type: 'bot', text: 'I analyzed your usage and found a 32% increase. Possible leak detected Jan 23-25. Would you like the leak check guide?', delay: 2500 },
-        { type: 'user', text: 'Yes, send the guide', delay: 4500 },
-        { type: 'typing', delay: 5500 },
-        { type: 'bot', text: 'Guide sent! You may qualify for up to 50% reduction on excess charges.', delay: 6500 }
-      ];
+      // Tap WSSC app icon
+      showTouch(65, 280, () => {
+        setPhoneState('app-opening');
+      });
+      await wait(1500);
+      
+      // Show dashboard
+      setPhoneState('dashboard');
+      await wait(2500);
+      
+      // Tap AI chat button
+      showTouch(85, 92, () => {
+        setPhoneState('chat-opening');
+      });
+      await wait(800);
+      
+      // Show chat screen with keyboard
+      setPhoneState('chat');
+      setChatMessages([]);
+      setTypedText('');
+      await wait(500);
+      setShowKeyboard(true);
+      await wait(800);
+      
+      // Type the question character by character
+      const question = "Why is my bill high this month?";
+      setPhoneState('chat-typing');
+      for (let i = 0; i <= question.length; i++) {
+        setTypedText(question.slice(0, i));
+        await wait(60);
+      }
+      await wait(500);
+      
+      // Send message
+      setChatMessages([{ type: 'user', text: question }]);
+      setTypedText('');
+      setShowKeyboard(false);
+      await wait(600);
+      
+      // Show typing indicator
+      setShowTypingIndicator(true);
+      await wait(2000);
+      
+      // Show AI response
+      setShowTypingIndicator(false);
+      setChatMessages(prev => [...prev, { 
+        type: 'bot', 
+        text: "I found a 32% usage increase from Jan 23-25. This may indicate a leak. Would you like the leak detection guide?" 
+      }]);
+      setPhoneState('chat-response');
+      await wait(4000);
+      
+      // Close chat - swipe down
+      setPhoneState('chat-closing');
+      await wait(500);
+      
+      // Back to dashboard
+      setPhoneState('dashboard');
+      await wait(1500);
+      
+      // Tap calculator
+      showTouch(50, 75, () => {
+        setPhoneState('calculator-opening');
+      });
+      await wait(800);
+      
+      // Show calculator with animated values
+      setPhoneState('calculator');
+      await wait(500);
+      
+      // Animate calculator values
+      const animateValue = (target, setter, key, duration = 1500) => {
+        const steps = 30;
+        const increment = target / steps;
+        let current = 0;
+        const interval = setInterval(() => {
+          current += increment;
+          if (current >= target) {
+            current = target;
+            clearInterval(interval);
+          }
+          setter(prev => ({ ...prev, [key]: Math.round(current) }));
+        }, duration / steps);
+      };
+      
+      animateValue(15000, setCalculatorValues, 'calls');
+      await wait(500);
+      animateValue(180000, setCalculatorValues, 'savings');
+      await wait(4000);
+      
+      // Loop back to homescreen
+      setPhoneState('returning');
+      await wait(800);
+      setPhoneState('homescreen');
+      await wait(1000);
+      
+      // Restart the simulation
+      runSimulation();
+    };
+    
+    runSimulation();
+    
+    return () => {
+      // Cleanup if component unmounts
+    };
+  }, []);
 
-      const timeouts = [];
-      conversation.forEach(msg => {
-        const timeout = setTimeout(() => {
-          if (msg.type === 'typing') {
-            setShowTyping(true);
-          } else {
-            setShowTyping(false);
-            setChatMessages(prev => {
-              // Prevent duplicates
-              if (prev.some(m => m.text === msg.text)) return prev;
-              return [...prev, { type: msg.type, text: msg.text }];
-            });
+  // Helper function for delays
+  const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms));
           }
         }, msg.delay);
         timeouts.push(timeout);
