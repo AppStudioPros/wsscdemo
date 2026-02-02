@@ -254,228 +254,177 @@ function Hero() {
         </div>
       </div>
 
-      {/* Right Side - Phone Mockup */}
+      {/* Right Side - Realistic Phone Simulation */}
       <div className="hero-right">
         <div className="phone-mockup">
           <div className="phone-notch"></div>
           <div className="phone-screen">
-            {/* Scene 1: AI Chatbot */}
-            <div className={`phone-scene scene-chat ${currentScene === 0 ? 'active' : ''} ${isTransitioning && currentScene === 0 ? 'transitioning-out' : ''}`}>
-              <div className="scene-chat-header">
-                <div className="chat-status-dot"></div>
-                <div>
-                  <strong>WSSC Water AI</strong>
-                  <small>Online</small>
+            {/* Touch Indicator */}
+            {touchPosition && (
+              <div 
+                className="touch-indicator"
+                style={{ left: `${touchPosition.x}%`, top: `${touchPosition.y}%` }}
+              />
+            )}
+            
+            {/* Homescreen */}
+            {phoneState === 'homescreen' && (
+              <div className="sim-homescreen">
+                <div className="sim-status-bar">
+                  <span className="sim-time">9:41</span>
+                  <div className="sim-status-icons">
+                    <span className="sim-signal">●●●●○</span>
+                    <span className="sim-battery">🔋</span>
+                  </div>
+                </div>
+                <div className="sim-app-grid">
+                  <div className="sim-app"><div className="sim-icon messages"></div><span>Messages</span></div>
+                  <div className="sim-app"><div className="sim-icon phone"></div><span>Phone</span></div>
+                  <div className="sim-app"><div className="sim-icon mail"></div><span>Mail</span></div>
+                  <div className="sim-app"><div className="sim-icon safari"></div><span>Safari</span></div>
+                  <div className="sim-app"><div className="sim-icon facebook"></div><span>Facebook</span></div>
+                  <div className="sim-app"><div className="sim-icon x-twitter"></div><span>X</span></div>
+                  <div className="sim-app wssc-app">
+                    <img src="https://customer-assets.emergentagent.com/job_aqua-demo/artifacts/e3qln0ip_Wfavicon.png" alt="WSSC" className="sim-wssc-icon" />
+                    <span>WSSC Water</span>
+                  </div>
+                  <div className="sim-app"><div className="sim-icon camera"></div><span>Camera</span></div>
+                </div>
+                <div className="sim-dock">
+                  <div className="sim-dock-icon phone"></div>
+                  <div className="sim-dock-icon safari"></div>
+                  <div className="sim-dock-icon messages"></div>
+                  <div className="sim-dock-icon music"></div>
+                </div>
+                <div className="sim-home-indicator"></div>
+              </div>
+            )}
+            
+            {/* App Opening Animation */}
+            {phoneState === 'app-opening' && (
+              <div className="sim-app-opening">
+                <div className="sim-app-splash">
+                  <img src="https://customer-assets.emergentagent.com/job_aqua-demo/artifacts/e3qln0ip_Wfavicon.png" alt="WSSC" className="splash-logo" />
+                  <div className="splash-loader"></div>
                 </div>
               </div>
-              <div className="scene-chat-messages">
-                {chatMessages.map((msg, i) => (
-                  <div key={i} className={`scene-msg ${msg.type}`}>
-                    {msg.text}
+            )}
+            
+            {/* Dashboard */}
+            {(phoneState === 'dashboard' || phoneState === 'chat-opening' || phoneState === 'calculator-opening' || phoneState === 'returning') && (
+              <div className={`sim-dashboard ${phoneState === 'returning' ? 'slide-in' : ''}`}>
+                <div className="dash-header">
+                  <img src="https://customer-assets.emergentagent.com/job_aqua-demo/artifacts/e3qln0ip_Wfavicon.png" alt="WSSC" className="dash-logo" />
+                  <span>WSSC Water</span>
+                </div>
+                <div className="dash-welcome">
+                  <h3>Welcome back!</h3>
+                  <p>Account: ****4521</p>
+                </div>
+                <div className="dash-balance">
+                  <span className="balance-label">Current Balance</span>
+                  <span className="balance-amount">$127.43</span>
+                  <button className="dash-pay-btn">Pay Now</button>
+                </div>
+                <div className="dash-quick-actions">
+                  <div className="dash-action">
+                    <span className="action-icon">💧</span>
+                    <span>Usage</span>
                   </div>
-                ))}
-                {showTyping && (
-                  <div className="scene-msg bot">
-                    <span className="typing-dot"></span>
-                    <span className="typing-dot"></span>
-                    <span className="typing-dot"></span>
+                  <div className="dash-action calculator-btn">
+                    <span className="action-icon">💰</span>
+                    <span>Savings</span>
+                  </div>
+                  <div className="dash-action">
+                    <span className="action-icon">📋</span>
+                    <span>Bills</span>
+                  </div>
+                  <div className="dash-action">
+                    <span className="action-icon">🔧</span>
+                    <span>Service</span>
+                  </div>
+                </div>
+                <div className="dash-ai-btn">
+                  <span>💬</span>
+                  <span>Ask AI Assistant</span>
+                </div>
+              </div>
+            )}
+            
+            {/* Chat Screen */}
+            {(phoneState === 'chat' || phoneState === 'chat-typing' || phoneState === 'chat-response' || phoneState === 'chat-closing') && (
+              <div className={`sim-chat ${phoneState === 'chat-closing' ? 'slide-down' : 'slide-up'}`}>
+                <div className="chat-header">
+                  <button className="chat-back">←</button>
+                  <div className="chat-title">
+                    <strong>AI Assistant</strong>
+                    <small>Online</small>
+                  </div>
+                  <div className="chat-avatar">🤖</div>
+                </div>
+                <div className="chat-messages">
+                  <div className="chat-welcome">
+                    <p>Hi! I'm your WSSC Water AI assistant. How can I help you today?</p>
+                  </div>
+                  {chatMessages.map((msg, i) => (
+                    <div key={i} className={`chat-bubble ${msg.type}`}>
+                      {msg.text}
+                    </div>
+                  ))}
+                  {showTypingIndicator && (
+                    <div className="chat-bubble bot typing">
+                      <span className="typing-dot"></span>
+                      <span className="typing-dot"></span>
+                      <span className="typing-dot"></span>
+                    </div>
+                  )}
+                </div>
+                {showKeyboard && (
+                  <div className="chat-input-area">
+                    <div className="chat-input">
+                      {typedText}<span className="cursor">|</span>
+                    </div>
+                  </div>
+                )}
+                {showKeyboard && (
+                  <div className="sim-keyboard">
+                    <div className="kb-row">QWERTYUIOP</div>
+                    <div className="kb-row">ASDFGHJKL</div>
+                    <div className="kb-row">ZXCVBNM</div>
+                    <div className="kb-row space">space</div>
                   </div>
                 )}
               </div>
-            </div>
-
-            {/* Scene 2: PWA Installation - iOS Dialog */}
-            <div className={`phone-scene scene-pwa ${currentScene === 1 ? 'active' : ''} ${isTransitioning && currentScene === 1 ? 'transitioning-out' : ''}`}>
-              {/* Step 1: iOS-style Add to Home Screen dialog */}
-              {pwaStep === 1 && (
-                <div className="pwa-ios-backdrop">
-                  <div className="pwa-ios-dialog">
-                    <div className="pwa-ios-header">
-                      <span className="pwa-ios-cancel">Cancel</span>
-                      <span className="pwa-ios-title">Add to Home Screen</span>
-                      <span className="pwa-ios-add">Add</span>
-                    </div>
-                    <div className="pwa-ios-preview">
-                      <div className="pwa-ios-icon-wrapper">
-                        <img 
-                          src="https://customer-assets.emergentagent.com/job_aqua-demo/artifacts/e3qln0ip_Wfavicon.png" 
-                          alt="WSSC Water"
-                          className="pwa-ios-app-icon"
-                        />
-                      </div>
-                      <div className="pwa-ios-app-info">
-                        <span className="pwa-ios-app-name">WSSC Water</span>
-                        <span className="pwa-ios-app-url">wsscwater.com</span>
-                      </div>
-                    </div>
-                  </div>
+            )}
+            
+            {/* Calculator Screen */}
+            {phoneState === 'calculator' && (
+              <div className="sim-calculator slide-up">
+                <div className="calc-header">
+                  <button className="chat-back">←</button>
+                  <span>Savings Calculator</span>
                 </div>
-              )}
-              
-              {/* Step 2: Button click highlight */}
-              {pwaStep === 2 && (
-                <div className="pwa-ios-backdrop">
-                  <div className="pwa-ios-dialog">
-                    <div className="pwa-ios-header">
-                      <span className="pwa-ios-cancel">Cancel</span>
-                      <span className="pwa-ios-title">Add to Home Screen</span>
-                      <span className="pwa-ios-add pwa-btn-pressed">Add</span>
-                    </div>
-                    <div className="pwa-ios-preview">
-                      <div className="pwa-ios-icon-wrapper">
-                        <img 
-                          src="https://customer-assets.emergentagent.com/job_aqua-demo/artifacts/e3qln0ip_Wfavicon.png" 
-                          alt="WSSC Water"
-                          className="pwa-ios-app-icon"
-                        />
-                      </div>
-                      <div className="pwa-ios-app-info">
-                        <span className="pwa-ios-app-name">WSSC Water</span>
-                        <span className="pwa-ios-app-url">wsscwater.com</span>
-                      </div>
-                    </div>
+                <div className="calc-content">
+                  <div className="calc-hero">
+                    <span className="calc-label">Potential Annual Savings</span>
+                    <span className="calc-amount">${calculatorValues.savings.toLocaleString()}</span>
                   </div>
-                </div>
-              )}
-              
-              {/* Step 3: Realistic iPhone home screen with common apps */}
-              {pwaStep === 3 && (
-                <div className="pwa-homescreen-realistic">
-                  {/* Status bar */}
-                  <div className="pwa-status-bar">
-                    <span className="pwa-time">9:41</span>
-                    <div className="pwa-status-icons">
-                      <svg className="pwa-signal" viewBox="0 0 17 10" fill="white"><path d="M0 7h3v3H0V7zm4-3h3v6H4V4zm4-2h3v8H8V2zm4-2h3v10h-3V0z"/></svg>
-                      <svg className="pwa-wifi" viewBox="0 0 16 12" fill="white"><path d="M8 9.5a1.5 1.5 0 100 3 1.5 1.5 0 000-3zM8 6c-2.2 0-4 1.1-5 2.7l1.4 1.4c.7-1.1 2-1.8 3.6-1.8s2.9.7 3.6 1.8l1.4-1.4c-1-1.6-2.8-2.7-5-2.7zM8 2c-3.5 0-6.6 1.6-8 4l1.4 1.4C2.8 5.3 5.3 4 8 4s5.2 1.3 6.6 3.4L16 6c-1.4-2.4-4.5-4-8-4z"/></svg>
-                      <svg className="pwa-battery" viewBox="0 0 25 12" fill="white"><rect x="0" y="0" width="22" height="12" rx="3" stroke="white" strokeWidth="1" fill="none"/><rect x="2" y="2" width="18" height="8" rx="1" fill="white"/><path d="M23 4v4a2 2 0 000-4z"/></svg>
-                    </div>
+                  <div className="calc-stat">
+                    <span>Calls Deflected</span>
+                    <span className="calc-value">{calculatorValues.calls.toLocaleString()}</span>
                   </div>
-                  
-                  {/* App grid - realistic apps with animations */}
-                  <div className="pwa-app-grid-realistic">
-                    {/* Row 1 */}
-                    <div className="pwa-app-slot anim-delay-1">
-                      <div className="pwa-app-messages has-badge">
-                        <span className="app-badge">3</span>
-                      </div>
-                      <span>Messages</span>
-                    </div>
-                    <div className="pwa-app-slot anim-delay-2">
-                      <div className="pwa-app-phone has-badge">
-                        <span className="app-badge">2</span>
-                      </div>
-                      <span>Phone</span>
-                    </div>
-                    <div className="pwa-app-slot anim-delay-3">
-                      <div className="pwa-app-mail has-badge">
-                        <span className="app-badge">12</span>
-                      </div>
-                      <span>Mail</span>
-                    </div>
-                    <div className="pwa-app-slot anim-delay-4">
-                      <div className="pwa-app-safari"></div>
-                      <span>Safari</span>
-                    </div>
-                    
-                    {/* Row 2 */}
-                    <div className="pwa-app-slot anim-delay-5">
-                      <div className="pwa-app-facebook has-badge">
-                        <span className="app-badge">5</span>
-                      </div>
-                      <span>Facebook</span>
-                    </div>
-                    <div className="pwa-app-slot anim-delay-6">
-                      <div className="pwa-app-x"></div>
-                      <span>X</span>
-                    </div>
-                    <div className="pwa-app-slot anim-delay-7">
-                      <div className="pwa-app-instagram has-badge">
-                        <span className="app-badge">8</span>
-                      </div>
-                      <span>Instagram</span>
-                    </div>
-                    <div className="pwa-app-slot anim-delay-8">
-                      <div className="pwa-app-camera"></div>
-                      <span>Camera</span>
-                    </div>
-                    
-                    {/* Row 3 */}
-                    <div className="pwa-app-slot anim-delay-9">
-                      <div className="pwa-app-photos"></div>
-                      <span>Photos</span>
-                    </div>
-                    <div className="pwa-app-slot anim-delay-10">
-                      <div className="pwa-app-maps"></div>
-                      <span>Maps</span>
-                    </div>
-                    <div className="pwa-app-slot wssc-new-app">
-                      <div className="wssc-glow"></div>
-                      <img 
-                        src="https://customer-assets.emergentagent.com/job_aqua-demo/artifacts/e3qln0ip_Wfavicon.png" 
-                        alt="WSSC Water"
-                        className="pwa-wssc-icon"
-                      />
-                      <span>WSSC Water</span>
-                    </div>
-                    <div className="pwa-app-slot anim-delay-11">
-                      <div className="pwa-app-settings app-spin"></div>
-                      <span>Settings</span>
-                    </div>
+                  <div className="calc-stat">
+                    <span>Cost per Call</span>
+                    <span className="calc-value">$12.00</span>
                   </div>
-                  
-                  {/* Dock */}
-                  <div className="pwa-dock">
-                    <div className="pwa-dock-phone"></div>
-                    <div className="pwa-dock-safari"></div>
-                    <div className="pwa-dock-messages"></div>
-                    <div className="pwa-dock-music"></div>
+                  <div className="calc-stat highlight">
+                    <span>Your Savings</span>
+                    <span className="calc-value">${calculatorValues.savings.toLocaleString()}</span>
                   </div>
-                  
-                  {/* Home indicator */}
-                  <div className="pwa-home-indicator"></div>
-                </div>
-              )}
-            </div>
-
-            {/* Scene 3: ROI Calculator */}
-            <div className={`phone-scene scene-roi ${currentScene === 2 ? 'active' : ''} ${isTransitioning && currentScene === 2 ? 'transitioning-out' : ''}`}>
-              <div className="roi-scene-header">
-                <strong>Calculate Your Savings</strong>
-                <small>See how AI reduces costs</small>
-              </div>
-              <div className="roi-scene-inputs">
-                <div className="roi-input-row">
-                  <label>Monthly Calls</label>
-                  <span className="roi-value">{roiValues.calls.toLocaleString()}</span>
-                </div>
-                <div className="roi-input-row">
-                  <label>Cost Per Call</label>
-                  <span className="roi-value">${roiValues.cost.toFixed(2)}</span>
                 </div>
               </div>
-              <div className="roi-scene-results">
-                <div className="roi-result-row">
-                  <span>Call Deflection (30%)</span>
-                  <span className="roi-amount">${roiValues.savings1.toLocaleString()}</span>
-                </div>
-                <div className="roi-result-row">
-                  <span>Paper Bill Reduction</span>
-                  <span className="roi-amount">${roiValues.savings2.toLocaleString()}</span>
-                </div>
-                <div className="roi-result-total">
-                  <span>TOTAL SAVINGS</span>
-                  <span className="roi-total-amount">${roiValues.total.toLocaleString()}</span>
-                </div>
-              </div>
-            </div>
+            )}
           </div>
-        </div>
-        
-        {/* Scene indicators */}
-        <div className="scene-indicators">
-          <span className={currentScene === 0 ? 'active' : ''}></span>
-          <span className={currentScene === 1 ? 'active' : ''}></span>
-          <span className={currentScene === 2 ? 'active' : ''}></span>
         </div>
       </div>
     </section>
