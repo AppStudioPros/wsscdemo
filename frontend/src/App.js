@@ -414,7 +414,7 @@ function Hero() {
             
             {/* Chat Screen */}
             {(phoneState === 'chat' || phoneState === 'chat-typing' || phoneState === 'chat-response' || phoneState === 'chat-closing') && (
-              <div className={`sim-chat ${phoneState === 'chat-closing' ? 'slide-down' : 'slide-up'}`}>
+              <div className={`sim-chat ${phoneState === 'chat-closing' ? 'slide-out-right' : 'slide-from-right'}`}>
                 <div className="chat-header">
                   <button className="chat-back">←</button>
                   <div className="chat-title">
@@ -423,30 +423,40 @@ function Hero() {
                   </div>
                   <div className="chat-avatar">🤖</div>
                 </div>
-                <div className="chat-messages">
-                  <div className="chat-welcome">
-                    <p>Hi! I'm your WSSC Water AI assistant. How can I help you today?</p>
-                  </div>
-                  {chatMessages.map((msg, i) => (
-                    <div key={i} className={`chat-bubble ${msg.type}`}>
-                      {msg.text}
+                <div className="chat-messages-container">
+                  <div className="chat-messages">
+                    <div className="chat-welcome">
+                      <p>Hi! I'm your WSSC Water AI assistant. How can I help you today?</p>
                     </div>
-                  ))}
-                  {showTypingIndicator && (
-                    <div className="chat-bubble bot typing">
-                      <span className="typing-dot"></span>
-                      <span className="typing-dot"></span>
-                      <span className="typing-dot"></span>
+                    {chatMessages.map((msg, i) => (
+                      <div key={i} className={`chat-bubble ${msg.type}`}>
+                        {msg.text}
+                      </div>
+                    ))}
+                    {showTypingIndicator && (
+                      <div className="chat-bubble bot typing">
+                        <span className="typing-dot"></span>
+                        <span className="typing-dot"></span>
+                        <span className="typing-dot"></span>
+                      </div>
+                    )}
+                  </div>
+                </div>
+                <div className="chat-input-wrapper">
+                  {showKeyboard && (
+                    <div className="chat-input-area">
+                      <div className="chat-input">
+                        {typedText}<span className="cursor">|</span>
+                      </div>
+                      <button className="send-btn">↑</button>
+                    </div>
+                  )}
+                  {!showKeyboard && !chatMessages.length && (
+                    <div className="chat-input-area">
+                      <div className="chat-input placeholder">Type a message...</div>
                     </div>
                   )}
                 </div>
-                {showKeyboard && (
-                  <div className="chat-input-area">
-                    <div className="chat-input">
-                      {typedText}<span className="cursor">|</span>
-                    </div>
-                  </div>
-                )}
                 {showKeyboard && (
                   <div className="sim-keyboard">
                     <div className="kb-row">QWERTYUIOP</div>
