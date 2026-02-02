@@ -470,7 +470,7 @@ function Hero() {
             
             {/* Calculator Screen */}
             {phoneState === 'calculator' && (
-              <div className="sim-calculator slide-up">
+              <div className="sim-calculator slide-from-right">
                 <div className="calc-header">
                   <button className="chat-back">←</button>
                   <span>Savings Calculator</span>
@@ -492,6 +492,26 @@ function Hero() {
                     <span>Your Savings</span>
                     <span className="calc-value">${calculatorValues.savings.toLocaleString()}</span>
                   </div>
+                  {showCalculateButton && (
+                    <button className="calc-calculate-btn">
+                      Calculate Savings
+                    </button>
+                  )}
+                  {isCalculating && (
+                    <div className="calc-loading">
+                      <div className="calc-spinner"></div>
+                      <span>Calculating...</span>
+                    </div>
+                  )}
+                </div>
+              </div>
+            )}
+            
+            {/* Returning to homescreen animation */}
+            {phoneState === 'returning-home' && (
+              <div className="sim-returning">
+                <div className="sim-app-closing">
+                  <img src="https://customer-assets.emergentagent.com/job_aqua-demo/artifacts/e3qln0ip_Wfavicon.png" alt="WSSC" className="closing-logo" />
                 </div>
               </div>
             )}
