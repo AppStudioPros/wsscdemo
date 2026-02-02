@@ -1248,6 +1248,7 @@ function App() {
         <ChatbotDemo />
         <PWAMockup />
         <TechStack />
+        <AdminDashboard />
         <ROICalculator />
         <FinalCTA />
       </main>
