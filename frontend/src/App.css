@@ -1139,7 +1139,7 @@ a:hover {
 /* WSSC App special glow effect */
 .pwa-app-slot.wssc-new-app {
   position: relative;
-  animation: iosWsscAppIn 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.4s forwards;
+  animation: wsscAppEntrance 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.55s forwards;
   opacity: 0;
 }
 
@@ -1153,7 +1153,6 @@ a:hover {
   background: radial-gradient(circle, rgba(0, 168, 150, 0.6) 0%, transparent 70%);
   border-radius: 50%;
   animation: wsscGlow 2s ease-in-out infinite;
-  animation-delay: 1s;
   z-index: 0;
 }
 
@@ -1168,23 +1167,20 @@ a:hover {
   }
 }
 
-@keyframes iosWsscAppIn {
+@keyframes wsscAppEntrance {
   0% {
     opacity: 0;
-    transform: scale(0);
+    transform: scale(0) rotate(-180deg);
   }
-  50% {
-    transform: scale(1.2);
+  60% {
+    transform: scale(1.2) rotate(10deg);
   }
-  70% {
-    transform: scale(0.9);
-  }
-  85% {
-    transform: scale(1.05);
+  80% {
+    transform: scale(0.95) rotate(-5deg);
   }
   100% {
     opacity: 1;
-    transform: scale(1);
+    transform: scale(1) rotate(0deg);
   }
 }
 
