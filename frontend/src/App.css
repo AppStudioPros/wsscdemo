@@ -451,11 +451,11 @@ a:hover {
 /* W Logo positioned over the Add to Home Screen dialog icon area */
 .pwa-screenshot-logo {
   position: absolute;
-  bottom: 82px;
-  left: 24px;
-  width: 42px;
-  height: 42px;
-  border-radius: 10px;
+  bottom: 72px;
+  left: 20px;
+  width: 38px;
+  height: 38px;
+  border-radius: 9px;
   object-fit: cover;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
   animation: fadeIn 0.3s ease-out 0.2s both;
