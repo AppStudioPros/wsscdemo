@@ -372,8 +372,8 @@ function Hero() {
             )}
             
             {/* Dashboard */}
-            {(phoneState === 'dashboard' || phoneState === 'chat-opening' || phoneState === 'calculator-opening' || phoneState === 'returning') && (
-              <div className={`sim-dashboard ${phoneState === 'returning' ? 'slide-in' : ''}`}>
+            {(phoneState === 'dashboard' || phoneState === 'dashboard-return') && (
+              <div className={`sim-dashboard ${phoneState === 'dashboard-return' ? 'slide-from-left' : 'slide-from-right'}`}>
                 <div className="dash-header">
                   <img src="https://customer-assets.emergentagent.com/job_aqua-demo/artifacts/e3qln0ip_Wfavicon.png" alt="WSSC" className="dash-logo" />
                   <span>WSSC Water</span>
