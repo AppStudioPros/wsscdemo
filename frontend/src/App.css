@@ -901,23 +901,8 @@ a:hover {
 .calc-stat.highlight .calc-value {
   color: white;
 }
-  transform: perspective(1200px) rotateY(-90deg);
-}
 
-/* Scene 1: Chat */
-.scene-chat {
-  display: flex;
-  flex-direction: column;
-  background: #f8f9fa;
-}
-
-.scene-chat-header {
-  background: linear-gradient(135deg, var(--color-primary), var(--color-dark));
-  color: white;
-  padding: 50px 15px 15px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
+/* ===== PWA SECTION STYLES ===== */
 }
 
 .scene-chat-header strong {
