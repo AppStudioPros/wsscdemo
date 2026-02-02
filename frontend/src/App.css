@@ -1104,28 +1104,34 @@ a:hover {
 
 /* ===== APP ICON ANIMATIONS ===== */
 
-/* Staggered entrance animations */
+/* Staggered entrance animations - iOS spring style */
 .pwa-app-slot {
-  animation: appSlotFadeIn 0.4s ease-out forwards;
+  animation: iosAppIconIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
   opacity: 0;
 }
 
 .pwa-app-slot.anim-delay-1 { animation-delay: 0.05s; }
-.pwa-app-slot.anim-delay-2 { animation-delay: 0.1s; }
-.pwa-app-slot.anim-delay-3 { animation-delay: 0.15s; }
-.pwa-app-slot.anim-delay-4 { animation-delay: 0.2s; }
-.pwa-app-slot.anim-delay-5 { animation-delay: 0.25s; }
-.pwa-app-slot.anim-delay-6 { animation-delay: 0.3s; }
-.pwa-app-slot.anim-delay-7 { animation-delay: 0.35s; }
-.pwa-app-slot.anim-delay-8 { animation-delay: 0.4s; }
-.pwa-app-slot.anim-delay-9 { animation-delay: 0.45s; }
-.pwa-app-slot.anim-delay-10 { animation-delay: 0.5s; }
-.pwa-app-slot.anim-delay-11 { animation-delay: 0.6s; }
+.pwa-app-slot.anim-delay-2 { animation-delay: 0.08s; }
+.pwa-app-slot.anim-delay-3 { animation-delay: 0.11s; }
+.pwa-app-slot.anim-delay-4 { animation-delay: 0.14s; }
+.pwa-app-slot.anim-delay-5 { animation-delay: 0.17s; }
+.pwa-app-slot.anim-delay-6 { animation-delay: 0.2s; }
+.pwa-app-slot.anim-delay-7 { animation-delay: 0.23s; }
+.pwa-app-slot.anim-delay-8 { animation-delay: 0.26s; }
+.pwa-app-slot.anim-delay-9 { animation-delay: 0.29s; }
+.pwa-app-slot.anim-delay-10 { animation-delay: 0.32s; }
+.pwa-app-slot.anim-delay-11 { animation-delay: 0.38s; }
 
-@keyframes appSlotFadeIn {
+@keyframes iosAppIconIn {
   0% {
     opacity: 0;
-    transform: scale(0.5) translateY(10px);
+    transform: scale(0) translateY(20px);
+  }
+  60% {
+    transform: scale(1.1) translateY(-3px);
+  }
+  80% {
+    transform: scale(0.95) translateY(1px);
   }
   100% {
     opacity: 1;
