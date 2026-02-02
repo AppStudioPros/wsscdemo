@@ -649,12 +649,20 @@ a:hover {
   z-index: 10;
 }
 
+.sim-chat.slide-from-right {
+  animation: slideFromRight 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.sim-chat.slide-out-right {
+  animation: slideOutRight 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
 .sim-chat.slide-up {
-  animation: slideUp 0.3s ease-out;
+  animation: slideUp 0.4s ease-out;
 }
 
 .sim-chat.slide-down {
-  animation: slideDown 0.3s ease-out forwards;
+  animation: slideDown 0.4s ease-out forwards;
 }
 
 @keyframes slideUp {
