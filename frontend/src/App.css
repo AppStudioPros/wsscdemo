@@ -2388,14 +2388,16 @@ a:hover {
 
 .browser-content {
   position: relative;
+  height: 450px;
   overflow: hidden;
   background: #f8fafc;
 }
 
 .admin-screenshot {
   width: 100%;
-  height: auto;
-  display: block;
+  height: 100%;
+  object-fit: contain;
+  object-position: top center;
   animation: screenshotFade 0.5s ease-out;
 }
 
