@@ -939,17 +939,17 @@ function AdminDashboard() {
     {
       title: "Emergency Alerts",
       description: "Instantly notify customers about water main breaks, boil advisories, and service disruptions with one click.",
-      image: "https://customer-assets.emergentagent.com/job_aqua-demo/artifacts/o6xwg5zm_emergency%20alerts%20page.png"
+      image: "https://customer-assets.emergentagent.com/job_aqua-demo/artifacts/1ihe4f6m_emergency%20alerts%20page.png"
     },
     {
       title: "Service Announcements", 
       description: "Schedule and manage maintenance notices, conservation tips, and important updates with live preview.",
-      image: "https://customer-assets.emergentagent.com/job_aqua-demo/artifacts/ly5l9hsg_Service%20Announcements.png"
+      image: "https://customer-assets.emergentagent.com/job_aqua-demo/artifacts/xg6823tj_Service%20Announcements.png"
     },
     {
       title: "Blog & Content",
       description: "Create engaging content with AI writing assistance and see exactly how it will look before publishing.",
-      image: "https://customer-assets.emergentagent.com/job_aqua-demo/artifacts/8ef8gu4z_blog%20posts.png"
+      image: "https://customer-assets.emergentagent.com/job_aqua-demo/artifacts/3wu00hg8_blog%20posts.png"
     }
   ];
 
