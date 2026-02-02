@@ -68,13 +68,15 @@ function Hero() {
   const videoRef = useRef(null);
   
   // Phone simulation state
-  const [phoneState, setPhoneState] = useState('homescreen'); // homescreen, app-opening, dashboard, chat-opening, chat, chat-typing, chat-response, calculator-opening, calculator
+  const [phoneState, setPhoneState] = useState('homescreen');
   const [touchPosition, setTouchPosition] = useState(null);
   const [typedText, setTypedText] = useState('');
   const [showKeyboard, setShowKeyboard] = useState(false);
   const [chatMessages, setChatMessages] = useState([]);
   const [showTypingIndicator, setShowTypingIndicator] = useState(false);
   const [calculatorValues, setCalculatorValues] = useState({ calls: 0, savings: 0 });
+  const [showCalculateButton, setShowCalculateButton] = useState(true);
+  const [isCalculating, setIsCalculating] = useState(false);
 
   // Set video playback speed to 90% (10% slower)
   useEffect(() => {
@@ -88,126 +90,185 @@ function Hero() {
     document.getElementById('ai-features')?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  // Touch indicator helper
-  const showTouch = (x, y, callback, delay = 300) => {
-    setTouchPosition({ x, y });
-    setTimeout(() => {
-      setTouchPosition(null);
-      if (callback) callback();
-    }, delay);
+  // Touch indicator helper - shows tap animation
+  const showTouch = (x, y) => {
+    return new Promise(resolve => {
+      setTouchPosition({ x, y });
+      setTimeout(() => {
+        setTouchPosition(null);
+        resolve();
+      }, 400);
+    });
   };
 
-  // Main animation sequence
+  // Main animation sequence - SLOWER and more realistic
   useEffect(() => {
+    let isMounted = true;
+    
     const runSimulation = async () => {
-      // Start on homescreen
+      if (!isMounted) return;
+      
+      // Reset all states
       setPhoneState('homescreen');
-      await wait(2000);
+      setChatMessages([]);
+      setTypedText('');
+      setShowKeyboard(false);
+      setShowTypingIndicator(false);
+      setCalculatorValues({ calls: 0, savings: 0 });
+      setShowCalculateButton(true);
+      setIsCalculating(false);
       
-      // Tap WSSC app icon
-      showTouch(65, 280, () => {
-        setPhoneState('app-opening');
-      });
-      await wait(1500);
+      // 1. HOMESCREEN - sit for a moment
+      await wait(3000);
+      if (!isMounted) return;
       
-      // Show dashboard
+      // 2. TAP the WSSC app icon (positioned in row 2, col 3)
+      await showTouch(65, 38);
+      await wait(200);
+      if (!isMounted) return;
+      
+      // 3. APP OPENING animation
+      setPhoneState('app-opening');
+      await wait(1800);
+      if (!isMounted) return;
+      
+      // 4. DASHBOARD slides in
       setPhoneState('dashboard');
-      await wait(2500);
+      await wait(3500);
+      if (!isMounted) return;
       
-      // Tap AI chat button
-      showTouch(85, 92, () => {
-        setPhoneState('chat-opening');
-      });
-      await wait(800);
+      // 5. TAP the AI Assistant button at bottom
+      await showTouch(50, 88);
+      await wait(300);
+      if (!isMounted) return;
       
-      // Show chat screen with keyboard
+      // 6. CHAT screen slides up
       setPhoneState('chat');
       setChatMessages([]);
       setTypedText('');
-      await wait(500);
+      await wait(1200);
+      if (!isMounted) return;
+      
+      // 7. Show keyboard and start typing
       setShowKeyboard(true);
       await wait(800);
+      if (!isMounted) return;
       
-      // Type the question character by character
-      const question = "Why is my bill high this month?";
+      // 8. TYPE the question character by character (slower)
+      const question = "Why is my bill high?";
       setPhoneState('chat-typing');
       for (let i = 0; i <= question.length; i++) {
+        if (!isMounted) return;
         setTypedText(question.slice(0, i));
-        await wait(60);
+        await wait(100); // Slower typing
       }
-      await wait(500);
+      await wait(800);
+      if (!isMounted) return;
       
-      // Send message
+      // 9. SEND message (tap send button area)
+      await showTouch(90, 75);
+      await wait(200);
       setChatMessages([{ type: 'user', text: question }]);
       setTypedText('');
       setShowKeyboard(false);
-      await wait(600);
+      await wait(800);
+      if (!isMounted) return;
       
-      // Show typing indicator
+      // 10. AI TYPING indicator
       setShowTypingIndicator(true);
-      await wait(2000);
+      await wait(2500);
+      if (!isMounted) return;
       
-      // Show AI response
+      // 11. AI RESPONSE appears
       setShowTypingIndicator(false);
       setChatMessages(prev => [...prev, { 
         type: 'bot', 
-        text: "I found a 32% usage increase from Jan 23-25. This may indicate a leak. Would you like the leak detection guide?" 
+        text: "I found a 32% spike in usage from Jan 23-25. This may indicate a leak." 
       }]);
       setPhoneState('chat-response');
-      await wait(4000);
+      await wait(4500);
+      if (!isMounted) return;
       
-      // Close chat - swipe down
+      // 12. TAP BACK button to go to dashboard
+      await showTouch(8, 8);
+      await wait(300);
       setPhoneState('chat-closing');
       await wait(500);
+      if (!isMounted) return;
       
-      // Back to dashboard
-      setPhoneState('dashboard');
-      await wait(1500);
+      // 13. BACK to dashboard
+      setPhoneState('dashboard-return');
+      await wait(2500);
+      if (!isMounted) return;
       
-      // Tap calculator
-      showTouch(50, 75, () => {
-        setPhoneState('calculator-opening');
-      });
-      await wait(800);
+      // 14. TAP the Savings calculator button (position in quick actions row)
+      await showTouch(38, 62);
+      await wait(300);
+      if (!isMounted) return;
       
-      // Show calculator with animated values
+      // 15. CALCULATOR screen slides in
       setPhoneState('calculator');
-      await wait(500);
+      setShowCalculateButton(true);
+      setCalculatorValues({ calls: 0, savings: 0 });
+      await wait(1500);
+      if (!isMounted) return;
       
-      // Animate calculator values
-      const animateValue = (target, setter, key, duration = 1500) => {
-        const steps = 30;
+      // 16. TAP the CALCULATE button
+      await showTouch(50, 75);
+      await wait(300);
+      setIsCalculating(true);
+      setShowCalculateButton(false);
+      await wait(600);
+      if (!isMounted) return;
+      
+      // 17. ANIMATE the values appearing
+      const animateValue = (target, key, duration = 2000) => {
+        const steps = 40;
         const increment = target / steps;
         let current = 0;
+        let step = 0;
         const interval = setInterval(() => {
+          if (!isMounted) {
+            clearInterval(interval);
+            return;
+          }
+          step++;
           current += increment;
-          if (current >= target) {
+          if (step >= steps) {
             current = target;
             clearInterval(interval);
           }
-          setter(prev => ({ ...prev, [key]: Math.round(current) }));
+          setCalculatorValues(prev => ({ ...prev, [key]: Math.round(current) }));
         }, duration / steps);
       };
       
-      animateValue(15000, setCalculatorValues, 'calls');
-      await wait(500);
-      animateValue(180000, setCalculatorValues, 'savings');
-      await wait(4000);
+      animateValue(15000, 'calls', 1800);
+      await wait(400);
+      animateValue(180000, 'savings', 2200);
+      setIsCalculating(false);
+      await wait(5000);
+      if (!isMounted) return;
       
-      // Loop back to homescreen
-      setPhoneState('returning');
+      // 18. TAP BACK to go home
+      await showTouch(8, 8);
+      await wait(300);
+      if (!isMounted) return;
+      
+      // 19. RETURN to homescreen
+      setPhoneState('returning-home');
       await wait(800);
       setPhoneState('homescreen');
-      await wait(1000);
+      await wait(2000);
+      if (!isMounted) return;
       
-      // Restart the simulation
+      // LOOP - restart simulation
       runSimulation();
     };
     
     runSimulation();
     
     return () => {
-      // Cleanup if component unmounts
+      isMounted = false;
     };
   }, []);
 
