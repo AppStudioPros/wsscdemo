@@ -2286,7 +2286,7 @@ a:hover {
   gap: 3rem;
   max-width: 1200px;
   margin: 0 auto;
-  align-items: flex-start;
+  align-items: center;
 }
 
 .admin-features {
