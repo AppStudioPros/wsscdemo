@@ -3,32 +3,32 @@ export function TechStackSection() {
     {
       icon: '⚛️',
       title: 'Next.js + React',
-      description: 'Enterprise-grade framework with server-side rendering and optimal performance'
+      description: 'Lightning-fast performance, SEO-optimized, scalable to millions of users'
     },
     {
       icon: '🎨',
-      title: 'Tailwind CSS',
-      description: 'Modern, responsive design system for consistent UI across all devices'
+      title: 'Sanity CMS',
+      description: 'Real-time content updates, no IT dependency, version control'
     },
     {
       icon: '🚀',
-      title: 'Vercel Edge',
-      description: 'Global CDN deployment with 99.99% uptime and sub-second response times'
+      title: 'Vercel Hosting',
+      description: 'Global edge network, automatic scaling, 99.9% uptime SLA'
     },
     {
       icon: '🐍',
-      title: 'Python FastAPI',
-      description: 'High-performance backend for AI processing and data management'
+      title: 'Python APIs',
+      description: 'Seamless integration with Oracle billing, GIS, work orders'
     },
     {
       icon: '🧠',
-      title: 'Claude AI',
-      description: 'Advanced language model for intelligent customer interactions'
+      title: "Encore's Self-Healing AI",
+      description: 'Custom built, exclusive AI that learns, adapts, and continuously improves—accurate & safe'
     },
     {
       icon: '📱',
-      title: 'PWA Technology',
-      description: 'Native app experience with offline support and push notifications'
+      title: 'PWA',
+      description: 'Offline access, installable, push notifications—app-like experience'
     }
   ];
 
@@ -46,10 +46,10 @@ export function TechStackSection() {
           {technologies.map((tech, index) => (
             <div
               key={index}
-              className="bg-white rounded-2xl p-6 shadow-[0_0_0_1px_rgba(0,0,0,0.08),0_4px_12px_rgba(0,0,0,0.05)] hover:shadow-[0_0_0_2px_rgba(37,99,235,0.5),0_8px_24px_rgba(37,99,235,0.25)] transition-shadow duration-300"
+              className="bg-white rounded-2xl p-8 aspect-square flex flex-col items-center justify-center text-center shadow-[0_0_0_1px_rgba(0,0,0,0.08),0_4px_12px_rgba(0,0,0,0.05)] hover:shadow-[0_0_0_2px_rgba(37,99,235,0.5),0_8px_24px_rgba(37,99,235,0.25)] transition-shadow duration-300"
             >
-              <div className="text-4xl mb-4">{tech.icon}</div>
-              <h3 className="font-bold text-xl text-gray-900 mb-2">{tech.title}</h3>
+              <div className="text-5xl mb-6">{tech.icon}</div>
+              <h3 className="font-bold text-xl text-gray-900 mb-3">{tech.title}</h3>
               <p className="text-gray-600">{tech.description}</p>
             </div>
           ))}
