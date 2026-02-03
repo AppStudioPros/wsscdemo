@@ -28,7 +28,7 @@ export const client = createClient({
 // Helper for generating image URLs
 const builder = imageUrlBuilder(publicClient);
 
-export function urlFor(source: SanityImageSource) {
+export function urlFor(source: Image) {
   return builder.image(source);
 }
 
