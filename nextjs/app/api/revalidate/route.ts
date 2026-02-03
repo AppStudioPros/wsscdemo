@@ -23,7 +23,7 @@ export async function POST(req: NextRequest) {
     }
 
     // Default: revalidate homepage
-    revalidatePath('/');
+    revalidatePath('/', 'page');
     return NextResponse.json({ revalidated: true, path: '/' });
   } catch (err) {
     console.error('Revalidation error:', err);
