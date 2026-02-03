@@ -132,7 +132,7 @@ export function ChatbotDemo({ welcomeMessage, quickQuestions }: ChatbotDemoProps
   };
 
   return (
-    <section id="chatbot" className="py-20 bg-gray-50">
+    <section id="chatbot" className="py-20 bg-gradient-to-b from-gray-100 to-gray-50">
       <div className="container mx-auto px-6">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold text-gray-900 mb-4">Try the AI Assistant</h2>
@@ -140,19 +140,19 @@ export function ChatbotDemo({ welcomeMessage, quickQuestions }: ChatbotDemoProps
             These are the top questions our customers ask. Click any to see how AI can help.
           </p>
         </div>
-        <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-xl overflow-hidden">
-          <div className="bg-blue-600 text-white px-6 py-4 flex items-center">
+        <div className="max-w-4xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden">
+          <div className="bg-gradient-to-r from-slate-800 via-slate-700 to-blue-600 text-white px-6 py-4 flex items-center">
             <div className="w-3 h-3 bg-green-400 rounded-full mr-3"></div>
             <div>
               <strong className="block">WSSC Water AI Assistant</strong>
-              <small className="text-blue-100">Online - Here to help!</small>
+              <small className="text-gray-300">Online - Here to help!</small>
             </div>
           </div>
-          <div className="flex flex-wrap gap-2 p-4 bg-gray-50">
+          <div className="flex flex-wrap gap-2 p-4 bg-white">
             {questions.map((question, index) => (
               <button
                 key={index}
-                className="px-4 py-2 bg-white border border-gray-300 rounded-full text-sm hover:bg-blue-50 hover:border-blue-300 transition-colors"
+                className="px-4 py-2 bg-white border-2 border-blue-500 text-blue-600 rounded-full text-sm hover:bg-blue-50 transition-colors"
                 onClick={() => handleQuickQuestion(question)}
                 data-testid={`chat-quick-question-${index + 1}`}
               >
@@ -161,7 +161,7 @@ export function ChatbotDemo({ welcomeMessage, quickQuestions }: ChatbotDemoProps
             ))}
           </div>
           <div
-            className="h-96 overflow-y-auto p-6 space-y-4"
+            className="h-96 overflow-y-auto p-6 space-y-4 bg-gray-50"
             ref={messagesContainerRef}
             role="log"
             aria-live="polite"
@@ -174,16 +174,21 @@ export function ChatbotDemo({ welcomeMessage, quickQuestions }: ChatbotDemoProps
                 <div
                   key={index}
                   className={`flex ${
-                    message.type === 'user' ? 'justify-end' : 'justify-start'
+                    message.type === 'user' ? 'justify-end' : 'justify-start items-start gap-3'
                   }`}
                   data-testid={`chat-message-${index}`}
                   ref={isLatestBotResponse ? latestResponseRef : null}
                 >
+                  {message.type === 'bot' && (
+                    <div className="w-10 h-10 bg-teal-500 rounded-full flex items-center justify-center text-white text-sm font-bold flex-shrink-0">
+                      AI
+                    </div>
+                  )}
                   <div
-                    className={`max-w-md rounded-lg px-4 py-3 ${
+                    className={`max-w-md rounded-2xl px-4 py-3 ${
                       message.type === 'user'
                         ? 'bg-blue-600 text-white'
-                        : 'bg-gray-100 text-gray-900'
+                        : 'bg-white text-gray-700 shadow-sm'
                     }`}
                   >
                     <div
@@ -195,8 +200,11 @@ export function ChatbotDemo({ welcomeMessage, quickQuestions }: ChatbotDemoProps
               );
             })}
             {isTyping && (
-              <div className="flex justify-start">
-                <div className="bg-gray-100 rounded-lg px-4 py-3">
+              <div className="flex justify-start items-start gap-3">
+                <div className="w-10 h-10 bg-teal-500 rounded-full flex items-center justify-center text-white text-sm font-bold flex-shrink-0">
+                  AI
+                </div>
+                <div className="bg-white rounded-2xl px-4 py-3 shadow-sm">
                   <div className="flex space-x-2" role="status" aria-live="polite" data-testid="typing-indicator">
                     <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
                     <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
@@ -206,10 +214,10 @@ export function ChatbotDemo({ welcomeMessage, quickQuestions }: ChatbotDemoProps
               </div>
             )}
           </div>
-          <div className="border-t border-gray-200 p-4 flex gap-2">
+          <div className="border-t border-gray-200 p-4 flex gap-2 bg-white">
             <input
               type="text"
-              className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="flex-1 px-4 py-3 bg-gray-100 border-0 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="Type your question here..."
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
@@ -218,7 +226,7 @@ export function ChatbotDemo({ welcomeMessage, quickQuestions }: ChatbotDemoProps
               aria-label="Chat message input"
             />
             <button
-              className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+              className="px-6 py-3 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-colors font-medium"
               onClick={handleSendMessage}
               data-testid="chat-send-button"
             >
