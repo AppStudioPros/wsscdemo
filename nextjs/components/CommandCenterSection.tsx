@@ -91,12 +91,19 @@ export function CommandCenterSection() {
                 onClick={() => handleCardClick(index)}
                 className={`bg-white rounded-xl p-5 cursor-pointer transition-all duration-300 ${
                   activeIndex === index
-                    ? 'border-2 border-blue-500 shadow-lg'
+                    ? 'bg-cyan-50 border border-cyan-200 shadow-lg'
                     : 'border border-gray-200 hover:border-gray-300'
                 }`}
               >
-                <h3 className="font-bold text-gray-900 mb-2">{feature.title}</h3>
-                <p className="text-gray-600 text-sm">{feature.description}</p>
+                <div className="flex">
+                  <div className={`w-1 rounded-full mr-4 self-stretch ${
+                    activeIndex === index ? 'bg-teal-500' : 'bg-transparent'
+                  }`}></div>
+                  <div>
+                    <h3 className="font-bold text-gray-900 mb-2">{feature.title}</h3>
+                    <p className="text-gray-600 text-sm">{feature.description}</p>
+                  </div>
+                </div>
               </div>
             ))}
           </div>
