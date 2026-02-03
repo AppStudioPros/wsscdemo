@@ -21,6 +21,7 @@ interface HeroContentProps {
 }
 
 const VIDEO_URL = "https://customer-assets.emergentagent.com/job_e4309676-f936-468a-85ba-a6da5ef3628a/artifacts/v2g5ybas_Hailuo_Video_Create%20a%20high-quality%20video%20sh_475141841006280714.mp4";
+const LOGO_URL = "https://customer-assets.emergentagent.com/job_e4309676-f936-468a-85ba-a6da5ef3628a/artifacts/0jjchx6u_Wlogo-REVERSED-01.png";
 
 export function HeroContent({ hero }: HeroContentProps) {
   const scrollToAIFeatures = () => {
@@ -45,16 +46,14 @@ export function HeroContent({ hero }: HeroContentProps) {
         <div className="grid md:grid-cols-2 gap-6 md:gap-12 items-center">
           {/* Left Side - Text Content */}
           <div className="text-white text-center md:text-left">
-            {hero.logo && (
-              <Image
-                src={hero.logo.asset.url}
-                alt={hero.logo.alt || 'WSSC Water Logo'}
-                width={300}
-                height={100}
-                className="mb-4 md:mb-6 w-40 md:w-[300px] h-auto mx-auto md:mx-0"
-                priority
-              />
-            )}
+            <Image
+              src={LOGO_URL}
+              alt="WSSC Water Logo"
+              width={300}
+              height={100}
+              className="mb-4 md:mb-6 w-40 md:w-[300px] h-auto mx-auto md:mx-0"
+              priority
+            />
             <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold leading-tight mb-3 md:mb-4">
               {hero.title}
             </h1>
