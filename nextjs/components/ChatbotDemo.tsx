@@ -77,8 +77,8 @@ export function ChatbotDemo({ welcomeMessage, quickQuestions }: ChatbotDemoProps
   const sendToAI = async (message: string) => {
     setIsTyping(true);
     try {
-      const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || '';
-      const response = await fetch(`${backendUrl}/api/chat`, {
+      // Use relative path - Next.js rewrites will proxy to backend
+      const response = await fetch(`/api/chat`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
