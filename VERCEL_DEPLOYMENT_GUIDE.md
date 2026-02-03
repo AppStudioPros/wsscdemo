@@ -8,59 +8,39 @@ The repository has multiple projects:
 
 Vercel needs to be configured to deploy the `/nextjs` subdirectory.
 
-## Solution
+## ✅ SOLUTION (CONFIGURED)
 
-### Option 1: Configure Root Directory in Vercel Dashboard (RECOMMENDED)
+### Root Directory is Set to `nextjs`
 
-1. Go to your Vercel project settings
-2. Navigate to **Settings** → **General** → **Root Directory**
-3. Set the Root Directory to: `nextjs`
-4. Click **Save**
-5. Redeploy
+The Vercel project is now configured with:
+- **Root Directory**: `nextjs`
+- **Framework Detection**: Automatic (Next.js 16.1.6)
+- **Build Command**: `next build` (auto-detected)
+- **Output Directory**: `.next` (auto-detected)
 
-This tells Vercel to treat the `nextjs` folder as the project root.
-
-### Option 2: Use Repository Root with vercel.json
-
-If you want to keep the root at `/app`, use the `/app/vercel.json` configuration:
-
-```json
-{
-  "buildCommand": "cd nextjs && yarn build",
-  "outputDirectory": "nextjs/.next",
-  "installCommand": "cd nextjs && yarn install",
-  "framework": "nextjs"
-}
-```
-
-**Note:** This approach is less clean because Vercel will still try to auto-detect the framework from the root.
+No `vercel.json` is needed because Vercel auto-detects everything from the `package.json` in the `nextjs` directory.
 
 ## Current File Structure
 
 ```
 /app/
-├── vercel.json              # Root config (Option 2)
 ├── frontend/
-│   ├── vercel.json          # Old config (ignore this)
-│   └── package.json         # Has proxy scripts for local dev
-├── nextjs/                  # The actual Next.js app
-│   ├── vercel.json          # Direct deployment config
-│   ├── package.json         # Contains Next.js dependency
+│   └── package.json         # Has proxy scripts for local dev only
+├── nextjs/                  # ✅ The actual Next.js app (Vercel root)
+│   ├── package.json         # Contains Next.js 16.1.6 dependency
 │   ├── app/
 │   ├── components/
-│   └── public/
+│   ├── public/
+│   └── (no vercel.json needed - auto-detection works)
 └── backend/                 # FastAPI (not deployed to Vercel)
 ```
 
-## Recommended Deployment Strategy
+## Deployment Steps
 
-**Use Option 1** - Set Root Directory to `nextjs` in Vercel dashboard. This is the cleanest approach and what Vercel recommends for monorepo structures.
-
-### Steps:
-1. In Vercel Dashboard: **Settings → General → Root Directory → `nextjs`**
-2. The `/app/nextjs/vercel.json` will be automatically detected
-3. Framework will be auto-detected as Next.js
-4. Build and deploy will work correctly
+1. ✅ **Root Directory is set to `nextjs`** in Vercel Dashboard
+2. ✅ Framework auto-detects as Next.js
+3. ✅ Build command is `next build`
+4. Push to GitHub → Vercel deploys automatically
 
 ## Local Development
 
