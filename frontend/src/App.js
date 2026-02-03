@@ -330,138 +330,211 @@ function Hero() {
               </div>
             )}
             
-            {/* Dashboard */}
+            {/* NEW Dashboard - Inspired by mockups */}
             {(phoneState === 'dashboard' || phoneState === 'dashboard-return') && (
-              <div className={`sim-dashboard ${phoneState === 'dashboard-return' ? 'slide-from-left' : 'slide-from-right'}`}>
-                <div className="dash-header">
-                  <img src="https://customer-assets.emergentagent.com/job_aqua-demo/artifacts/e3qln0ip_Wfavicon.png" alt="WSSC" className="dash-logo" />
-                  <span>WSSC Water</span>
+              <div className={`sim-dashboard-v2 ${phoneState === 'dashboard-return' ? 'slide-from-left' : 'slide-from-right'}`}>
+                <div className="dash-v2-status">
+                  <span>9:41</span>
+                  <div className="dash-v2-status-icons">
+                    <span>📶</span>
+                    <span>🔋</span>
+                  </div>
                 </div>
-                <div className="dash-welcome">
-                  <h3>Welcome back!</h3>
-                  <p>Account: ****4521</p>
+                <div className="dash-v2-header">
+                  <h2>WSSC Water</h2>
+                  <p>Welcome back, Alex</p>
                 </div>
-                <div className="dash-balance">
-                  <span className="balance-label">Current Balance</span>
-                  <span className="balance-amount">$127.43</span>
-                  <button className="dash-pay-btn">Pay Now</button>
+                <div className="dash-v2-balance-card">
+                  <span className="dash-v2-balance-label">Current Balance</span>
+                  <span className="dash-v2-balance-amount">$127.35</span>
+                  <span className="dash-v2-due">Due February 15, 2026</span>
+                  <button className="dash-v2-pay-btn">Pay Bill</button>
                 </div>
-                <div className="dash-quick-actions">
-                  <div className="dash-action">
-                    <span className="action-icon">💧</span>
+                <div className="dash-v2-quick-actions">
+                  <div className="dash-v2-action">
+                    <div className="dash-v2-action-icon usage">💧</div>
                     <span>Usage</span>
                   </div>
-                  <div className="dash-action calculator-btn">
-                    <span className="action-icon">💰</span>
-                    <span>Savings</span>
+                  <div className="dash-v2-action">
+                    <div className="dash-v2-action-icon history">🕐</div>
+                    <span>History</span>
                   </div>
-                  <div className="dash-action">
-                    <span className="action-icon">📋</span>
-                    <span>Bills</span>
+                  <div className="dash-v2-action">
+                    <div className="dash-v2-action-icon alerts">🔔</div>
+                    <span>Alerts</span>
                   </div>
-                  <div className="dash-action">
-                    <span className="action-icon">🔧</span>
-                    <span>Service</span>
+                  <div className="dash-v2-action">
+                    <div className="dash-v2-action-icon support">💬</div>
+                    <span>Support</span>
                   </div>
                 </div>
-                <div className="dash-ai-btn">
-                  <span>💬</span>
+                <div className="dash-v2-ai-btn">
                   <span>Ask AI Assistant</span>
                 </div>
+                <div className="dash-v2-nav">
+                  <div className="dash-v2-nav-item active">
+                    <span>🏠</span>
+                    <span>Home</span>
+                  </div>
+                  <div className="dash-v2-nav-item">
+                    <span>💧</span>
+                    <span>Usage</span>
+                  </div>
+                  <div className="dash-v2-nav-item">
+                    <span>📄</span>
+                    <span>Bills</span>
+                  </div>
+                  <div className="dash-v2-nav-item">
+                    <span>🔔</span>
+                    <span>Alerts</span>
+                  </div>
+                  <div className="dash-v2-nav-item">
+                    <span>👤</span>
+                    <span>Account</span>
+                  </div>
+                </div>
               </div>
             )}
             
-            {/* Chat Screen */}
+            {/* NEW Chat Screen - Inspired by mockups */}
             {(phoneState === 'chat' || phoneState === 'chat-typing' || phoneState === 'chat-response' || phoneState === 'chat-closing') && (
-              <div className={`sim-chat ${phoneState === 'chat-closing' ? 'slide-out-right' : 'slide-from-right'}`}>
-                <div className="chat-header">
-                  <button className="chat-back">←</button>
-                  <div className="chat-title">
-                    <strong>AI Assistant</strong>
-                    <small>Online</small>
+              <div className={`sim-chat-v2 ${phoneState === 'chat-closing' ? 'slide-out-right' : 'slide-from-right'}`}>
+                <div className="chat-v2-status">
+                  <span>9:41</span>
+                  <div className="chat-v2-status-icons">
+                    <span>📶</span>
+                    <span>🔋</span>
                   </div>
-                  <div className="chat-avatar">🤖</div>
                 </div>
-                <div className="chat-messages-container">
-                  <div className="chat-messages">
-                    <div className="chat-welcome">
-                      <p>Hi! I'm your WSSC Water AI assistant. How can I help you today?</p>
+                <div className="chat-v2-header">
+                  <button className="chat-v2-back">←</button>
+                  <span className="chat-v2-title">WSSC Water AI Assistant</span>
+                </div>
+                <div className="chat-v2-quick-btns">
+                  <button className="chat-v2-quick-btn">Why is my bill high?</button>
+                  <button className="chat-v2-quick-btn">Report a leak</button>
+                  <button className="chat-v2-quick-btn">Payment help</button>
+                </div>
+                <div className="chat-v2-messages">
+                  <div className="chat-v2-bubble bot">
+                    Hello! I'm here to help with your WSSC Water account. How can I assist you today?
+                  </div>
+                  {chatMessages.map((msg, i) => (
+                    <div key={i} className={`chat-v2-bubble ${msg.type}`}>
+                      {msg.text}
+                      {msg.hasLink && showPayLink && (
+                        <div className="chat-v2-link">[Pay Bill]</div>
+                      )}
                     </div>
-                    {chatMessages.map((msg, i) => (
-                      <div key={i} className={`chat-bubble ${msg.type}`}>
-                        {msg.text}
-                      </div>
-                    ))}
-                    {showTypingIndicator && (
-                      <div className="chat-bubble bot typing">
-                        <span className="typing-dot"></span>
-                        <span className="typing-dot"></span>
-                        <span className="typing-dot"></span>
-                      </div>
+                  ))}
+                  {showTypingIndicator && (
+                    <div className="chat-v2-bubble bot typing">
+                      <span className="typing-dot"></span>
+                      <span className="typing-dot"></span>
+                      <span className="typing-dot"></span>
+                    </div>
+                  )}
+                </div>
+                <div className="chat-v2-input-area">
+                  <div className="chat-v2-input">
+                    {showKeyboard ? (
+                      <>{typedText}<span className="cursor">|</span></>
+                    ) : (
+                      <span className="placeholder">Message...</span>
                     )}
                   </div>
+                  <button className="chat-v2-send">Send</button>
                 </div>
-                <div className="chat-input-wrapper">
-                  {showKeyboard && (
-                    <div className="chat-input-area">
-                      <div className="chat-input">
-                        {typedText}<span className="cursor">|</span>
-                      </div>
-                      <button className="send-btn">↑</button>
-                    </div>
-                  )}
-                  {!showKeyboard && !chatMessages.length && (
-                    <div className="chat-input-area">
-                      <div className="chat-input placeholder">Type a message...</div>
-                    </div>
-                  )}
-                </div>
-                {showKeyboard && (
-                  <div className="sim-keyboard">
-                    <div className="kb-row">QWERTYUIOP</div>
-                    <div className="kb-row">ASDFGHJKL</div>
-                    <div className="kb-row">ZXCVBNM</div>
-                    <div className="kb-row space">space</div>
+                <div className="chat-v2-nav">
+                  <div className="chat-v2-nav-item active">
+                    <span>🤖</span>
+                    <span>AI</span>
                   </div>
-                )}
+                  <div className="chat-v2-nav-item">
+                    <span>📧</span>
+                    <span>Account</span>
+                  </div>
+                  <div className="chat-v2-nav-item">
+                    <span>📧</span>
+                    <span>More</span>
+                  </div>
+                </div>
               </div>
             )}
             
-            {/* Calculator Screen */}
-            {phoneState === 'calculator' && (
-              <div className="sim-calculator slide-from-right">
-                <div className="calc-header">
-                  <button className="chat-back">←</button>
-                  <span>Savings Calculator</span>
+            {/* NEW Bill Pay Screen - Inspired by mockups */}
+            {phoneState === 'billpay' && (
+              <div className="sim-billpay slide-from-right">
+                <div className="billpay-status">
+                  <span>9:41</span>
+                  <div className="billpay-status-icons">
+                    <span>📶</span>
+                    <span>🔋</span>
+                  </div>
                 </div>
-                <div className="calc-content">
-                  <div className="calc-hero">
-                    <span className="calc-label">Potential Annual Savings</span>
-                    <span className="calc-amount">${calculatorValues.savings.toLocaleString()}</span>
-                  </div>
-                  <div className="calc-stat">
-                    <span>Calls Deflected</span>
-                    <span className="calc-value">{calculatorValues.calls.toLocaleString()}</span>
-                  </div>
-                  <div className="calc-stat">
-                    <span>Cost per Call</span>
-                    <span className="calc-value">$12.00</span>
-                  </div>
-                  <div className="calc-stat highlight">
-                    <span>Your Savings</span>
-                    <span className="calc-value">${calculatorValues.savings.toLocaleString()}</span>
-                  </div>
-                  {showCalculateButton && (
-                    <button className="calc-calculate-btn">
-                      Calculate Savings
-                    </button>
-                  )}
-                  {isCalculating && (
-                    <div className="calc-loading">
-                      <div className="calc-spinner"></div>
-                      <span>Calculating...</span>
+                <div className="billpay-header">
+                  <button className="billpay-back">←</button>
+                  <span>Pay Bill</span>
+                </div>
+                <div className="billpay-amount-card">
+                  <span className="billpay-label">Current Amount Due</span>
+                  <span className="billpay-amount">$127.35</span>
+                  <span className="billpay-due">Due February 15, 2026</span>
+                  <span className="billpay-account">Account ***4892</span>
+                </div>
+                <div className="billpay-section">
+                  <h4>Payment Method</h4>
+                  <div className="billpay-method">
+                    <span className="billpay-card-icon">💳</span>
+                    <div>
+                      <span>Visa ending in 1234</span>
+                      <span className="billpay-add-link">Add new payment method</span>
                     </div>
-                  )}
+                  </div>
+                </div>
+                <div className="billpay-section">
+                  <h4>Amount to Pay</h4>
+                  <div className="billpay-amount-input">
+                    <span>$127.35</span>
+                    <span className="billpay-change">Change</span>
+                  </div>
+                  <div className="billpay-options">
+                    <label><span className="radio checked"></span> Full Amount</label>
+                    <label><span className="radio"></span> Other Amount</label>
+                  </div>
+                </div>
+                <button className="billpay-submit-btn">Pay $127.35</button>
+                <div className="billpay-nav">
+                  <div className="billpay-nav-item active">
+                    <span>📄</span>
+                    <span>Bills</span>
+                  </div>
+                  <div className="billpay-nav-item">
+                    <span>🏠</span>
+                    <span>Home</span>
+                  </div>
+                  <div className="billpay-nav-item">
+                    <span>📊</span>
+                    <span>Activity</span>
+                  </div>
+                  <div className="billpay-nav-item">
+                    <span>👤</span>
+                    <span>Profile</span>
+                  </div>
+                </div>
+              </div>
+            )}
+            
+            {/* Payment Success */}
+            {phoneState === 'payment-success' && (
+              <div className="sim-payment-success slide-from-right">
+                <div className="success-content">
+                  <div className="success-icon">✓</div>
+                  <h3>Payment Successful!</h3>
+                  <p className="success-amount">$127.35</p>
+                  <p className="success-detail">Your payment has been processed successfully.</p>
+                  <p className="success-conf">Confirmation #WS2026-8847</p>
+                  <button className="success-btn">Done</button>
                 </div>
               </div>
             )}
