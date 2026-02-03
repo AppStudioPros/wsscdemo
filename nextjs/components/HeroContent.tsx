@@ -45,7 +45,7 @@ export function HeroContent({ hero }: HeroContentProps) {
       <div className="absolute inset-0 bg-black/40" />
 
       {/* Subtle blue glow background for readability - positioned at top */}
-      <div className="absolute inset-x-0 top-0 h-[60vh] bg-gradient-to-b from-blue-900/70 via-blue-900/40 to-transparent pointer-events-none z-[5]" />
+      <div className="absolute inset-x-0 top-0 h-[65vh] md:h-[60vh] bg-gradient-to-b from-blue-900/85 via-blue-800/60 to-transparent pointer-events-none z-[5]" />
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 md:px-6 py-8 md:py-0">
