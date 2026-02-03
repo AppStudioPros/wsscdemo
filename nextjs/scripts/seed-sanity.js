@@ -5,6 +5,9 @@
  * Usage: node scripts/seed-sanity.js
  */
 
+// Load environment variables
+require('dotenv').config({ path: '.env.local' });
+
 const { createClient } = require('@sanity/client');
 
 const client = createClient({
