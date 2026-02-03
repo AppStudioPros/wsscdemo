@@ -1,12 +1,12 @@
 import { getAIFeatures } from '@/lib/sanity/client';
 
-const iconMap: Record<string, { icon: string; bgColor: string }> = {
-  'search': { icon: '🤖', bgColor: 'bg-gradient-to-br from-pink-200 to-orange-200' },
-  'magnifier': { icon: '🔍', bgColor: 'bg-gradient-to-br from-teal-200 to-cyan-300' },
-  'chart': { icon: '📊', bgColor: 'bg-gradient-to-br from-blue-100 to-indigo-200' },
-  'document': { icon: '📄', bgColor: 'bg-gradient-to-br from-amber-100 to-yellow-200' },
-  'tool': { icon: '🔧', bgColor: 'bg-gradient-to-br from-rose-200 to-pink-300' },
-  'accessibility': { icon: '♿', bgColor: 'bg-gradient-to-br from-emerald-100 to-teal-200' },
+const iconMap: Record<string, string> = {
+  'search': '🤖',
+  'magnifier': '🔍',
+  'chart': '📊',
+  'document': '📄',
+  'tool': '🔧',
+  'accessibility': '♿',
 };
 
 export async function AIFeaturesSection() {
@@ -31,16 +31,16 @@ export async function AIFeaturesSection() {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((feature: any, index: number) => {
             const iconKey = feature.iconText?.toLowerCase() || '';
-            const iconData = iconMap[iconKey] || { icon: '🤖', bgColor: 'bg-gradient-to-br from-gray-100 to-gray-200' };
+            const icon = iconMap[iconKey] || '🤖';
             
             return (
               <div
                 key={feature._id}
-                className="bg-white rounded-2xl p-6 border border-gray-200 hover:border-blue-500 hover:border-2 transition-all duration-300"
+                className="bg-white rounded-2xl p-6 shadow-[0_0_0_1px_rgba(0,0,0,0.08),0_4px_12px_rgba(0,0,0,0.05)] hover:shadow-[0_0_0_2px_rgba(37,99,235,0.5),0_8px_24px_rgba(37,99,235,0.25)] transition-shadow duration-300"
                 data-testid={`ai-feature-card-${index + 1}`}
               >
-                <div className={`w-14 h-14 ${iconData.bgColor} rounded-xl flex items-center justify-center text-2xl mb-4`}>
-                  {iconData.icon}
+                <div className="w-14 h-14 bg-gradient-to-r from-slate-800 via-slate-700 to-blue-600 rounded-xl flex items-center justify-center text-2xl mb-4">
+                  {icon}
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-3">{feature.title}</h3>
                 <p className="text-gray-700 mb-4">{feature.description}</p>
