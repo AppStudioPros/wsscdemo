@@ -135,9 +135,9 @@ export function CommandCenterSection() {
           {badges.map((badge, index) => (
             <div
               key={index}
-              className="bg-white rounded-xl p-4 flex items-center gap-3 shadow-sm border border-gray-100"
+              className="bg-white rounded-xl p-4 flex items-center gap-3 shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-300"
             >
-              <div className={`w-10 h-10 ${badge.color} rounded-xl flex items-center justify-center text-xl`}>
+              <div className="w-10 h-10 bg-teal-500 rounded-xl flex items-center justify-center text-xl">
                 {badge.icon}
               </div>
               <span className="font-medium text-gray-900 text-sm">{badge.label}</span>
