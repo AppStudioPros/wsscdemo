@@ -2,100 +2,115 @@
 
 import { useState } from 'react';
 
-interface ROIField {
-  label: string;
-  defaultValue: number;
-  fieldType: string;
-}
-
 interface ROICalculatorProps {
-  fields?: ROIField[];
+  fields?: any[];
 }
 
 export function ROICalculator({ fields }: ROICalculatorProps) {
-  const defaultFields: ROIField[] = [
-    { label: 'Monthly Call Volume', defaultValue: 50000, fieldType: 'number' },
-    { label: 'Average Handle Time (minutes)', defaultValue: 8, fieldType: 'number' },
-    { label: 'Cost per Call ($)', defaultValue: 12, fieldType: 'currency' },
-    { label: 'AI Deflection Rate (%)', defaultValue: 30, fieldType: 'percentage' },
-  ];
+  const [values, setValues] = useState({
+    monthlyCallVolume: 50000,
+    avgCostPerCall: 12,
+    annualPaperBillVolume: 900000,
+    costPerPaperBill: 1,
+  });
 
-  const calculatorFields = fields || defaultFields;
-  const [values, setValues] = useState<Record<string, number>>(
-    calculatorFields.reduce((acc, field) => ({ ...acc, [field.label]: field.defaultValue }), {})
-  );
-
-  const handleChange = (label: string, value: number) => {
-    setValues((prev) => ({ ...prev, [label]: value }));
+  const handleChange = (field: string, value: number) => {
+    setValues((prev) => ({ ...prev, [field]: value }));
   };
 
   const calculateSavings = () => {
-    const volume = values['Monthly Call Volume'] || 0;
-    const cost = values['Cost per Call ($)'] || 0;
-    const deflectionRate = (values['AI Deflection Rate (%)'] || 0) / 100;
-
-    const callsDeflected = volume * deflectionRate;
-    const monthlySavings = callsDeflected * cost;
-    const annualSavings = monthlySavings * 12;
+    // Call Deflection: 30% reduction
+    const callDeflectionSavings = values.monthlyCallVolume * 12 * values.avgCostPerCall * 0.30;
+    
+    // Paper Bill Reduction: 25% shift to e-bill
+    const paperBillSavings = values.annualPaperBillVolume * values.costPerPaperBill * 0.25;
+    
+    const totalSavings = callDeflectionSavings + paperBillSavings;
 
     return {
-      callsDeflected: Math.round(callsDeflected),
-      monthlySavings: Math.round(monthlySavings),
-      annualSavings: Math.round(annualSavings),
+      callDeflection: Math.round(callDeflectionSavings),
+      paperBillReduction: Math.round(paperBillSavings),
+      total: Math.round(totalSavings),
     };
   };
 
   const savings = calculateSavings();
 
   return (
-    <section id="roi-calculator" className="py-20 bg-blue-600 text-white">
+    <section id="roi-calculator" className="py-20 bg-gradient-to-r from-slate-800 via-slate-700 to-blue-600">
       <div className="container mx-auto px-6">
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold mb-4">ROI Calculator</h2>
-          <p className="text-lg text-blue-100 max-w-3xl mx-auto">
-            See the potential cost savings from implementing AI-powered customer service.
+          <h2 className="text-4xl font-bold text-white mb-4">Calculate Your ROI</h2>
+          <p className="text-lg text-gray-300 max-w-3xl mx-auto">
+            See how AI-powered self-service saves money and improves customer satisfaction.
           </p>
         </div>
-        <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-xl overflow-hidden">
-          <div className="grid md:grid-cols-2 gap-8 p-8">
+        <div className="max-w-2xl mx-auto bg-white rounded-2xl shadow-xl p-8">
+          <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">Projected Annual Savings</h3>
+          
+          {/* Input Fields - 2x2 Grid */}
+          <div className="grid grid-cols-2 gap-4 mb-8">
             <div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">Your Inputs</h3>
-              <div className="space-y-6">
-                {calculatorFields.map((field) => (
-                  <div key={field.label}>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      {field.label}
-                    </label>
-                    <input
-                      type="number"
-                      value={values[field.label]}
-                      onChange={(e) => handleChange(field.label, Number(e.target.value))}
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    />
-                  </div>
-                ))}
-              </div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Monthly Call Center Volume
+              </label>
+              <input
+                type="number"
+                value={values.monthlyCallVolume}
+                onChange={(e) => handleChange('monthlyCallVolume', Number(e.target.value))}
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
             </div>
-            <div className="bg-gradient-to-br from-blue-500 to-blue-700 rounded-lg p-8 text-white">
-              <h3 className="text-2xl font-bold mb-6">Estimated Savings</h3>
-              <div className="space-y-6">
-                <div>
-                  <p className="text-sm text-blue-100 mb-1">Calls Deflected Monthly</p>
-                  <p className="text-3xl font-bold">{savings.callsDeflected.toLocaleString()}</p>
-                </div>
-                <div>
-                  <p className="text-sm text-blue-100 mb-1">Monthly Savings</p>
-                  <p className="text-3xl font-bold">${savings.monthlySavings.toLocaleString()}</p>
-                </div>
-                <div className="pt-4 border-t border-blue-400">
-                  <p className="text-sm text-blue-100 mb-1">Annual Savings</p>
-                  <p className="text-5xl font-bold">${savings.annualSavings.toLocaleString()}</p>
-                </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Average Cost per Call ($)
+              </label>
+              <input
+                type="number"
+                value={values.avgCostPerCall}
+                onChange={(e) => handleChange('avgCostPerCall', Number(e.target.value))}
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Annual Paper Bill Volume
+              </label>
+              <input
+                type="number"
+                value={values.annualPaperBillVolume}
+                onChange={(e) => handleChange('annualPaperBillVolume', Number(e.target.value))}
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Cost per Paper Bill ($)
+              </label>
+              <input
+                type="number"
+                value={values.costPerPaperBill}
+                onChange={(e) => handleChange('costPerPaperBill', Number(e.target.value))}
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
+          </div>
+
+          {/* Results Section */}
+          <div className="border-l-4 border-teal-500 bg-gray-50 rounded-r-lg p-6">
+            <div className="space-y-4">
+              <div className="flex justify-between items-center">
+                <span className="text-gray-700">Call Deflection (30% reduction):</span>
+                <span className="text-green-600 font-bold text-xl">${savings.callDeflection.toLocaleString()}</span>
               </div>
-              <p className="mt-6 text-sm text-blue-100">
-                Based on AI deflecting {values['AI Deflection Rate (%)']}% of routine calls at $
-                {values['Cost per Call ($)']} per call.
-              </p>
+              <div className="flex justify-between items-center">
+                <span className="text-gray-700">Paper Bill Reduction (25% shift to e-bill):</span>
+                <span className="text-green-600 font-bold text-xl">${savings.paperBillReduction.toLocaleString()}</span>
+              </div>
+              <div className="flex justify-between items-center pt-4 border-t border-gray-200">
+                <span className="text-gray-900 font-bold text-lg">Total Year 1 Savings:</span>
+                <span className="text-green-600 font-bold text-3xl">${savings.total.toLocaleString()}</span>
+              </div>
             </div>
           </div>
         </div>
