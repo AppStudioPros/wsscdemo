@@ -1,4 +1,4 @@
-import { revalidatePath, revalidateTag } from 'next/cache';
+import { revalidatePath } from 'next/cache';
 import { NextRequest, NextResponse } from 'next/server';
 
 export async function POST(req: NextRequest) {
@@ -10,16 +10,11 @@ export async function POST(req: NextRequest) {
     }
 
     const body = await req.json();
-    const { type, path, tag } = body;
+    const { path } = body;
 
     if (path) {
-      revalidatePath(path);
+      revalidatePath(path, 'page');
       return NextResponse.json({ revalidated: true, path });
-    }
-
-    if (tag) {
-      revalidateTag(tag);
-      return NextResponse.json({ revalidated: true, tag });
     }
 
     // Default: revalidate homepage
