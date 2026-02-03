@@ -1254,36 +1254,48 @@ function ROICalculator() {
   );
 }
 
-// Final CTA Section
+// Final CTA Section - Encore Services Contact
 function FinalCTA() {
-  const scrollToTop = (e) => {
-    e.preventDefault();
-    document.getElementById('hero')?.scrollIntoView({ behavior: 'smooth' });
+  const handleClick = () => {
+    window.open('https://encoresvcsllc.com/', '_blank', 'noopener,noreferrer');
   };
 
   return (
-    <section id="final-cta" className="section">
+    <section id="final-cta" className="section encore-section">
       <div className="container">
-        <h2>Ready to Transform WSSC Water's Digital Experience?</h2>
-        <p>
-          This is more than a website—it's a platform that reduces costs, improves service, and positions 
-          WSSC Water as a modern utility leader. Let's build the future together.
-        </p>
-        <div className="cta-buttons">
-          <a 
-            href="mailto:bid@wsscwater.com?subject=Website Proposal - Next Steps" 
-            className="cta-primary"
-            data-testid="final-cta-start-button"
-          >
-            Schedule a Demo Call
-          </a>
-          <button 
-            onClick={scrollToTop} 
-            className="cta-secondary"
-            data-testid="final-cta-back-top-button"
-          >
-            Back to Top
-          </button>
+        <div 
+          className="encore-card"
+          onClick={handleClick}
+          role="link"
+          tabIndex={0}
+          onKeyDown={(e) => e.key === 'Enter' && handleClick()}
+          data-testid="encore-contact-card"
+        >
+          <div className="encore-card-content">
+            <span className="encore-label">CONTACT</span>
+            <h2>Turn Ideas into Partnerships</h2>
+            <p className="encore-description">
+              Ready to transform WSSC Water's digital experience? Let's build the future together.
+            </p>
+            <div className="encore-contact-info">
+              <p>
+                <strong>Encore Services, LLC</strong> · 9500 Medical Center Drive, Suite 300, Largo, MD 20774
+              </p>
+              <p>
+                (202) 460-8668 · <span className="encore-email">jwoodson@encoresvcsllc.com</span>
+              </p>
+            </div>
+            <div className="encore-cta-row">
+              <span className="encore-cta-text">Visit encoresvcsllc.com →</span>
+            </div>
+          </div>
+          <div className="encore-logo-section">
+            <img 
+              src="https://customer-assets.emergentagent.com/job_smart-water-demo/artifacts/spc7h519_tempencorelogo.png" 
+              alt="Encore Services Logo" 
+              className="encore-logo"
+            />
+          </div>
         </div>
         <p className="project-details">
           <strong>Proposal Deadline:</strong> February 4, 2026 | 
