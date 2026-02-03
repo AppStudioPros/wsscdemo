@@ -208,8 +208,8 @@ function Hero() {
       await wait(3500);
       if (!isMounted) return;
       
-      // 16. TAP to go back
-      await showTouch(8, 8);
+      // 16. TAP the Done button (center of screen, where Done button is)
+      await showTouch(50, 75);
       await wait(300);
       if (!isMounted) return;
       
