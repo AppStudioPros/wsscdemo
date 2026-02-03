@@ -119,6 +119,8 @@ export default async function Home() {
         />
       </Suspense>
 
+      <PWASection />
+
       <Suspense fallback={<LoadingSection height="min-h-[50vh]" />}>
         <ROICalculator fields={roiCalculator?.fields} />
       </Suspense>
