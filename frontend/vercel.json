@@ -1,9 +1,6 @@
 {
-  "buildCommand": "cd ../nextjs && yarn build",
-  "outputDirectory": "../nextjs/.next",
-  "installCommand": "cd ../nextjs && yarn install",
-  "framework": "nextjs",
-  "rewrites": [
-    { "source": "/(.*)", "destination": "/" }
-  ]
+  "buildCommand": "yarn build",
+  "outputDirectory": ".next",
+  "installCommand": "yarn install",
+  "framework": "nextjs"
 }
