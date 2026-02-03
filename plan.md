@@ -13,7 +13,7 @@ The WSSC Water redesign demo has been successfully migrated from Create React Ap
 - Samsung Galaxy S21, Pixel 5/6, Android tablets
 - iPad and other tablets
 
-**Preview URL:** https://wssc-mobile-pwa.preview.emergentagent.com
+**Preview URL:** https://hydro-ux-preview.preview.emergentagent.com
 
 ---
 
@@ -202,7 +202,7 @@ The WSSC Water redesign demo has been successfully migrated from Create React Ap
 - Seeded Sanity with all content (hero, comparison, AI features, chatbot, ROI, tech stack, contact)
 - Fixed chatbot integration (API proxy via Next.js rewrites)
 - All sections rendering correctly from Sanity CMS
-- Preview URL working: https://wssc-mobile-pwa.preview.emergentagent.com
+- Preview URL working: https://hydro-ux-preview.preview.emergentagent.com
 
 ---
 
