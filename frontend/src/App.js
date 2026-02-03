@@ -74,9 +74,7 @@ function Hero() {
   const [showKeyboard, setShowKeyboard] = useState(false);
   const [chatMessages, setChatMessages] = useState([]);
   const [showTypingIndicator, setShowTypingIndicator] = useState(false);
-  const [calculatorValues, setCalculatorValues] = useState({ calls: 0, savings: 0 });
-  const [showCalculateButton, setShowCalculateButton] = useState(true);
-  const [isCalculating, setIsCalculating] = useState(false);
+  const [showPayLink, setShowPayLink] = useState(false);
 
   // Set video playback speed to 90% (10% slower)
   useEffect(() => {
@@ -101,7 +99,7 @@ function Hero() {
     });
   };
 
-  // Main animation sequence - SLOWER and more realistic
+  // Main animation sequence - NEW FLOW: Dashboard → AI Chat (pay bill) → Bill Pay
   useEffect(() => {
     let isMounted = true;
     
@@ -114,15 +112,13 @@ function Hero() {
       setTypedText('');
       setShowKeyboard(false);
       setShowTypingIndicator(false);
-      setCalculatorValues({ calls: 0, savings: 0 });
-      setShowCalculateButton(true);
-      setIsCalculating(false);
+      setShowPayLink(false);
       
       // 1. HOMESCREEN - sit for a moment
       await wait(3000);
       if (!isMounted) return;
       
-      // 2. TAP the WSSC app icon (positioned in row 2, col 3)
+      // 2. TAP the WSSC app icon
       await showTouch(65, 38);
       await wait(200);
       if (!isMounted) return;
@@ -132,20 +128,21 @@ function Hero() {
       await wait(1800);
       if (!isMounted) return;
       
-      // 4. DASHBOARD slides in
+      // 4. DASHBOARD slides in (new design)
       setPhoneState('dashboard');
       await wait(3500);
       if (!isMounted) return;
       
       // 5. TAP the AI Assistant button at bottom
-      await showTouch(50, 88);
+      await showTouch(50, 90);
       await wait(300);
       if (!isMounted) return;
       
-      // 6. CHAT screen slides up
+      // 6. CHAT screen slides in
       setPhoneState('chat');
       setChatMessages([]);
       setTypedText('');
+      setShowPayLink(false);
       await wait(1200);
       if (!isMounted) return;
       
@@ -154,19 +151,19 @@ function Hero() {
       await wait(800);
       if (!isMounted) return;
       
-      // 8. TYPE the question character by character (slower)
-      const question = "Why is my bill high?";
+      // 8. TYPE the question: "How do I pay my bill?"
+      const question = "How do I pay my bill?";
       setPhoneState('chat-typing');
       for (let i = 0; i <= question.length; i++) {
         if (!isMounted) return;
         setTypedText(question.slice(0, i));
-        await wait(100); // Slower typing
+        await wait(90);
       }
       await wait(800);
       if (!isMounted) return;
       
-      // 9. SEND message (tap send button area)
-      await showTouch(90, 75);
+      // 9. SEND message
+      await showTouch(90, 78);
       await wait(200);
       setChatMessages([{ type: 'user', text: question }]);
       setTypedText('');
@@ -179,82 +176,44 @@ function Hero() {
       await wait(2500);
       if (!isMounted) return;
       
-      // 11. AI RESPONSE appears
+      // 11. AI RESPONSE with pay link
       setShowTypingIndicator(false);
+      setShowPayLink(true);
       setChatMessages(prev => [...prev, { 
         type: 'bot', 
-        text: "I found a 32% spike in usage from Jan 23-25. This may indicate a leak." 
+        text: "You can pay your bill directly in the app. Tap the Pay Bill button below, or click here:",
+        hasLink: true
       }]);
       setPhoneState('chat-response');
-      await wait(4500);
+      await wait(3500);
       if (!isMounted) return;
       
-      // 12. TAP BACK button to go to dashboard
-      await showTouch(8, 8);
-      await wait(300);
-      setPhoneState('chat-closing');
-      await wait(500);
-      if (!isMounted) return;
-      
-      // 13. BACK to dashboard
-      setPhoneState('dashboard-return');
-      await wait(2500);
-      if (!isMounted) return;
-      
-      // 14. TAP the Savings calculator button (position in quick actions row)
-      await showTouch(38, 62);
+      // 12. TAP the Pay Bill link
+      await showTouch(50, 62);
       await wait(300);
       if (!isMounted) return;
       
-      // 15. CALCULATOR screen slides in
-      setPhoneState('calculator');
-      setShowCalculateButton(true);
-      setCalculatorValues({ calls: 0, savings: 0 });
-      await wait(1500);
+      // 13. BILL PAY screen slides in
+      setPhoneState('billpay');
+      await wait(4000);
       if (!isMounted) return;
       
-      // 16. TAP the CALCULATE button
-      await showTouch(50, 75);
+      // 14. TAP the Pay button
+      await showTouch(50, 82);
       await wait(300);
-      setIsCalculating(true);
-      setShowCalculateButton(false);
-      await wait(600);
       if (!isMounted) return;
       
-      // 17. ANIMATE the values appearing
-      const animateValue = (target, key, duration = 2000) => {
-        const steps = 40;
-        const increment = target / steps;
-        let current = 0;
-        let step = 0;
-        const interval = setInterval(() => {
-          if (!isMounted) {
-            clearInterval(interval);
-            return;
-          }
-          step++;
-          current += increment;
-          if (step >= steps) {
-            current = target;
-            clearInterval(interval);
-          }
-          setCalculatorValues(prev => ({ ...prev, [key]: Math.round(current) }));
-        }, duration / steps);
-      };
-      
-      animateValue(15000, 'calls', 1800);
-      await wait(400);
-      animateValue(180000, 'savings', 2200);
-      setIsCalculating(false);
-      await wait(5000);
+      // 15. Show payment success
+      setPhoneState('payment-success');
+      await wait(3500);
       if (!isMounted) return;
       
-      // 18. TAP BACK to go home
+      // 16. TAP to go back
       await showTouch(8, 8);
       await wait(300);
       if (!isMounted) return;
       
-      // 19. RETURN to homescreen
+      // 17. RETURN to homescreen
       setPhoneState('returning-home');
       await wait(800);
       setPhoneState('homescreen');
