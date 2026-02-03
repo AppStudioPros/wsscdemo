@@ -72,7 +72,7 @@ export function CommandCenterSection() {
           </h2>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
             We'll provide WSSC Water with a custom admin dashboard that's{' '}
-            <span className="text-teal-600 font-semibold">intuitive, powerful, and easy to use</span>.
+            <span className="text-blue-600 font-semibold">intuitive, powerful, and easy to use</span>.
             No technical expertise required — your team will be managing content like pros from day one.
           </p>
         </div>
