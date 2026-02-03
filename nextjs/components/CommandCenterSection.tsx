@@ -137,7 +137,7 @@ export function CommandCenterSection() {
               key={index}
               className="bg-white rounded-xl p-4 flex items-center gap-3 shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-300"
             >
-              <div className="w-12 h-12 bg-blue-500 rounded-xl flex items-center justify-center text-xl flex-shrink-0">
+              <div className="w-12 h-12 bg-teal-500 rounded-xl flex items-center justify-center text-xl flex-shrink-0">
                 {badge.icon}
               </div>
               <span className="font-medium text-gray-900 text-sm">{badge.label}</span>
