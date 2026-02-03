@@ -746,7 +746,7 @@ function ChatbotDemo() {
 
   const quickQuestions = [
     "Why is my bill so high?",
-    "I need help paying my bill",
+    "I need financial assistance",
     "I think I have a leak",
     "I have no water or low pressure",
     "Start or stop my service",
