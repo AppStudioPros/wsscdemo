@@ -1,5 +1,14 @@
 import { getAIFeatures } from '@/lib/sanity/client';
 
+const iconMap: Record<string, { icon: string; bgColor: string }> = {
+  'search': { icon: '🔍', bgColor: 'bg-blue-100' },
+  'magnifier': { icon: '🔎', bgColor: 'bg-purple-100' },
+  'chart': { icon: '📊', bgColor: 'bg-green-100' },
+  'document': { icon: '📄', bgColor: 'bg-orange-100' },
+  'tool': { icon: '🔧', bgColor: 'bg-red-100' },
+  'accessibility': { icon: '♿', bgColor: 'bg-teal-100' },
+};
+
 export async function AIFeaturesSection() {
   const features = await getAIFeatures();
 
@@ -20,22 +29,29 @@ export async function AIFeaturesSection() {
           </p>
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {features.map((feature: any, index: number) => (
-            <div
-              key={feature._id}
-              className="bg-gray-50 rounded-lg p-6 hover:shadow-xl transition-shadow duration-300"
-              data-testid={`ai-feature-card-${index + 1}`}
-            >
-              <div className="text-4xl mb-4">{feature.iconText || '🤖'}</div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">{feature.title}</h3>
-              <p className="text-gray-700 mb-4">{feature.description}</p>
-              {feature.demo && (
-                <div className="bg-blue-50 border-l-4 border-blue-500 p-4 text-sm text-gray-700 italic">
-                  {feature.demo}
+          {features.map((feature: any, index: number) => {
+            const iconKey = feature.iconText?.toLowerCase() || '';
+            const iconData = iconMap[iconKey] || { icon: '🤖', bgColor: 'bg-gray-100' };
+            
+            return (
+              <div
+                key={feature._id}
+                className="bg-white rounded-lg p-6 border-2 border-transparent hover:border-dashed hover:border-gray-300 hover:rounded-xl transition-all duration-300"
+                data-testid={`ai-feature-card-${index + 1}`}
+              >
+                <div className={`w-14 h-14 ${iconData.bgColor} rounded-xl flex items-center justify-center text-2xl mb-4`}>
+                  {iconData.icon}
                 </div>
-              )}
-            </div>
-          ))}
+                <h3 className="text-xl font-bold text-gray-900 mb-3">{feature.title}</h3>
+                <p className="text-gray-700 mb-4">{feature.description}</p>
+                {feature.demo && (
+                  <div className="bg-gray-50 rounded-lg p-4 text-sm text-gray-700 italic">
+                    {feature.demo}
+                  </div>
+                )}
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>
