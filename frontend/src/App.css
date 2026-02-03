@@ -1038,6 +1038,649 @@ a:hover {
   to { opacity: 1; }
 }
 
+/* ==================== NEW V2 PHONE SCREENS ==================== */
+
+/* Dashboard V2 - Modern Design */
+.sim-dashboard-v2 {
+  width: 100%;
+  height: 100%;
+  background: #f5f7fa;
+  display: flex;
+  flex-direction: column;
+}
+
+.sim-dashboard-v2.slide-from-right {
+  animation: slideFromRight 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.sim-dashboard-v2.slide-from-left {
+  animation: slideFromLeft 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.dash-v2-status {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 16px;
+  font-size: 0.7rem;
+  color: #333;
+}
+
+.dash-v2-status-icons {
+  display: flex;
+  gap: 4px;
+  font-size: 0.6rem;
+}
+
+.dash-v2-header {
+  text-align: center;
+  padding: 8px 16px 16px;
+}
+
+.dash-v2-header h2 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #1a2332;
+  margin: 0 0 2px;
+}
+
+.dash-v2-header p {
+  font-size: 0.75rem;
+  color: #666;
+  margin: 0;
+}
+
+.dash-v2-balance-card {
+  background: white;
+  margin: 0 12px 12px;
+  padding: 16px;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+}
+
+.dash-v2-balance-label {
+  display: block;
+  font-size: 0.7rem;
+  color: #666;
+  margin-bottom: 4px;
+}
+
+.dash-v2-balance-amount {
+  display: block;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #0a9b8c;
+  margin-bottom: 4px;
+}
+
+.dash-v2-due {
+  display: block;
+  font-size: 0.65rem;
+  color: #888;
+  margin-bottom: 12px;
+}
+
+.dash-v2-pay-btn {
+  background: transparent;
+  color: #0a9b8c;
+  border: 2px solid #0a9b8c;
+  padding: 8px 24px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.dash-v2-quick-actions {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  padding: 0 12px;
+  margin-bottom: 12px;
+}
+
+.dash-v2-action {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 12px 8px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.dash-v2-action-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  border: 2px solid #0a9b8c;
+  color: #0a9b8c;
+}
+
+.dash-v2-action span:last-child {
+  font-size: 0.6rem;
+  color: #333;
+}
+
+.dash-v2-ai-btn {
+  margin: auto 12px 12px;
+  padding: 12px;
+  background: #0a9b8c;
+  color: white;
+  border-radius: 25px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 0.85rem;
+  box-shadow: 0 4px 15px rgba(10, 155, 140, 0.3);
+}
+
+.dash-v2-nav {
+  display: flex;
+  justify-content: space-around;
+  padding: 8px 0;
+  background: white;
+  border-top: 1px solid #eee;
+}
+
+.dash-v2-nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  font-size: 0.5rem;
+  color: #888;
+}
+
+.dash-v2-nav-item.active {
+  color: #0a9b8c;
+}
+
+.dash-v2-nav-item span:first-child {
+  font-size: 0.9rem;
+}
+
+/* Chat V2 - Modern Design */
+.sim-chat-v2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #f5f7fa;
+  display: flex;
+  flex-direction: column;
+  z-index: 10;
+}
+
+.sim-chat-v2.slide-from-right {
+  animation: slideFromRight 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.sim-chat-v2.slide-out-right {
+  animation: slideOutRight 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+.chat-v2-status {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 16px;
+  font-size: 0.7rem;
+  color: #333;
+}
+
+.chat-v2-status-icons {
+  display: flex;
+  gap: 4px;
+  font-size: 0.6rem;
+}
+
+.chat-v2-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px 12px;
+  background: #0a9b8c;
+  color: white;
+}
+
+.chat-v2-back {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.chat-v2-title {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.chat-v2-quick-btns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 10px 12px;
+  background: white;
+  border-bottom: 1px solid #eee;
+}
+
+.chat-v2-quick-btn {
+  padding: 6px 12px;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 16px;
+  font-size: 0.65rem;
+  color: #333;
+  cursor: pointer;
+}
+
+.chat-v2-messages {
+  flex: 1;
+  padding: 12px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.chat-v2-bubble {
+  max-width: 85%;
+  padding: 10px 14px;
+  border-radius: 16px;
+  font-size: 0.75rem;
+  line-height: 1.4;
+  animation: bubbleIn 0.3s ease-out;
+}
+
+.chat-v2-bubble.user {
+  align-self: flex-end;
+  background: #0a9b8c;
+  color: white;
+  border-bottom-right-radius: 4px;
+}
+
+.chat-v2-bubble.bot {
+  align-self: flex-start;
+  background: #e8eaed;
+  color: #333;
+  border-bottom-left-radius: 4px;
+}
+
+.chat-v2-bubble.typing {
+  display: flex;
+  gap: 4px;
+  padding: 14px 18px;
+}
+
+.chat-v2-link {
+  margin-top: 8px;
+  color: #0066cc;
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+.chat-v2-input-area {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  background: white;
+  border-top: 1px solid #eee;
+}
+
+.chat-v2-input {
+  flex: 1;
+  padding: 10px 14px;
+  background: #f0f2f5;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  color: #333;
+}
+
+.chat-v2-input .placeholder {
+  color: #999;
+}
+
+.chat-v2-send {
+  padding: 8px 16px;
+  background: #0a9b8c;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.chat-v2-nav {
+  display: flex;
+  justify-content: space-around;
+  padding: 8px 0;
+  background: white;
+  border-top: 1px solid #eee;
+}
+
+.chat-v2-nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  font-size: 0.5rem;
+  color: #888;
+}
+
+.chat-v2-nav-item.active {
+  color: #0a9b8c;
+}
+
+.chat-v2-nav-item span:first-child {
+  font-size: 0.9rem;
+}
+
+/* Bill Pay Screen */
+.sim-billpay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #f5f7fa;
+  display: flex;
+  flex-direction: column;
+  z-index: 10;
+}
+
+.sim-billpay.slide-from-right {
+  animation: slideFromRight 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.billpay-status {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 16px;
+  font-size: 0.7rem;
+  color: #333;
+}
+
+.billpay-status-icons {
+  display: flex;
+  gap: 4px;
+  font-size: 0.6rem;
+}
+
+.billpay-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px 16px;
+  background: #0a9b8c;
+  color: white;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.billpay-back {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.billpay-amount-card {
+  background: white;
+  margin: 12px;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  border-left: 4px solid #0a9b8c;
+}
+
+.billpay-label {
+  display: block;
+  font-size: 0.7rem;
+  color: #666;
+  margin-bottom: 4px;
+}
+
+.billpay-amount {
+  display: block;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1a2332;
+  margin-bottom: 4px;
+}
+
+.billpay-due {
+  display: block;
+  font-size: 0.7rem;
+  color: #666;
+  margin-bottom: 2px;
+}
+
+.billpay-account {
+  display: block;
+  font-size: 0.65rem;
+  color: #888;
+}
+
+.billpay-section {
+  padding: 0 12px;
+  margin-bottom: 12px;
+}
+
+.billpay-section h4 {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.billpay-method {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px;
+  background: white;
+  border-radius: 10px;
+  border: 1px solid #eee;
+}
+
+.billpay-card-icon {
+  font-size: 1.2rem;
+}
+
+.billpay-method > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.billpay-method span:first-child {
+  font-size: 0.75rem;
+  color: #333;
+}
+
+.billpay-add-link {
+  font-size: 0.65rem;
+  color: #0a9b8c;
+  text-decoration: underline;
+}
+
+.billpay-amount-input {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  background: white;
+  border-radius: 10px;
+  border: 1px solid #0a9b8c;
+  margin-bottom: 8px;
+}
+
+.billpay-amount-input span:first-child {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.billpay-change {
+  font-size: 0.7rem;
+  color: #888;
+}
+
+.billpay-options {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.billpay-options label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.7rem;
+  color: #333;
+}
+
+.billpay-options .radio {
+  width: 14px;
+  height: 14px;
+  border: 2px solid #0a9b8c;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.billpay-options .radio.checked {
+  background: #0a9b8c;
+  box-shadow: inset 0 0 0 3px white;
+}
+
+.billpay-submit-btn {
+  margin: auto 12px 12px;
+  padding: 14px;
+  background: #0a9b8c;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(10, 155, 140, 0.3);
+}
+
+.billpay-nav {
+  display: flex;
+  justify-content: space-around;
+  padding: 8px 0;
+  background: white;
+  border-top: 1px solid #eee;
+}
+
+.billpay-nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  font-size: 0.5rem;
+  color: #888;
+}
+
+.billpay-nav-item.active {
+  color: #0a9b8c;
+}
+
+.billpay-nav-item span:first-child {
+  font-size: 0.9rem;
+}
+
+/* Payment Success Screen */
+.sim-payment-success {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #0a9b8c 0%, #0b7a6e 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.sim-payment-success.slide-from-right {
+  animation: slideFromRight 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.success-content {
+  text-align: center;
+  color: white;
+  padding: 20px;
+}
+
+.success-icon {
+  width: 60px;
+  height: 60px;
+  background: white;
+  color: #0a9b8c;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0 auto 16px;
+  animation: successPop 0.5s ease-out;
+}
+
+@keyframes successPop {
+  0% { transform: scale(0); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+.success-content h3 {
+  font-size: 1.2rem;
+  margin-bottom: 8px;
+}
+
+.success-amount {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0 0 8px;
+}
+
+.success-detail {
+  font-size: 0.8rem;
+  opacity: 0.9;
+  margin: 0 0 4px;
+}
+
+.success-conf {
+  font-size: 0.7rem;
+  opacity: 0.8;
+  margin: 0 0 20px;
+}
+
+.success-btn {
+  padding: 12px 40px;
+  background: white;
+  color: #0a9b8c;
+  border: none;
+  border-radius: 25px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
 /* ===== OLD SCENE STYLES (REMOVED) ===== */
 
 /* Scene 2: PWA */
