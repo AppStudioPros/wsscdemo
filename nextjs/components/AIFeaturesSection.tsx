@@ -39,7 +39,7 @@ export async function AIFeaturesSection() {
                 className="bg-white rounded-2xl p-6 shadow-[0_0_0_1px_rgba(0,0,0,0.08),0_4px_12px_rgba(0,0,0,0.05)] hover:shadow-[0_0_0_2px_rgba(37,99,235,0.5),0_8px_24px_rgba(37,99,235,0.25)] transition-shadow duration-300"
                 data-testid={`ai-feature-card-${index + 1}`}
               >
-                <div className="w-14 h-14 bg-gradient-to-r from-slate-800 via-slate-700 to-blue-600 rounded-xl flex items-center justify-center text-2xl mb-4">
+                <div className="w-14 h-14 bg-teal-500 rounded-xl flex items-center justify-center text-2xl mb-4">
                   {icon}
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-3">{feature.title}</h3>
