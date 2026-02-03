@@ -1329,11 +1329,6 @@ function FinalCTA() {
             />
           </div>
         </div>
-        <p className="project-details">
-          <strong>Proposal Deadline:</strong> February 4, 2026 | 
-          <strong> Build Timeline:</strong> 17 weeks | 
-          <strong> Investment:</strong> $300k-$400k
-        </p>
       </div>
     </section>
   );
