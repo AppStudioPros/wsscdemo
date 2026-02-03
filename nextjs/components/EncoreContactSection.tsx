@@ -1,4 +1,12 @@
+'use client';
+
 export function EncoreContactSection() {
+  const handleLinkClick = (e: React.MouseEvent, url: string) => {
+    e.preventDefault();
+    e.stopPropagation();
+    window.location.href = url;
+  };
+
   return (
     <section className="py-20 bg-slate-900">
       <div className="container mx-auto px-6">
@@ -23,22 +31,20 @@ export function EncoreContactSection() {
                 <div className="space-y-2 text-gray-300">
                   <p>Encore Services, LLC · 9500 Medical Center Drive, Suite 300, Largo, MD 20774</p>
                   <p>
-                    <a 
-                      href="tel:+12024608668" 
-                      className="hover:text-white transition-colors"
-                      onClick={(e) => e.stopPropagation()}
+                    <span 
+                      onClick={(e) => handleLinkClick(e, 'tel:+12024608668')}
+                      className="hover:text-white transition-colors cursor-pointer"
                     >
                       (202) 460-8668
-                    </a>
+                    </span>
                   </p>
                   <p>
-                    <a 
-                      href="mailto:jwoodson@encoresvcsllc.com" 
-                      className="hover:text-white transition-colors"
-                      onClick={(e) => e.stopPropagation()}
+                    <span 
+                      onClick={(e) => handleLinkClick(e, 'mailto:jwoodson@encoresvcsllc.com')}
+                      className="hover:text-white transition-colors cursor-pointer"
                     >
                       jwoodson@encoresvcsllc.com
-                    </a>
+                    </span>
                   </p>
                 </div>
                 
