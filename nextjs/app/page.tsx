@@ -4,6 +4,7 @@ import { ComparisonSection } from '@/components/ComparisonSection';
 import { AIFeaturesSection } from '@/components/AIFeaturesSection';
 import { ChatbotDemo } from '@/components/ChatbotDemo';
 import { PWASection } from '@/components/PWASection';
+import { AppExperienceSection } from '@/components/AppExperienceSection';
 import { ROICalculator } from '@/components/ROICalculator';
 import { TechStackSection } from '@/components/TechStackSection';
 import { EncoreContactSection } from '@/components/EncoreContactSection';
