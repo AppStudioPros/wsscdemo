@@ -1,12 +1,12 @@
 import { getAIFeatures } from '@/lib/sanity/client';
 
 const iconMap: Record<string, { icon: string; bgColor: string }> = {
-  'search': { icon: '🔍', bgColor: 'bg-blue-100' },
-  'magnifier': { icon: '🔎', bgColor: 'bg-purple-100' },
-  'chart': { icon: '📊', bgColor: 'bg-green-100' },
-  'document': { icon: '📄', bgColor: 'bg-orange-100' },
-  'tool': { icon: '🔧', bgColor: 'bg-red-100' },
-  'accessibility': { icon: '♿', bgColor: 'bg-teal-100' },
+  'search': { icon: '🤖', bgColor: 'bg-gradient-to-br from-pink-200 to-orange-200' },
+  'magnifier': { icon: '🔍', bgColor: 'bg-gradient-to-br from-teal-200 to-cyan-300' },
+  'chart': { icon: '📊', bgColor: 'bg-gradient-to-br from-blue-100 to-indigo-200' },
+  'document': { icon: '📄', bgColor: 'bg-gradient-to-br from-amber-100 to-yellow-200' },
+  'tool': { icon: '🔧', bgColor: 'bg-gradient-to-br from-rose-200 to-pink-300' },
+  'accessibility': { icon: '♿', bgColor: 'bg-gradient-to-br from-emerald-100 to-teal-200' },
 };
 
 export async function AIFeaturesSection() {
@@ -31,12 +31,12 @@ export async function AIFeaturesSection() {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((feature: any, index: number) => {
             const iconKey = feature.iconText?.toLowerCase() || '';
-            const iconData = iconMap[iconKey] || { icon: '🤖', bgColor: 'bg-gray-100' };
+            const iconData = iconMap[iconKey] || { icon: '🤖', bgColor: 'bg-gradient-to-br from-gray-100 to-gray-200' };
             
             return (
               <div
                 key={feature._id}
-                className="bg-white rounded-lg p-6 border-2 border-transparent hover:border-dashed hover:border-gray-300 hover:rounded-xl transition-all duration-300"
+                className="bg-white rounded-2xl p-6 border border-gray-200 hover:border-blue-500 hover:border-2 transition-all duration-300"
                 data-testid={`ai-feature-card-${index + 1}`}
               >
                 <div className={`w-14 h-14 ${iconData.bgColor} rounded-xl flex items-center justify-center text-2xl mb-4`}>
