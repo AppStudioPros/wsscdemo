@@ -127,6 +127,8 @@ export default async function Home() {
 
       <TechStackSection />
 
+      <CommandCenterSection />
+
       <Suspense fallback={<LoadingSection height="min-h-[50vh]" />}>
         <ROICalculator fields={roiCalculator?.fields} />
       </Suspense>
