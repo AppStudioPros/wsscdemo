@@ -54,23 +54,23 @@ export function HeroContent({ hero }: HeroContentProps) {
               className="mb-4 md:mb-6 w-40 md:w-[300px] h-auto mx-auto md:mx-0"
               priority
             />
-            <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold leading-tight mb-3 md:mb-4">
+            <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold leading-tight mb-3 md:mb-4 text-white">
               {hero.title}
             </h1>
             {hero.tagline && (
-              <p className="text-xl md:text-2xl font-semibold text-blue-300 mb-3 md:mb-4">
+              <p className="text-xl md:text-2xl font-semibold text-white mb-3 md:mb-4 italic">
                 {hero.tagline}
               </p>
             )}
             {hero.subtitle && (
-              <p className="text-base md:text-lg text-gray-200 max-w-xl mx-auto md:mx-0 mb-4 md:mb-6">
+              <p className="text-base md:text-lg text-white max-w-xl mx-auto md:mx-0 mb-4 md:mb-6">
                 {hero.subtitle}
               </p>
             )}
             {hero.ctaButton && (
               <button
                 onClick={scrollToAIFeatures}
-                className="inline-block px-6 py-3 md:px-8 md:py-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors duration-300 min-h-[48px]"
+                className="inline-block px-6 py-3 md:px-8 md:py-4 bg-transparent hover:bg-white/10 text-white font-semibold rounded-full border-2 border-white transition-colors duration-300 min-h-[48px]"
                 data-testid="hero-primary-cta-button"
               >
                 {hero.ctaButton.text}
