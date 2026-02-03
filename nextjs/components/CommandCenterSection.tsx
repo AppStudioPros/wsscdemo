@@ -120,7 +120,7 @@ export function CommandCenterSection() {
                 admin.wsscwater.com
               </div>
             </div>
-            <div className="bg-white rounded-b-xl shadow-xl overflow-hidden">
+            <div className="bg-white rounded-b-xl shadow-xl overflow-hidden" style={{ minHeight: '600px' }}>
               <img
                 src={features[activeIndex].image}
                 alt={features[activeIndex].title}
