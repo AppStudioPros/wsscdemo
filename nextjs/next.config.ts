@@ -16,14 +16,21 @@ const nextConfig: NextConfig = {
     ],
   },
   async rewrites() {
+    // Only add rewrites if backend URL is configured
+    const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
+    
+    if (!backendUrl) {
+      return [];
+    }
+    
     return [
       {
         source: '/api/chat',
-        destination: `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/chat`,
+        destination: `${backendUrl}/api/chat`,
       },
       {
         source: '/api/stats',
-        destination: `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/stats`,
+        destination: `${backendUrl}/api/stats`,
       },
     ];
   },
