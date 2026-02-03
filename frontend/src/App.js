@@ -1196,10 +1196,14 @@ function ROICalculator() {
 
   // Initialize values on mount
   useEffect(() => {
-    if (callSavingsRef.current) callSavingsRef.current.textContent = '$' + callSavings.toLocaleString();
-    if (billSavingsRef.current) billSavingsRef.current.textContent = '$' + billSavings.toLocaleString();
-    if (totalSavingsRef.current) totalSavingsRef.current.textContent = '$' + totalSavings.toLocaleString();
-    prevValuesRef.current = { callSavings, billSavings, totalSavings };
+    const currentCallSavings = callSavings;
+    const currentBillSavings = billSavings;
+    const currentTotalSavings = totalSavings;
+    if (callSavingsRef.current) callSavingsRef.current.textContent = '$' + currentCallSavings.toLocaleString();
+    if (billSavingsRef.current) billSavingsRef.current.textContent = '$' + currentBillSavings.toLocaleString();
+    if (totalSavingsRef.current) totalSavingsRef.current.textContent = '$' + currentTotalSavings.toLocaleString();
+    prevValuesRef.current = { callSavings: currentCallSavings, billSavings: currentBillSavings, totalSavings: currentTotalSavings };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
