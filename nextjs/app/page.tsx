@@ -137,6 +137,8 @@ export default async function Home() {
       <Suspense fallback={<LoadingSection height="min-h-[50vh]" />}>
         <EncoreContactSection />
       </Suspense>
+
+      <DisclaimerFooter />
     </main>
   );
 }
