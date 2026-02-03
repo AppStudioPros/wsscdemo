@@ -3191,38 +3191,158 @@ a:hover {
 #final-cta {
   text-align: center;
   padding: 5rem 2rem;
-  background: white;
+  background: #0a0a14;
 }
 
-#final-cta h2 {
-  font-size: clamp(1.8rem, 4vw, 2.5rem);
-  margin-bottom: 1.5rem;
-  color: var(--color-dark);
+#final-cta.encore-section {
+  background: linear-gradient(180deg, #0a0a14 0%, #0d1020 100%);
 }
 
-#final-cta > p {
-  font-size: 1.2rem;
-  color: var(--color-muted-ink);
-  max-width: 700px;
-  margin: 0 auto 3rem;
-  line-height: 1.8;
-}
-
-.cta-buttons {
+/* Encore Card Styles */
+.encore-card {
+  background: linear-gradient(135deg, #0d1525 0%, #1a1a35 50%, #2a1a30 100%);
+  border: 2px solid #c9a227;
+  border-radius: 16px;
+  padding: 3rem;
+  max-width: 900px;
+  margin: 0 auto 2rem;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
   display: flex;
-  gap: 1.5rem;
-  justify-content: center;
-  flex-wrap: wrap;
+  align-items: center;
+  gap: 3rem;
+  text-align: left;
+  position: relative;
+  overflow: hidden;
 }
 
-.project-details {
-  margin-top: 3rem;
-  color: var(--color-muted-ink);
+.encore-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(201, 162, 39, 0.1) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.encore-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 60px rgba(201, 162, 39, 0.2);
+  border-color: #e0b830;
+}
+
+.encore-card:focus {
+  outline: 2px solid #c9a227;
+  outline-offset: 4px;
+}
+
+.encore-card-content {
+  flex: 1;
+  position: relative;
+  z-index: 1;
+}
+
+.encore-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: #5ba4d9;
+  display: block;
+  margin-bottom: 0.75rem;
+}
+
+.encore-card h2 {
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 700;
+  color: white;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+  font-family: 'Georgia', 'Times New Roman', serif;
+}
+
+.encore-description {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.encore-contact-info {
+  margin-bottom: 1.5rem;
+}
+
+.encore-contact-info p {
   font-size: 1rem;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0.4rem 0;
+  line-height: 1.5;
 }
 
-.project-details strong {
-  color: var(--color-ink);
+.encore-contact-info strong {
+  color: white;
+}
+
+.encore-email {
+  color: #c9a227;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.encore-cta-row {
+  margin-top: 1.5rem;
+}
+
+.encore-cta-text {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #c9a227;
+  transition: color 0.2s ease;
+}
+
+.encore-card:hover .encore-cta-text {
+  color: #e0b830;
+}
+
+.encore-logo-section {
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.encore-logo {
+  width: 160px;
+  height: auto;
+  filter: drop-shadow(0 4px 20px rgba(201, 162, 39, 0.3));
+}
+
+#final-cta .project-details {
+  margin-top: 2rem;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.95rem;
+}
+
+#final-cta .project-details strong {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Responsive Encore Card */
+@media (max-width: 768px) {
+  .encore-card {
+    flex-direction: column;
+    text-align: center;
+    padding: 2rem;
+    gap: 2rem;
+  }
+  
+  .encore-card-content {
+    text-align: center;
+  }
+  
+  .encore-logo {
+    width: 120px;
+  }
 }
 
 /* ==================== LEGAL FOOTER ==================== */
