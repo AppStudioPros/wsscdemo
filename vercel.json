@@ -1,0 +1,12 @@
+{
+  "buildCommand": "cd nextjs && yarn build",
+  "outputDirectory": "nextjs/.next",
+  "installCommand": "cd nextjs && yarn install",
+  "framework": "nextjs",
+  "rewrites": [
+    {
+      "source": "/api/:path*",
+      "destination": "http://backend:8001/api/:path*"
+    }
+  ]
+}
