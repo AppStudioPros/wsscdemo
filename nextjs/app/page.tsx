@@ -124,12 +124,10 @@ export default async function Home() {
 
       <AppExperienceSection />
 
-      <Suspense fallback={<LoadingSection height="min-h-[50vh]" />}>
-        <ROICalculator fields={roiCalculator?.fields} />
-      </Suspense>
+      <TechStackSection />
 
       <Suspense fallback={<LoadingSection height="min-h-[50vh]" />}>
-        <TechStackSection />
+        <ROICalculator fields={roiCalculator?.fields} />
       </Suspense>
 
       <Suspense fallback={<LoadingSection height="min-h-[50vh]" />}>
