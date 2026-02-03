@@ -20,7 +20,7 @@ interface HeroContentProps {
   };
 }
 
-const VIDEO_URL = "https://customer-assets.emergentagent.com/job_e4309676-f936-468a-85ba-a6da5ef3628a/artifacts/gjeh1lbo_Hailuo_Video_Create%20a%20high-quality%20video%20sh_475139085642182660.mp4";
+const VIDEO_URL = "https://customer-assets.emergentagent.com/job_e4309676-f936-468a-85ba-a6da5ef3628a/artifacts/v2g5ybas_Hailuo_Video_Create%20a%20high-quality%20video%20sh_475141841006280714.mp4";
 
 export function HeroContent({ hero }: HeroContentProps) {
   const scrollToAIFeatures = () => {
