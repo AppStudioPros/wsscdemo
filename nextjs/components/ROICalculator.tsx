@@ -1,5 +1,6 @@
 'use client';
 
+// ROI Calculator with blue gradient background - v2
 import { useState } from 'react';
 
 interface ROICalculatorProps {
