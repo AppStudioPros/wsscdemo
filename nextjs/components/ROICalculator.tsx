@@ -37,7 +37,7 @@ export function ROICalculator({ fields }: ROICalculatorProps) {
   const savings = calculateSavings();
 
   return (
-    <section id="roi-calculator" className="py-20 bg-gradient-to-r from-slate-800 via-slate-700 to-blue-600">
+    <section id="roi" className="py-20 bg-gradient-to-r from-slate-800 via-slate-700 to-blue-600">
       <div className="container mx-auto px-6">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold text-white mb-4">Calculate Your ROI</h2>
