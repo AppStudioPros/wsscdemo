@@ -128,14 +128,14 @@ export async function POST(request: NextRequest) {
     }
 
     // Call Anthropic API via Emergent proxy
-    const response = await fetch('https://api.emergentagent.com/v1/chat/completions', {
+    const response = await fetch('https://integrations.emergentagent.com/llm/chat/completions', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${EMERGENT_LLM_KEY}`,
       },
       body: JSON.stringify({
-        model: 'claude-sonnet-4-5-20250929',
+        model: 'anthropic/claude-sonnet-4-5-20250929',
         messages: [
           { role: 'system', content: WSSC_SYSTEM_MESSAGE },
           ...history.map(msg => ({
