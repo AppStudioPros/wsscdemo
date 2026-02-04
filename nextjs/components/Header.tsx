@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Menu } from "lucide-react";
+import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet";
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -39,31 +39,21 @@ export function Header() {
             </button>
           </SheetTrigger>
           <SheetContent side="right" className="w-[280px] sm:w-[320px]">
-            <div className="flex flex-col h-full">
-              <div className="flex items-center justify-between mb-8">
-                <h2 className="text-2xl font-bold text-[#0066CC]">Menu</h2>
+            <SheetTitle className="text-2xl font-bold text-[#0066CC] mb-8">
+              Menu
+            </SheetTitle>
+            <nav className="flex flex-col gap-4">
+              {navItems.map((item) => (
                 <button
-                  onClick={() => setIsOpen(false)}
-                  className="p-2 text-gray-700 hover:text-[#0066CC]"
-                  data-testid="mobile-menu-close"
-                  aria-label="Close menu"
+                  key={item.href}
+                  onClick={() => scrollToSection(item.href)}
+                  className="text-left px-4 py-3 text-lg font-medium text-gray-700 hover:text-[#0066CC] hover:bg-gray-50 rounded-lg transition-colors"
+                  data-testid={`mobile-nav-${item.label.toLowerCase()}`}
                 >
-                  <X className="h-6 w-6" />
+                  {item.label}
                 </button>
-              </div>
-              <nav className="flex flex-col gap-4">
-                {navItems.map((item) => (
-                  <button
-                    key={item.href}
-                    onClick={() => scrollToSection(item.href)}
-                    className="text-left px-4 py-3 text-lg font-medium text-gray-700 hover:text-[#0066CC] hover:bg-gray-50 rounded-lg transition-colors"
-                    data-testid={`mobile-nav-${item.label.toLowerCase()}`}
-                  >
-                    {item.label}
-                  </button>
-                ))}
-              </nav>
-            </div>
+              ))}
+            </nav>
           </SheetContent>
         </Sheet>
       </div>
