@@ -29,7 +29,7 @@ export function HeroContent({ hero }: HeroContentProps) {
   };
 
   return (
-    <section id="hero" className="relative min-h-screen flex items-center">
+    <section id="hero" className="relative min-h-screen flex items-center pt-16 md:pt-20">
       {/* Video Background - NO LOOP */}
       <video
         className="absolute inset-0 w-full h-full object-cover"
