@@ -11,6 +11,7 @@ import { ROICalculator } from '@/components/ROICalculator';
 import { TechStackSection } from '@/components/TechStackSection';
 import { EncoreContactSection } from '@/components/EncoreContactSection';
 import { DisclaimerFooter } from '@/components/DisclaimerFooter';
+import { InstallPrompt } from '@/components/InstallPrompt';
 import { getChatbotConfig, getROICalculator } from '@/lib/sanity/client';
 
 function LoadingSection({ height = 'min-h-screen' }: { height?: string }) {
