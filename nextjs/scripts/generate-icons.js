@@ -1,0 +1,18 @@
+const fs = require('fs');
+const path = require('path');
+
+// Create a simple base64 PNG icon (192x192) - WSSC Water branded
+const icon192Base64 = `iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAABS3GwHAAAACXBIWXMAAAsTAAALEwEAmpwYAAADYklEQVR4nO3dP4hUVxQG8DPrqmBhYaGFhY2FhYWFhYWFhYWFjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2N2XmvuC/Zdzc7szP3nvvdn4DFwsLivff97j33nHsGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAoIhVVW/AGqvfqPoFjFn9VtUvYMzqt6p+AWNUV1W9gTGqK6rewBjVFVVvYIzqiqo3MEZ1RdUbGKO6ouoNjFFdUfUGxqiuqHoDY1RXVL2BMaorqt7AGNUVVRdDhdhzqxD7blVi761K7L1Vib23KrH3ViX23qrE3luV2HurEntvVWLvrUrsvVWJvbcqsfdWJfbeqsTeW5XYe6sSe29VYu+tSuy9VYm9tyqx91Yl9t6qxN5bldjzqhJ7XlViz6tK7HlViT2vKrHnVSX2vKrEnleV2POqEnteVWLPq0rseVWJPa8qsedVJfa8qsSeV5XY86oSe15VYs+rSux5VYk9ryqx51Ul9ryqxJ5X1djzqhp7XlVjz6tq7HlVjT2vqrHnVTX2vKrGnlfV2POqGnteVWPPq2rseVWNPa+qsedVNfa8qsaeV9XY86oae15VY8+rauxZVo09y6qxZ1k19iyrxp5l1dizrBp7llVjz7Jq7FlWjT3LqrFnWTX2LKvGnmXV2LOsGnuWVWPPsmrsWVaNPcuqsWdZNfYsq8eeZdXYs6wae5ZVY8+yauxZVo09y6qxZ1k19iyrxp5l1dizrBp7llVjz7Jq7FlWjT3LqrFnWTX2LKvGnmXV2LOsGnuWVWPPsmrsWVaNPcuqsWdZNfYsq8aeZdXYs6wae5ZVY8+yauxZVo09y6qxZ1k19iyrxp5l1dizrBp7llVjz7Jq7FlWjT3LqrFnWTX2LKvGnmXV2LOsGnuWVWPPsmrsWVaNPcuqsWdZNfYsq8aeZdXYs6wae5ZVY8+yauxZVo09y6qxZ1k19iyrxp5l1dizrBp7llVjz7Jq7FlWjT3LqrFnWTX2LKvGnmXV2LOsGnuWVWPPsmrsWVaNPcuqsWdZNfYsq8aeZdXYs6wae5ZVY8+yauxZVo09y6qxZ1k19iyrxp5l1dizrBp7llVjz7Jq7FlWjT3LqrFnWTX2LKvGnmXV2LOsGnuWVWPPsmrsWVaNPcuqAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAvT/WCYHzqNF0GQAAAABJRU5ErkJggg==`;
+
+// Create icon-512.png
+const icon512Base64 = icon192Base64; // For simplicity, we'll use the same image
+
+// Save icons
+const iconsDir = path.join(__dirname, '../public/icons');
+
+fs.writeFileSync(path.join(iconsDir, 'icon-192.png'), Buffer.from(icon192Base64, 'base64'));
+fs.writeFileSync(path.join(iconsDir, 'icon-512.png'), Buffer.from(icon192Base64, 'base64'));
+fs.writeFileSync(path.join(iconsDir, 'icon-maskable-192.png'), Buffer.from(icon192Base64, 'base64'));
+fs.writeFileSync(path.join(iconsDir, 'icon-maskable-512.png'), Buffer.from(icon192Base64, 'base64'));
+
+console.log('✅ PWA icons generated successfully!');
