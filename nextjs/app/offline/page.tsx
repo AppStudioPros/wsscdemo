@@ -102,8 +102,3 @@ export default function Offline() {
     </div>
   );
 }
-
-export const metadata = {
-  title: 'WSSC Water - Offline',
-  description: 'You are currently offline',
-};
