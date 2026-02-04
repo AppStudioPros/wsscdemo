@@ -103,43 +103,46 @@ export default async function Home() {
   }
 
   return (
-    <main className="min-h-screen">
-      <Suspense fallback={<LoadingSection />}>
-        <HeroSection />
-      </Suspense>
+    <>
+      <Header />
+      <main className="min-h-screen">
+        <Suspense fallback={<LoadingSection />}>
+          <HeroSection />
+        </Suspense>
 
-      <Suspense fallback={<LoadingSection height="min-h-[50vh]" />}>
-        <ComparisonSection />
-      </Suspense>
+        <Suspense fallback={<LoadingSection height="min-h-[50vh]" />}>
+          <ComparisonSection />
+        </Suspense>
 
-      <Suspense fallback={<LoadingSection height="min-h-[50vh]" />}>
-        <AIFeaturesSection />
-      </Suspense>
+        <Suspense fallback={<LoadingSection height="min-h-[50vh]" />}>
+          <AIFeaturesSection />
+        </Suspense>
 
-      <Suspense fallback={<LoadingSection height="min-h-[50vh]" />}>
-        <ChatbotDemo
-          welcomeMessage={chatbotConfig?.welcomeMessage}
-          quickQuestions={chatbotConfig?.quickQuestions}
-        />
-      </Suspense>
+        <Suspense fallback={<LoadingSection height="min-h-[50vh]" />}>
+          <ChatbotDemo
+            welcomeMessage={chatbotConfig?.welcomeMessage}
+            quickQuestions={chatbotConfig?.quickQuestions}
+          />
+        </Suspense>
 
-      <PWASection />
+        <PWASection />
 
-      <AppExperienceSection />
+        <AppExperienceSection />
 
-      <TechStackSection />
+        <TechStackSection />
 
-      <CommandCenterSection />
+        <CommandCenterSection />
 
-      <Suspense fallback={<LoadingSection height="min-h-[50vh]" />}>
-        <ROICalculator fields={roiCalculator?.fields} />
-      </Suspense>
+        <Suspense fallback={<LoadingSection height="min-h-[50vh]" />}>
+          <ROICalculator fields={roiCalculator?.fields} />
+        </Suspense>
 
-      <Suspense fallback={<LoadingSection height="min-h-[50vh]" />}>
-        <EncoreContactSection />
-      </Suspense>
+        <Suspense fallback={<LoadingSection height="min-h-[50vh]" />}>
+          <EncoreContactSection />
+        </Suspense>
 
-      <DisclaimerFooter />
-    </main>
+        <DisclaimerFooter />
+      </main>
+    </>
   );
 }
