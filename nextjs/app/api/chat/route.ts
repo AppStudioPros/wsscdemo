@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-const EMERGENT_LLM_KEY = process.env.EMERGENT_LLM_KEY || '';
+const ANTHROPIC_API_KEY = process.env.ANTHROPIC_API_KEY || '';
 
 const WSSC_SYSTEM_MESSAGE = `You are the WSSC Water AI Assistant - a friendly, knowledgeable customer service representative for WSSC Water, serving 1.8 million Maryland customers.
 
