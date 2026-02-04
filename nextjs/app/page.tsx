@@ -1,4 +1,5 @@
 import { Suspense } from 'react';
+import { Header } from '@/components/Header';
 import { HeroSection } from '@/components/HeroSection';
 import { ComparisonSection } from '@/components/ComparisonSection';
 import { AIFeaturesSection } from '@/components/AIFeaturesSection';
