@@ -19,6 +19,22 @@ const karla = Karla({
 export const metadata: Metadata = {
   title: "WSSC Water - Redesign Proposal",
   description: "Modern, mobile-optimized water utility website redesign proposal",
+  manifest: "/manifest.json",
+  themeColor: "#0066CC",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "WSSC Water",
+  },
+  formatDetection: {
+    telephone: false,
+  },
+  viewport: {
+    width: "device-width",
+    initialScale: 1,
+    maximumScale: 1,
+    userScalable: false,
+  },
 };
 
 export default function RootLayout({
