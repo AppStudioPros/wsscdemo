@@ -144,6 +144,7 @@ export default async function Home() {
 
         <DisclaimerFooter />
       </main>
+      <InstallPrompt />
     </>
   );
 }
