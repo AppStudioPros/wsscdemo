@@ -127,24 +127,22 @@ export async function POST(request: NextRequest) {
       history = history.slice(-10);
     }
 
-    // Call Anthropic API via Emergent proxy
-    const response = await fetch('https://integrations.emergentagent.com/llm/chat/completions', {
+    // Call Anthropic API directly
+    const response = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${EMERGENT_LLM_KEY}`,
+        'x-api-key': ANTHROPIC_API_KEY,
+        'anthropic-version': '2023-06-01',
       },
       body: JSON.stringify({
         model: 'claude-sonnet-4-5-20250929',
-        messages: [
-          { role: 'system', content: WSSC_SYSTEM_MESSAGE },
-          ...history.map(msg => ({
-            role: msg.role as 'user' | 'assistant',
-            content: msg.content,
-          })),
-        ],
         max_tokens: 1024,
-        temperature: 0.7,
+        system: WSSC_SYSTEM_MESSAGE,
+        messages: history.map(msg => ({
+          role: msg.role as 'user' | 'assistant',
+          content: msg.content,
+        })),
       }),
     });
 
@@ -155,7 +153,7 @@ export async function POST(request: NextRequest) {
     }
 
     const data = await response.json();
-    const assistantMessage = data.choices?.[0]?.message?.content || 
+    const assistantMessage = data.content?.[0]?.text || 
       "I apologize, but I'm having trouble responding right now. Please try again.";
 
     // Add assistant response to history
