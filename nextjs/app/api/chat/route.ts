@@ -135,7 +135,7 @@ export async function POST(request: NextRequest) {
         'Authorization': `Bearer ${EMERGENT_LLM_KEY}`,
       },
       body: JSON.stringify({
-        model: 'anthropic/claude-sonnet-4-5-20250929',
+        model: 'claude-sonnet-4-5-20250929',
         messages: [
           { role: 'system', content: WSSC_SYSTEM_MESSAGE },
           ...history.map(msg => ({
